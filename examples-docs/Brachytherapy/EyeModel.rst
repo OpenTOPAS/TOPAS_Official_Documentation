@@ -1,3 +1,5 @@
+.. _example_eyemodel:
+
 EyeModel.txt
 ---------------------
 

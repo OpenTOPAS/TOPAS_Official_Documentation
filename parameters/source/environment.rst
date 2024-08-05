@@ -1,4 +1,4 @@
-.. source_environment
+.. _source_environment:
 
 Environment Source
 ------------------
@@ -17,15 +17,23 @@ that the instrument (your detector) is rotating or moving about so the
 flux will average to isotropic over time.
 
 The basic definition of flux, f, which in principle can vary with
-direction and position, is defined by dN/dt = f*da*dOmega, the
-rate of flow of particles out of an element of area da perpendicular to
-the direction into an element of solid angle dOmega. If the flux is
-homogenous and isotropic, we can define the "omnidirectional flux"
-F = 4*pi*f per unit area. It is quoted, for example, as number per cm2
-per second.
+direction and position, is defined by:
 
-Fluence is simply F*T, the flux F over a time period T, so quoted, for
-example, as number per cm2.
+.. math::
+
+  \frac{dN}{dt} = f\times da \times d\Omega 
+
+which is the rate of flow of particles out of an element of area da perpendicular to
+the direction into an element of solid angle dOmega. If the flux is
+homogenous and isotropic, we can define the "omnidirectional flux":
+
+.. math::
+
+  F = 4 \times \pi \times f 
+
+which has units of number of particles per cm :sup:`2` per second.
+
+Fluence is simply :math:`F \times T`, the flux F over a time period T, which means it has the units of number of particles per cm :sup:`2`.
 
 One can derive equivalent definitions of fluence:
 
@@ -33,27 +41,31 @@ One can derive equivalent definitions of fluence:
   area;
 - the track length per unit volume.
 
-For N particles (histories), the fluence will be N/(pi*R^2). This is
-printed at the end of run. It is up to you to decide if this is enough
+For N particles (histories), the fluence will be:
+
+.. math::
+
+  \frac{N}{\pi \times R^2} 
+
+This is printed at the end of run. It is up to you to decide if this is enough
 for your application. Thus:
 
-- to simulate flux F for time T you need pi*R^2*F*T histories;
-- or, given N histories, you will have simulated a time period
-  T = N/(F*pi*R^2).
+- to simulate flux F for time T you need :math:`\pi \times R^2 \times F \times T` histories;
+- or, given N histories, you will have simulated a time period :math:`T = \frac{N}{F \times \pi \times R^2}`
 
-A test sphere of radius r will attract N*r^2/R^2 particles.
+A test sphere of radius r will attract :math:`\frac{N \times r^2}{R^2}` particles.
 
-A thin test disc of radius r will attract (N/2)*r^2/R^2 particles.
+A thin test disc of radius r will attract :math:`\frac{(N/2) \times r^2}{R^2}` particles.
 
-Specify source type as::
+The environment source type can be specified as follows::
 
   s:So/MySource/Type = "Environment"
 
-See the example: examples/Basic/EnvironmentSource.txt.
+See the example: :ref:`example_EnvironmentSource`
 
-Note: the world must be bigger than the radiation cavity, which may be
-bigger than a box enclosing your geometry. TOPAS will tell you if you
-need to increase the world size.
+.. note::
 
-The energies and species of the emitted particles can be specified using the same parameters available to the Beam Sources.
+    The world must be bigger than the radiation cavity, which may be bigger than a box enclosing your geometry. TOPAS will tell you if you need to increase the world size.
+
+The energies and species of the emitted particles can be specified using the same parameters available to the :ref:`source_beam`.
 

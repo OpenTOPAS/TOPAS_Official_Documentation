@@ -9,7 +9,7 @@ Any parameter (or set of parameters) in a topas simulation can be subject to for
 - you are trying to speed up your topas runs and you want to optimise the physics settings to achieve faster runs with minimal change to simulation results
 - you are trying to design a new device and want to maximize some performance criteria.
 
-To get started with TopasOpt, start with the `worked examples <https://acrf-image-x-institute.github.io/TopasOpt/>`_
+To get started with TopasOpt, start with the `worked examples <https://image-x-institute.github.io/TopasOpt/worked_examples.html>`_
 
-.. image:: BasicOptLoop.svg
+.. image:: BasicOptLoop.pdf
   :alt: Basic Optimisation Loop

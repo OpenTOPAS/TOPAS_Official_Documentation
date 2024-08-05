@@ -15,7 +15,7 @@ Note that some of these techniques only change the variance of the simulation, w
 
 To put this another way: ***with great power comes great responsibility.***
 
-All variance reduction techniques in topas can be switched on/off with a master parameter::
+All variance reduction techniques in TOPAS can be switched on/off with a master parameter::
 
     b:Vr/UseVarianceReduction = "true"
 

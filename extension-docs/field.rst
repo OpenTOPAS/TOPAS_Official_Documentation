@@ -17,6 +17,6 @@ If you want to create a purely electric field, or a combined electromagnetic fie
 
 and then if what you really wanted was just an electric field, you implement the magnetic field strength as just zero.
 
-Geant4 will call your GetFieldValue every time it needs to query the field. For reasons that are not clear to this author, Geant4 will sometimes query your field for points outside of your intended geometry component, so make sure to return at least some value (at least a zero) for every possible point.
+Geant4 will call your ``GetFieldValue`` every time it needs to query the field. For reasons that are not clear to this author, Geant4 will sometimes query your field for points outside of your intended geometry component, so make sure to return at least some value (at least a zero) for every possible point.
 
-Parameter lookups should be done in ResolveParameters. Call ResolveParameters directly from your constructor, and then you can also rely on TOPAS to re-call this method any time one of this field class's parameters is changed.
+Parameter lookups should be done in ``ResolveParameters``. Call ``ResolveParameters`` directly from your constructor, and then you can also rely on TOPAS to re-call this method any time one of this field class's parameters is changed.

@@ -64,9 +64,7 @@ So we have now have a parameter to control what kind of Energy we use for this b
 * "PreStep" is the track's energy at the start of the current step.
 * "DepositedInStep" is the amount of energy deposited in the current step.
 
-An example shows the effect of the three different choices:
-
-    examples/Scoring/EnergyDepositBinnedByEnergy.txt
+The :ref:`example_eDepBinnedE` example shows the effect of the three different choices.
 
 The output will include two extra bins, one for underflow (energy < ``EBinMin``), one for overflow (energy > ``EBinMax``). And if you have set EBinEnergy to IncidentTrack, there will be one more bin to hold those deposits for which there is no incident track (the primary particle was created already inside the scoring component, so neither it nor any ancestor of it was ever incident upon the scoring component).
 

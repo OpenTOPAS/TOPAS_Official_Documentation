@@ -20,13 +20,12 @@ Note that this can be more than just a file name - it can include a relative or 
     s:Sc/MyScorer/OutputFile = "../myOutputFileName" # one directory above current directory
     s:Sc/MyScorer/OutputFile = "~/SomeSubdirectory/myOutputFileName"
 
- d
 If you are outputting to ROOT or XML, the above only affects the name
-of a particular histograph within your overall ROOT or XML file.
-But the name of the overall ROOT or XML file is set by a different parameter:
+of a particular histogram within your overall ROOT or XML file.
+But the name of the overall ROOT or XML file is set by a different parameter::
 
-    s:Sc/RootFileName = "topas" # name for ROOT output file    s:Sc/XmlFileName = "topas" # name for XML output file
-
+    s:Sc/RootFileName = "topas" # name for ROOT output file
+    s:Sc/XmlFileName = "topas" # name for XML output file
 
 To specify output file type for all except the :ref:`scoring_phasespace`::
 
@@ -68,7 +67,7 @@ We keep name and type separate in the above so that one can do things like chang
 DICOM Output
 ~~~~~~~~~~~~
 
-DICOM output is handled through the package GDCM_, which is pre-built into TOPAS.
+DICOM output is handled through the GDCM_ package, which is provided as a compressed file within the TOPAS source code.
 
 .. _GDCM: http://gdcm.sourceforge.net
 

@@ -7,23 +7,23 @@ To assign a field, add the parameter ``Field``, as in::
 
     s:Ge/MyComponent/Field = "DipoleMagnet" # "DipoleMagnet", "QuadrupoleMagnet", "MappedMagnet", "UniformElectroMagnetic" or your own definition
 
-For ``"DipoleMagnet"``, specify dipole field and strength, as in (see :ref:`example_special_dipole`)::
+For ``"DipoleMagnet"``, specify dipole field and strength (see :ref:`example_special_dipole`)::
 
     u:Ge/MyComponent/MagneticFieldDirectionX = 0.0
     u:Ge/MyComponent/MagneticFieldDirectionY = 1.0
     u:Ge/MyComponent/MagneticFieldDirectionZ = 0.0
     d:Ge/MyComponent/MagneticFieldStrength = 3.0 tesla
 
-For ``"QuadrupoleMagnet"``, specify the two components of the gradient, as in (see :ref:`example_special_quadrupole`)::
+For ``"QuadrupoleMagnet"``, specify the two components of the gradient (see :ref:`example_special_quadrupole`)::
 
     d:Ge/MyComponent/MagneticFieldGradientX = 1.0 tesla
     d:Ge/MyComponent/MagneticFieldGradientY = 1.0 tesla
 
-For ``"MappedMagnet"``, specify a field map in the Opera 3D format, as in (see :ref:`example_special_purgingmagnet`)::
+For ``"MappedMagnet"``, specify a field map in the Opera 3D format (see :ref:`example_special_purgingmagnet`)::
 
     s:Ge/MyComponent/MagneticField3DTable = "PurgMag3D.TABLE"
 
-For ``"UniformElectroMagnetic"``, specify electric field and dipole magnetic field, as in (see :ref:`example_special_electromagnet`)::
+For ``"UniformElectroMagnetic"``, specify electric field and dipole magnetic field (see :ref:`example_special_electromagnet`)::
 
     u:Ge/MyComponent/ElectricFieldDirectionX = 1.0
     u:Ge/MyComponent/ElectricFieldDirectionY = 1.0
@@ -42,7 +42,9 @@ You can visualize magnetic fields, with field intensity and direction depicted t
 
     i:Gr/ViewA/MagneticFieldArrowDensity = 10
 
-Use with caution. When combined with rotation seems to sometimes cause crashes in polycone drawing (involved in drawing the arrowheads).
+.. warning::
+
+    Use ``MagneticFieldArrowDensity`` with caution. When combined with rotation it seems to sometimes cause crashes in polycone drawing (involved in drawing the arrowheads).
 
 As with almost any TOPAS parameter, the Electric Field Strength, Dipole Magnet Strength, Quadrupole Magnet Gradient or Mapped Magnetic Field file can be set to change over time by using :ref:`time_feature` such as (see :ref:`example_special_quadanddipole`)::
 

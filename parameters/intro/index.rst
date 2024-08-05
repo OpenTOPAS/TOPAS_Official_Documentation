@@ -1,7 +1,7 @@
 .. _parameters_intro:
 
-Introduction to Parameter System
-================================
+Parameter Control System
+========================
 
 .. toctree::
     :maxdepth: 2

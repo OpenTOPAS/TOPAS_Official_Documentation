@@ -4,7 +4,7 @@ Optical Physics
 Optical Photons
 ~~~~~~~~~~~~~~~
 
-A full description of the tracking of optical photons is available in the `Geant4 Physics Reference Manual <http://geant4.cern.ch/G4UsersDocuments/UsersGuides/PhysicsReferenceManual/html/node66.html>`_ and the `Geant4 Guide for Applications Developers <http://geant4.cern.ch/G4UsersDocuments/UsersGuides/ForApplicationDeveloper/html/TrackingAndPhysics/physicsProcess.html#5.2.5>`_.
+A full description of the tracking of optical photons is available in the `Geant4 Physics Reference Manual <https://geant4-userdoc.web.cern.ch/UsersGuides/PhysicsReferenceManual/html/index.html>`_ and the `Geant4 Guide for Applications Developers <https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/TrackingAndPhysics/physicsProcess.html>`_.
 
 TOPAS allows to include optical physics by means of the ``g4optical`` module in the physics list. The available optical processes included in the ``g4optical`` module are: scintillation, Cerenkov radiation, wavelength shifting, optical absorption, Rayleigh scattering and boundary processes. However, the optical properties of the material of the volumes must also be defined (at the least the refractive index must to be defined). There exist two types of variables to define the optical properties: a vector based and constant based. The vector-based parameter allows to define a property (refractive index for example) as a function of the photon’s energy. While the constant-based parameters allows to define an scalar (scintillation yield for example).
 
@@ -14,47 +14,15 @@ To activate the optical properties in a material one must to set::
 
 To set a property based on a vector, one must to define the energy of reference. For example to include the refractive index one must to define two parameters::
 
-    dv:Ma/MyMaterial/RefractiveIndex/Energies = 3 2.0 2.5 3.0 eV
-    uv:Ma/MyMaterial/RefractiveIndex/Values = 3 1.58 1.58 1.58
+    dv:Ma/MyMaterial/RIndex/Energies = 3 2.0 2.5 3.0 eV
+    uv:Ma/MyMaterial/RIndex/Values = 3 1.58 1.58 1.58
 
 To set a property based on a scalar only one parameter is needed, for example::
 
-    u:Ma/MyMaterial/ScintillationYield = 1120 # in ph/MeV
-    d:Ma/MyMaterial/FastTimeConstant = 2.1 ns
+    d:Ma/MyMaterial/ScintillationYield1 = 1120 /MeV
+    d:Ma/MyMaterial/ScintillationTimeConstant1 = 2.1 ns
 
-The full list of parameters available is listed in the next table.
-
-==============  ===================
-Type            Parameter name
-==============  ===================
-uv              RefractiveIndex
-uv              ImaginaryRefractiveIndex
-uv              RealRefractiveIndex
-dv              AbsLength
-uv              FastComponent
-uv              SlowComponent
-uv              Miehg
-uv              SpecularLobeConstant
-uv              SpecularSpikeConstant
-uv              BackScatterConstant
-uv              WLSAbsLength
-uv              WLSComponent
-uv              Reflectivity
-uv              Efficiency
-uv              Transmittance
-u               ScintillationYield ( in photons/MeV)
-u               ResolutionScale
-d               FastTimeConstant
-d               SlowTimeConstant
-u               YieldRatio
-u               MiehgForward
-u               MiehgBackward
-u               MiehgForwardRatio
-u               WLSTimeConstant
-u               BirksConstant (in mm/MeV)
-==============  ===================
-
-
+The full list of parameters available in Geant4 is listed in the next `link <https://geant4.kek.jp/lxr/source/materials/src/G4MaterialPropertiesTable.cc?v=11.1.3>`_. 
 
 Optical Surfaces
 ~~~~~~~~~~~~~~~~

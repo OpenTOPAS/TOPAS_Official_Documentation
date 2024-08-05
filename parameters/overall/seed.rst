@@ -8,13 +8,13 @@ To set the random seed::
 To generate several statistically independent runs, give each run a different ``Ts/Seed``.
 A typical solution to produce 10 independent runs would be to give starting seeds of 1 to 10. The allowed range is 0 to 2147483647 (the maximum 32 bit integer).
 
-For more details see the discussion in the `Geant4 Application Developer's Guide <http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/ForApplicationDeveloper/html/ch03s02.html#sect.GlobClass.HEPRandom>`_.
+For more details see the discussion in the `Geant4 Application Developer's Guide`_.
 
 We use the random engine called ``RanecuEngine`` and the seed given to TOPAS is passed to the engine through ``CLHEP::HepRandom::setTheSeed``.
 
 
-How to save and reuse random seed of a problematic history:
------------------------------------------------------------
+How to save and reuse random seed of a problematic history
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When a rare issue is to be debugged, it is easier if one can make the simulation start
 immediately from the problematic history.
@@ -37,24 +37,26 @@ It skips most of the time-consuming parts of the simulation.
 Its only job is to find and write out the random seed.
 The seed information will be written to the console, and will also be written to a "seed file" such as:
 
-* TopasSeedForRun_0_History_9998.txt
+* SeedForRun_0_History_9998.txt
 
 This simulation will not be useful for anything else, but it will be very fast.
 TOPAS will:
 
 * Disable graphics
 * Disable GUI
-* Set physics to transportation_only
+* Set physics to ``transportation_only``
 * Disable setting of cuts
 * Disable variance reduction
 * Disable generators
 * Disable most UpdateForNewRun functions
 
-You can then set up a fresh, normal TOPAS session that will starts right from the desired history.
-To do so, remove that FindSeedForHistory parameter, and tell TOPAS to use the saved seed file::
+You can then set up a fresh, normal TOPAS session that starts right from the desired history.
+To do so, remove the FindSeedForHistory parameter, and tell TOPAS to use the saved seed file::
 
-    s:Ts/SeedFile = "TopasSeedForRun_0_History_9998.txt" # Seed file saved in fast-forward job above
+    s:Ts/SeedFile = "SeedForRun_0_History_9998.txt" # Seed file saved in fast-forward job above
 
 If the seed file is not in the current directory, you can also specify a seed file directory::
 
     s:Ts/SeedDirectory = "/Applications/tswork/testarea/SkipUntil" # defaults to read from current directory
+
+.. _Geant4 Application Developer's Guide: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/global.html#the-heprandom-module-in-clhep

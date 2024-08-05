@@ -1,3 +1,5 @@
+.. _example_DistributedSourcePointsInSphereGaussian:
+
 DistributedSourcePointsInSphereGaussian.txt
 -------------------------------------------
 

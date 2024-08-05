@@ -11,7 +11,7 @@ Quantity               Description
 DoseToMedium            sum of energy deposits divided by mass
 DoseToWater             from energy-dependent stopping power conversion (see below)
 DoseToMaterial          from energy-dependent stopping power conversion (see below)
-TrackLengthEstimator    dose calculated using the track-length etimator technique
+TrackLengthEstimator    dose calculated using the track-length estimator technique
 AmbientDoseEquivalent   sum of fluence times fluence-to-effective dose conversion coefficients
 EnergyDeposit           sum of energy deposits
 Fluence                 sum of step lengths divided by volume
@@ -35,9 +35,9 @@ When your scoring component is the Parent of other components, you have the opti
 This action is recursive to all levels of subcomponents.
 
 DoseToMaterial:
----------------
+~~~~~~~~~~~~~~~
 
-you must also specify the ``Material``::
+The use of this scorer requires that you specify the ``Material``::
 
     s:Sc/MyScorer/Material = "SomeMaterial"
 
@@ -46,7 +46,7 @@ Note that in this case, the material name must exactly match the case defined in
     i:Ma/Verbosity = 1
 
 TrackLengthEstimator:
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 Dose is calculated using a linear Track Length Estimator (TLE).
 The TLE technique approximates the absorbed dose as electronic (collisional) kerma.
@@ -59,7 +59,7 @@ The TOPAS TrackLengthEstimator is further described at:
 * Francisco Berumen, Yunzhi Ma, José Ramos-Méndez, Joseph Perl, and Luc Beaulieu. "Validation of the TOPAS Monte Carlo toolkit for HDR brachytherapy simulations", Brachytherapy (2021) https://doi.org/10.1016/j.brachy.2020.12.007
     
 AmbientDoseEquivalent:
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Scoring is performed per single particle::
 
@@ -72,17 +72,16 @@ The scorer uses a track-length estimator, a variance reduction technique that co
     dv:Sc/MyScorer/FluenceToDoseConversionEnergies = 30 ... MeV
     dv:Sc/MyScorer/FluenceToDoseConversionValues = 30 ... Sv*mm2
     
-The example AmbientDoseEquivalent.txt provides a complete example for neutron particles. It uses the fluence-to-effective dose conversion coefficients from reference [2], downloaded from reference [3].
+The example AmbientDoseEquivalent.txt provides a complete example for neutron particles. It uses the fluence-to-effective dose conversion coefficients from reference [2], downloaded from the `FLUKA`_ website on the 10th of March, 2021.
 
-[1] Attix FH, Introduction to radiological physics and radiation dosimetry, 1986 Wyley-VCH, Chapter 1, Section III.D. 
+`[1]`_ Attix FH, Introduction to radiological physics and radiation dosimetry, 1986 Wyley-VCH, Chapter 1, Section III.D. 
 
-[2] Pelliccioni, M. Overview of Fluence-to-Effective Dose and Fluence-to-Ambient Dose Equivalent Conversion Coefficients for High Energy Radiation Calculated Using the FLUKA Code, Radiat. Prot. Dosim. 88(4), 279-297 (2000).
-
-[3] http://www.fluka.org/fluka.php?id=examples&sub=example4  Accessed on March 10, 2021.
+`[2]`_ Pelliccioni, M. Overview of Fluence-to-Effective Dose and Fluence-to-Ambient Dose Equivalent Conversion Coefficients for High Energy Radiation Calculated Using the FLUKA Code, Radiat. Prot. Dosim. 88(4), 279-297 (2000).
 
 DoseToWater and DoseToMaterial:
--------------------------------
-we use energy-dependent stopping power conversion as in:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We use energy-dependent stopping power conversion as in:
 
 .. code-block:: c++
 
@@ -107,8 +106,21 @@ For ``PreCalculateStoppingPowerRatios``, the table of stopping power ratios can 
     Sc/MyScorer/MinElectronEnergyForStoppingPowerRatio # default is 1 keV
     Sc/MyScorer/MaxElectronEnergyForStoppingPowerRatio # default is 1 MeV
 
+Scaling output dose distributions:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The output dose distribution computed with both DoseToMaterial and DoseToMedium can be weighted with a user-defined unitless parameter as follows::
+
+    u:Sc/MyScorer/OutputWeightingFactor = 1e6
+
+This way, e.g., a calibration factor to scale up/down dose distributions can be applied. 
+
+.. note::
+
+    The ``OutputWeightingFactor`` can be changed with time features.
+
 OriginCount:
-------------
+~~~~~~~~~~~~
 
 By combining this scorer with the OnlyIncludeParticlesNamed filter,
 one can create a scorer that tells how many particles of a given type were
@@ -124,7 +136,7 @@ See example:
 examples/Scoring/OriginCount.txt
 
 Charge and EffectiveCharge:
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * If a particle reaches zero kinetic energy in the scoring volume, its charge is accumulated
 * If a particle is generated in the scoring volume, its charge is subtracted
@@ -139,8 +151,8 @@ ProtonLET Scorer
 
 The ProtonLET scorer gives the LET of primary and secondary protons, including the energy deposited by associated secondary electrons. It uses techniques discussed in two recent articles on best practices to score LET in Geant4:
 
-* Phys. Med. Biol. 60 (2015) 2645–2669 by MA Cortes-Giraldo and A Carabe
-* Phys. Med. Biol. 60 (2015) N283–N291 by DA Granville and GO Sawakuchi
+* Phys. Med. Biol. `60 (2015) 2645–2669`_ by MA Cortes-Giraldo and A Carabe
+* Phys. Med. Biol. `60 (2015) N283–N291`_ by DA Granville and GO Sawakuchi
 
 In particular, we adopt the methods developed by Granville and Sawakuchi.
 We compute dose-averaged LET, but you may instead request track-averaged::
@@ -170,3 +182,9 @@ Even when you do this, rare events that produce very low energy protons (e.g. a 
     d:Sc/MyScorer/UseFluenceWeightedBelowDensity = 0. g/cm3
 
 We set this to zero by default because it is strange to mix both types of LET in a single distribution, and could be significantly wrong at the end of range. We expect users to want to enable this when making a pretty plot of LET to overlay on a CT scan, without spikes in cavities and outside the patient.
+
+.. _[1]: https://dl.icdst.org/pdfs/files3/79bf7bc0415a1e4d223acd4f941327f8.pdf
+.. _[2]: https://doi.org/10.1093/oxfordjournals.rpd.a033046
+.. _FLUKA: http://www.fluka.org/fluka.php?id=examples&sub=example4
+.. _60 (2015) 2645–2669: https://doi.org/10.1088/0031-9155/60/7/2645
+.. _60 (2015) N283–N291: https://doi.org/10.1088/0031-9155/60/14/n283

@@ -210,7 +210,7 @@ We found that if we set only::
 
 the job hangs (it tries to accumulate all of the millions of particles into a single history).
 
-Examples reading IAEA files can be found at:
+Examples of reading in IAEA files can be found at:
 
-* examples/PhaseSpace/ReadElekta.txt
-* examples/PhaseSpace/ReadVarian.txt
+* :ref:`example_ReadElekta`
+* :ref:`example_ReadVarian`

@@ -14,11 +14,6 @@ If you want to run with no physics, but only the transportation process (useful 
 
     sv:Ph/Default/Modules = 1 "Transportation_Only"
 
-If you want to simplify physics so that only basic electromagnetic physics is done (useful for
-making basic geometry tests run faster), specify just the one module:
-
-    sv:Ph/Default/Modules = 1 "g4em-standard_opt0"
-
 Below is a :ref:`physics_available_modules` with the corresponding Geant4 class names.
 Users who are advanced experts in Geant4 physics can also write their own Geant4 physics modules.
 
@@ -78,6 +73,31 @@ Cuts do not affect all processes, but only those listed below:
 * Energy thresholds for protons are used in processes of elastic scattering for hadrons and ions defining the threshold for kinetic energy of nuclear recoil
 
 
+.. _for_expert_users:
+
+For expert users
+~~~~~~~~~~~~~~~~~~~
+
+Further control of electromagnetic parameters can be made by parameters displayed below. The values shown are those default found in Geant4 class `G4EmParameters`. However, different electromagnetic physics modules (start with "g4em-" in the table below) override the default values from `G4EmParameters` class, thus check the corresponding Geant4 class for further details ::
+
+     # For ionization 
+     b:Ph/Default/ICRU90 = "False"
+     u:Ph/Default/EMRoverRange = 0.2
+     d:Ph/Default/EMFinalRange = 1.0 mm 
+     d:Ph/Default/LowestElectronEnergy = 1.0 keV
+
+     # For multiple scattering
+     b:Ph/Default/MottCorrection = "False"
+     u:Ph/Default/MSCGeometryFactor = 2.5
+     u:Ph/Default/MSCSkinFactor = 1.0
+     u:Ph/Default/MSCRangeFactor = 0.04
+     b:Ph/Default/MSCSafetyFactor = 0.6
+     s:Ph/Default/MSCStepLimitType = "safety" # "safetyplus" "distancetoboundary"
+
+     # For electron solvation 
+     s:Ph/Default/SolvatedElectronThermalizationModel = "meesungnoen" # "ritchie" "terrisol" "meesungnoensolid" "kreipl"
+     
+
 
 .. _physics_available_modules:
 
@@ -90,6 +110,7 @@ and plug these into TOPAS through the Extensions Interface.
 ==========================  ===========================
 TOPAS Module Name           Geant4 Class Name
 ==========================  ===========================
+tsphotoneutron**            N/A 
 g4h-chargeexchange          G4ChargeExchangePhysics
 g4decay                     G4DecayPhysics
 g4em-dna                    G4EmDNAPhysics
@@ -147,3 +168,5 @@ g4optical                   G4OpticalPhysics
 g4radioactivedecay          G4RadioactiveDecayPhysics
 g4stopping                  G4StoppingPhysics
 ==========================  ===========================
+
+** See the publication `here <https://pubmed.ncbi.nlm.nih.gov/38657630/>`_ . 

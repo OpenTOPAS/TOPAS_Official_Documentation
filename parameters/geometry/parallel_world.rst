@@ -4,7 +4,7 @@ Parallel Worlds
 ---------------
 
 Components can be assigned to "parallel worlds" rather than the standard, mass world.
-Such components have no effect on physics (other than usually very minor step limitation effects) but can still be used for scoring. Such components can arbitrarily overlay the mass world. Their volumes can overlap any other volumes in other mass or parallel worlds.
+Such components have no effect on physics of your simulation (other than usually very minor step limitation effects) but can still be used for scoring. Such components can arbitrarily overlay the mass world. Their volumes can overlap any other volumes in other mass or parallel worlds.
 To assign a component to a parallel world, include the line::
 
     b:Ge/MyComponent/IsParallel = "True"
@@ -25,7 +25,7 @@ There is no limit on the total number of parallel worlds, but each additional wo
 
 .. warning::
 
-    In certain cases, TOPAS must represent a geometry by using a Geant4 technique called "parameterized volumes." However we have found that Geant4 behaves unreliably if parameterized sphere is placed in a parallel world. Accordingly, TOPAS applies a safety restriction:
+    In certain cases, TOPAS must represent a geometry by using a Geant4 technique called "parameterized volumes." However we have found that Geant4 behaves unreliably if a parameterized sphere is placed in a parallel world. Accordingly, TOPAS applies a safety restriction:
 
     * TsSphere can not be in a parallel world if it has any divisions.
 
@@ -34,14 +34,16 @@ There is no limit on the total number of parallel worlds, but each additional wo
 Layered Mass Geometry
 ~~~~~~~~~~~~~~~~~~~~~
 
-Components that are in a parallel world can have material or not. If they have material, and they are listed in the ``LayeredMassGeometryWorlds`` parameter, this material will take precedence over any real world material found in that location.
+Components that are in a parallel world do not stricly need to have a material assigned to them. If they do have an assigned material, and they are listed in the ``LayeredMassGeometryWorlds`` parameter, this material will take precedence over any real world material found in that location.
 
-In Geant4 this is called Layered Mass Geometry. It is further described in (`PubMed <http://www.ncbi.nlm.nih.gov/pubmed/22975747>`_):
+In Geant4 this is called Layered Mass Geometry. It is further described in the following publication:
 
-Enger S et al, "Layered mass geometry: a novel technique to overlay seeds and applicators onto patient geometry in Geant4 brachytherapy simulations," Phys Med Biol. 2012 Oct 7;57(19):6269-77.
+Enger S et al, "Layered mass geometry: a novel technique to overlay seeds and applicators onto patient geometry in Geant4 brachytherapy simulations," Phys Med Biol. 2012; `57(19):6269-77`_.
 
 Any time a component in a parallel world has material, that world must be listed in the ``LayeredMassGeometryWorlds`` parameter. The parameter is a string vector because any number of parallel worlds can have material. The order of the worlds in this parameter is significant. Material from worlds listed later in this list take precedence over material in worlds listed earlier. Thus, in the following example, material in the world ``Seed`` will take precedence over material in the world ``Tumor`` which will take precedence over material in the regular world::
 
     sv:Ph/Default/LayeredMassGeometryWorlds = 2 "Tumor" "Seed"
 
 A simple example is provided in :ref:`example_basic_layeredmassgeometry`.
+
+.. _`57(19):6269-77`: http://www.ncbi.nlm.nih.gov/pubmed/22975747

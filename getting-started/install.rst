@@ -1,2 +1,14 @@
-Installation instructions for the latest TOPAS version are provided at the top of the `Code Repository <https://sites.google.com/a/topasmc.org/home/code-repository-authorized-users-only>`_ page of the TOPAS web site.
-This page is accessible only to licensed TOPAS users.
+Installation
+============
+
+Installation instructions for the latest TOPAS version (OpenTOPAS v4.0.0) are provided in the QuickStart guides on the GitHub_ page. Alternatively, see the quickStart guide appropriate to your operating system in the panel on the left.
+
+.. toctree::
+	:maxdepth: 1
+	:hidden:
+
+	MacOS
+	Debian
+	WSL
+
+.. _GitHub: https://github.com/OpenTOPAS/OpenTOPAS

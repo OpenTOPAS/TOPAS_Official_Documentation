@@ -6,30 +6,27 @@ Materials
 We have :ref:`pre-defined a few materials <parameters_default_materials>`.
 You are free to define additional materials, as in::
 
-    sv:Ma/Air/Components=4 "Carbon" "Nitrogen" "Oxygen" "Argon" # names of elements
-    uv:Ma/Air/Fractions=4 0.000124 0.755268 0.231781 0.012827 # fractions of elements
-    d:Ma/Air/Density=1.2048 mg/cm3
-    d:Ma/Air/MeanExcitationEnergy=85.7 eV
-    s:Ma/Air/DefaultColor="lightblue"
+    sv:Ma/Air/Components =4 "Carbon" "Nitrogen" "Oxygen" "Argon" # names of elements
+    uv:Ma/Air/Fractions = 4 0.000124 0.755268 0.231781 0.012827 # fractions of elements
+    d:Ma/Air/Density = 1.2048 mg/cm3
+    d:Ma/Air/MeanExcitationEnergy = 85.7 eV
+    s:Ma/Air/DefaultColor = "lightblue"
 
 All :ref:`Elements have been pre-defined <parameters_default_elements>` with natural isotope abundance from the NIST database. You will only need to create your own Elements if you need something other than natural isotope abundance. For that, see :ref:`parameters_element_isotope` below.
 
 ``Fractions`` are by weight.
 
-If you set the parameter::
+Considering the material of ``Air`` as defined above, If you set the parameter::
 
-    b:Ma/*/NormalizeFractions = "True" # Defaults to "False"
+    b:Ma/Air/NormalizeFractions = "True" # Defaults to "False"
 
-TOPAS will normalize your Fractions to 1.
-Otherwise, TOPAS will require that the sum of all Fractions is already 1.
+TOPAS will normalize the ``Fractions`` you defined to 1. Otherwise, TOPAS will require that the sum of all Fractions is already 1.
 
 ``MeanExcitationEnergy`` is the ``I`` parameter in the Bethe equation, which not only includes ionization, but also inner-atomic excitations, etc.
 
-In the :ref:`parameters_default` section, we show the complete list or pre-defined materials. This basically covers those materials that are used in our included examples.
+In the :ref:`parameters_default` section, we show the complete list of pre-defined materials. This basically covers those materials that are used in our included examples.
 
-You can also create a new material from a combination of other materials.
-The key is that you provide a additional parameter called ``BuildFromMaterials`` and set this to True.
-Then instead of ``Components`` being element names, it will expect material names.
+You can also create a new material from a combination of other materials. The key is that you provide an additional parameter called ``BuildFromMaterials`` and set this to True. Then instead of ``Components`` being element names, it will expect material names.
 
 Here's an example of making a material that is a combination of water and air::
 
@@ -41,7 +38,6 @@ Here's an example of making a material that is a combination of water and air::
 You may also use any of the Materials and Compounds that are defined by default in Geant4. The names start with the prefix, ``G4_``, such as: ``G4_Al``, ``G4_Ti``, ``G4_MUSCLE_SKELETAL_ICRP``, etc. The complete list of these materials and compounds can be found `here <http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html#g4matrdb>`_.
 
 * NIST material names must be specified with exact case.
-* As of this writing, the mean excitation energy listed in the above reference for ``G4_WATER`` is incorrect. It lists ``G4_WATER`` mean excitation energy as 75.0 eV but it is actually set to 78.0 eV.
 
 .. note:: The Geant4-DNA physics processes have special behavior for ``G4_WATER``. They take into account the material's molecular properties rather than just the atomic properties. Accordingly, you should use ``G4_WATER`` rather than defining your own Water, unless you have some other reason to make a specific change (such as changing the mean excitation energy to something other than 78.0 eV).
 
@@ -76,7 +72,7 @@ Elements and Isotopes
 
 All :ref:`Elements have been pre-defined <parameters_default_elements>` with natural isotope abundance from the NIST database.  You will only need to create your own Elements if you need something other than natural Isotope abundance. You can define additional elements as follows:
 
-Define each isotope that you will use, specifying ``Z``, ``N`` and ``A``::
+Define each isotope that you will use by specifying ``Z``, ``N`` and ``A``::
 
     i:Is/U235/Z = 92
     i:Is/U235/N = 235
@@ -91,4 +87,4 @@ Define your element with your desired proportion of these isotopes::
     sv:El/MyElU/IsotopeNames = 2 "U235" "U238"
     uv:El/MyElU/IsotopeAbundances = 2 90. 10.
 
-See :ref:`example_basic_isotope` example.
+See the :ref:`example_basic_isotope` example.

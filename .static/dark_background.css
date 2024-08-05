@@ -9,3 +9,7 @@ div[class^='highlight'] pre {
 .highlight .kc {
     font-weight: normal !important;
 } /* Keyword.Constant */
+
+span.underlined {
+    text-decoration: underline;
+}

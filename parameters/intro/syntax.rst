@@ -21,7 +21,7 @@ Ten example parameter settings are given below::
     dv:Ge/RMW_Track1/Angles         = 4 69.1 92.2 111.0 126.0 deg      # Dimensioned Double Vector
     uv:Ma/Phantom_Plastic/Fractions = 3 0.05549 0.75575 0.18875        # Unitless Double Vector
     iv:Gr/Color/yellow              = 3 225 255 0                      # Integer Vector
-    bv:Tf/ScoringOnOff/Values       = 4 "true" "false" "true" "false"  # Boolean Vector
+    bv:Tf/ScoringOnOff/Values       = 4 "True" "False" "True" "False"  # Boolean Vector
     sv:Ma/MyPlastic/Components      = 3 "Hydrogen" "Carbon" "Oxygen"   # String Vector
 
 .. note::
@@ -81,7 +81,7 @@ A **Vector of Dimensioned Doubles** parameter requires an integer (larger than z
 * Vector of Dimensioned Doubles is useful when the definition of a single shape, motion, etc. requires multiple dimensioned double values.
 * Our usage of the term "vector" may be unfamiliar to some readers but is the standard term for such structures in modern programming languages.
 
-**Vectors of Unitless, Integer, Boolean and String** again require an integer to indicate how many values are expected, then the values themselves. The individual strings in a Vector of Strings can not contain spaces (this requirement will be relaxed in a subsequent TOPAS release).
+**Vectors of Unitless, Integer, Boolean and String** again require an integer to indicate how many values are expected, then the values themselves. The individual strings in a Vector of Strings can not contain spaces (this requirement will be relaxed in a subsequent OpenTOPAS release).
 
 .. todo:: Allow strings in a vector of strings to contain spaces
 
@@ -214,4 +214,4 @@ String Vector parameters::
     sv:parameterName = name_of_string_vector_parameter
     # value1, value2, etc. can be a numeric value or the name of a string parameter
 
-Other operations are intentionally not supported since their behavior might be unclear. Such things can be done in user C++ code, generating new parameters on the fly (see :ref:`transient_parameters`). ``d * d`` is forbidden because can create new units that we don't recognize. Division is forbidden because of divide by zero issues, etc.
+Other operations are intentionally not supported since their behavior might be unclear. Such things can be done in user C++ code, generating new parameters on the fly (see :ref:`transient_parameters`). ``d * d`` is forbidden because it can create new units that we don't recognize. Division is forbidden because of divide by zero issues, etc.

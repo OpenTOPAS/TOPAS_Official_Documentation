@@ -1,21 +1,16 @@
+.. _example_brachytherapy:
+
 Brachytherapy package for TOPAS
 ===============================
 
-This package has been developed by the Medical Physics Research Group at Laval University [https://physmed.fsg.ulaval.ca](https://physmed.fsg.ulaval.ca) with the close collaboration of the TOPAS developer team.
-
-Collaborators:
-
-* Francisco Berumen
-* Audran Poher
-* Yunzhi Ma
-* Jose Ramos Mendez
-* Joseph Perl
-* Luc Beaulieu
+This package has been developed by the Medical Physics Research Group at Laval University [https://physmed.fsg.ulaval.ca](https://physmed.fsg.ulaval.ca) with the close collaboration of the TOPAS developer team under NIH/NCI grant U24 CA215123.
 
 For any presentation or publication using the track-length estimator or brachytherapy related calculation, please cite the following published works:
 
 * Francisco Berumen, Yunzhi Ma, José Ramos-Méndez, Joseph Perl, and Luc Beaulieu. "Validation of the TOPAS Monte Carlo toolkit for HDR brachytherapy simulations", Brachytherapy (2021) https://doi.org/10.1016/j.brachy.2020.12.007
 * Audran Poher, Francisco Berumen, Yunzhi Ma, Joseph Perl, and Luc Beaulieu. "Validation of the TOPAS Monte Carlo toolkit for LDR brachytherapy simulations", Physica Medica. 2023 Mar 1;107:102516 https://doi.org/10.1016/j.ejmp.2022.102516
+* Moreno-Barbosa Fernando, De Celis-Alonso Benito, Moreno-Barbosa Eduardo, Hernández-López Javier, Geoghegan Theodory and Ramos-Méndez Jose "Monte Carlo simulation of the effect of magnetic fields on brachytherapy dose distributions in lung tissue material", PLoS ONE, 2020 15(10):e0238704-12pp https://doi.org/10.1371/journal.pone.0238704
+
 
 The Brachytherapy TOPAS package includes 6 examples:
 
@@ -42,7 +37,7 @@ The HDRSourceInApplicator.txt file presents the TG186 source inside the TG186 ap
 The DoseTLE.txt file scores the dose of the previous setup using the TLE. The TLE requires the mass absorption coefficients which are given to TOPAS in the InputFile parameter "Muen.dat". 
 
 References
-==========
+----------
 
 Track Length Estimator:
 

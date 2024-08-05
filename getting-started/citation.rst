@@ -1,17 +1,28 @@
 Citation
 ========
 
-If you use TOPAS, please be sure to cite the following paper (`PubMed <https://www.ncbi.nlm.nih.gov/pubmed/23127075>`_):
+If you use TOPAS, please be sure to cite:
 
-Perl J, Shin J, Schumann J, Faddegon B, Paganetti H. TOPAS: an innovative proton Monte Carlo platform for research and clinical applications. Med Phys. 2012; 39(11):6818-37.
+Faddegon B, Ramos-Mendez J, Schuemann J, McNamara A, Shin J, Perl J, Paganetti H, The TOPAS Tool for Particle Simulation, a Monte Carlo Simulation Tool for Physics, Biology and Clinical Research. Physica Medica. 2020; `72:114-121`_.
 
 and the follow-up paper emphasizing the latest developments:
  
-Faddegon B, Ramos-Mendez J, Schuemann J, McNamara A, Shin J, Perl J, Paganetti H, The TOPAS Tool for Particle Simulation, a Monte Carlo Simulation Tool for Physics, Biology and Clinical Research, Physica Medica, doi:10.1016/j.ejmp.2020.03.019.Here is a BibTeX entry to aid use within LaTeX:
+Perl J, Shin J, Schumann J, Faddegon B, Paganetti H. TOPAS: an innovative proton Monte Carlo platform for research and clinical applications. Med Phys. 2012; `39(11):6818-37`_.
 
-To discover the Geant4 version used by a specific version of TOPAS, please consult the :ref:`history`.
+Here is a BibTeX entry to aid use within LaTeX:
 
 .. code-block:: plain
+
+   @article{TOPAS,
+        author = {Faddegon, B. and Ramos-Mendez, J. and Schuemann, J. and McNamara, A. and Shin, J. and Perl, J. and Paganetti H.},
+        title = {{The TOPAS Tool for Particle Simulation, a Monte Carlo Simulation Tool for Physics, Biology and Clinical Research}},
+        journal = {Physica Medica},
+        pages = {114--121},
+        volume = {72},
+        year = {2020},
+        pmid = {32247964},
+        doi = {10.1016/j.ejmp.2020.03.019}
+    }
 
     @article{TOPAS,
         author = {Perl, J. and Shin, J. and Schumann, J. and Faddegon, B. and Paganetti, H.},
@@ -23,11 +34,6 @@ To discover the Geant4 version used by a specific version of TOPAS, please consu
         pmid = {23127075},
         doi = {10.1118/1.4758060}
     }
-    
-   @article{TOPAS,
-        author = {Faddegon, B. and Ramos-Mendez, J. and Schuemann, J. and McNamara, A. and Shin, J. and Perl, J. and Paganetti H.},
-        title = {{The TOPAS Tool for Particle Simulation, a Monte Carlo Simulation Tool for Physics, Biology and Clinical Research}},
-        journal = {Physica Medica},
-        year = {2020},
-        doi = {10.1016}
-    }
+
+.. _39(11):6818-37: https://pubmed.ncbi.nlm.nih.gov/23127075/
+.. _72:114-121: https://pubmed.ncbi.nlm.nih.gov/32247964/

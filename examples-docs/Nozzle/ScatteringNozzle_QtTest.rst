@@ -1,4 +1,4 @@
-ScanningNozzle_QtTest.txt
---------------------------
+ScatteringNozzle_QtTest.txt
+---------------------------
 
-.. literalinclude:: /examples/Nozzle/ScanningNozzle_QtTest.txt
+.. literalinclude:: /examples/Nozzle/ScatteringNozzle_QtTest.txt

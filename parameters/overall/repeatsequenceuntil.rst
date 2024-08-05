@@ -36,8 +36,10 @@ should be evaluated, using the parameters::
     i:Sc/MyScorer/RepeatSequenceTestTimeBin = 0
 
 Remember that the tests will be evaluated only after the entire simulation sequence is complete.
-You should therefore set
-So/MySource/NumberOfHistoriesInRun
+You should therefore set::
+
+    So/MySource/NumberOfHistoriesInRun
+
 to a value small enough that this end of test will be reached in a reasonable time.
 The final total number of histories will be that NumberOfHistoriesInRun times the number of
 times the testing process causes TOPAS to re-run the entire sequence.

@@ -26,7 +26,7 @@ Additional required Parameters for the Distributed Source are::
     s:So/Example/PointDistribution = "Gaussian" # default to "Flat"
     d:So/Example/PointDistributionSigma = 20. mm
 
-And then the usual other parameters to control particle type, energy, etc., such as:
+And then the usual other parameters to control particle type, energy, etc., such as::
 
     s:So/Example/BeamParticle = "gamma"
     d:So/Example/BeamEnergy = 10. keV
@@ -34,7 +34,7 @@ And then the usual other parameters to control particle type, energy, etc., such
 
 Examples that use this source can be found in:
 
-* examples/Basic/DistributedSourcePointsInShell.txt
-* examples/Basic/DistributedSourcePointsInSphere.txt
-* examples/Basic/DistributedSourcePointsInSphereGaussian.txt
-* examples/Basic/DistributedSourcePointsInTwistedTubs.txt
+* :ref:`example_DistributedSourcePointsInShell`
+* :ref:`example_DistributedSourcePointsInSphere`
+* :ref:`example_DistributedSourcePointsInSphereGaussian`
+* :ref:`example_DistributedSourcePointsInTwistedTubs`

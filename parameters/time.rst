@@ -83,7 +83,7 @@ Here is an example of a Step time feature that controls a String::
 
 Note that the first member of Values is not the time that the first Value should be used.
 It is the time that the first Change of value should be made.
-The first Value will be used for the time between ``Tf/TimelineStart`` and that first member of Tf/*/Times.
+The first Value will be used for the time between ``Tf/TimelineStart`` and that first member of Tf/\*/Times.
 
 Note that whereas continuous functions (Linear, Sine, Cosine and Sqrt) include a ``RepetitionInterval``, Step Functions do not. They just cycle back to the first ``Value`` after the last of the ``Times`` is reached.
 

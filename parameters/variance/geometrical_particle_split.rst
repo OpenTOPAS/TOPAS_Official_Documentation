@@ -5,7 +5,7 @@ Geometrical Particle Splitting
 
 TOPAS variance reduction is further described in:
 
-Ramos-Mendez et al, “Geometrical splitting technique to improve the computational efficiency in Monte Carlo calculations for proton therapy,” Med. Phys. 40, 041718 (2013)
+Ramos-Mendez et al, “Geometrical splitting technique to improve the computational efficiency in Monte Carlo calculations for proton therapy,” Med. Phys. `40, 041718 (2013)`_
 
 This technique was designed for heavy charged particles. In this implementation, you must specify whether the beam entering into the sub-component has cylindrical symmetry or not. This is because the particles may or may not be randomly redistributed around the ``SplitAxis``.
 
@@ -27,3 +27,5 @@ To set whether the region at each sub-component is symmetric or not and to defin
 .. image:: geometrical_splitting.png
 
 In addition for this technique, geometrical Russian roulette will be played if a particle leaves the component or the world in a scheme similar to the :ref:`vr_importance_sampling` technique.
+
+.. _40, 041718 (2013): https://doi.org/10.1118/1.4795343

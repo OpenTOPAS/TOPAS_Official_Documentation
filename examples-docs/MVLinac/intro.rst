@@ -1,5 +1,5 @@
-Linear Accelerator Treatment Head Simulation
---------------------------------------------
+IEC: LINAC Treatment Head Simulation
+=============================================
 
 This example is intended for both demonstration purposes and to provide an excellent starting point for simulation of most the treatment head of most any linear accelerator (linac) used in radiotherapy. A Siemens Oncor treatment head is simulated. The co-ordinate systems, shown in the figure below, are in compliance with IEC 61217. Note that the use of directional bremsstrahlung splitting and other variance reduction techniques (VRTs), essential for efficient simulation, requires a gantry angle of zero degrees; that is, the region used to specify the preferred bremsstrahlung direction is positioned along (Z\ :sub:`W`\ ), the Z axis in the Geant4 world co-ordinate system.
 
@@ -17,7 +17,7 @@ The full set of parameter control files provided with the linac example are show
 
 .. figure:: ParameterControlFiles.png 
 
-  Filenames of the parameter control files comprising the TOPAS linac example (filetype .txt). Parameter values set in files to the left override those in files to the right. For example, patient-specific field settings for the gantry and collimator angles and the jaw and MLC leaf positions contained in the full treatment head simulation includeFile FullTxHead.txt and the Field.txt includeFile override the settings in the component includeFile files Jaws.txt and MLC.txt. Two flattening filters are provided, Flattener6MV.txt and Flattener18MV.txt.  Files for scoring beam quantities and dose are provided.
+Filenames of the parameter control files comprising the TOPAS linac example (filetype .txt). Parameter values set in files to the left override those in files to the right. For example, patient-specific field settings for the gantry and collimator angles and the jaw and MLC leaf positions contained in the full treatment head simulation includeFile FullTxHead.txt and the Field.txt includeFile override the settings in the component includeFile files Jaws.txt and MLC.txt. Two flattening filters are provided, Flattener6MV.txt and Flattener18MV.txt.  Files for scoring beam quantities and dose are provided.
 
 The following command makes the assumption that your TOPAS executable resides in ``/Applications/topas/bin/topas``. To begin the simulation from the command line in your terminal window, change the directory to the directory containing the parameter control files for the linac example, and enter the following from the command line::
 

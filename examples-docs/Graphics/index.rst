@@ -19,9 +19,9 @@ Graphics
 	FilterByMomentum
 	FilterByOriginComponent
 	FilterByOriginComponentOrSubComponent
-	FIlterByOriginVolume
+	FilterByOriginVolume
 	FilterByParticleCharge
-	FilerByParticleType
+	FilterByParticleType
 	NanoMeterScaleTest
 	ParticleFlight
 	QtTest

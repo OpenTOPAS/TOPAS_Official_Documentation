@@ -16,7 +16,7 @@ Geometry Component          Type
 :ref:`geometry_compensator` TsCompensator
 :ref:`geometry_applicator`  TsBrachyApplicator
 :ref:`geometry_pixelbox`    TsPixelatedBox
-:ref:`geometry_eyemodel`    TsEye
+:ref:`geometry_eye`         TsEye
 :ref:`geometry_eyeplaque`   TsEyePlaque
 =========================== ========================
 
@@ -24,33 +24,31 @@ Each of the specialized components has its own set of special parameters. Usage 
 
 You may write your own additional components (see :ref:`extension_geometry`).
 
-The following figure from Samsung Medical Center shows how their very specific quadrupole magnet system was coded as a TOPAS geometry.
+The following figure from Samsung Medical Center shows how their very specific quadrupole magnet system was coded as an TOPAS geometry.
 
 .. image:: SMC.png
-
-
 
 .. _geometry_rmw:
 
 Range Modulator Wheel
 ~~~~~~~~~~~~~~~~~~~~~
 
-TOPAS Range modulator is designed to accommodate various specifications from a vendor. We suggest modeling your Range Modulator Wheel (RMW) by the following procedure:
+The TOPAS Range modulator is designed to accommodate various vendor specifications. We suggest modeling your Range Modulator Wheel (RMW) using the following procedure:
 
-* Define the dimension of RMW drum, such as thickness and material of shell and hub (see figure below). Tracks will be placed in between the hub and the shell.
-* This space (in between hub and shell) is vertically divided into three sections named, "Upper", "Middle", and "Bottom" so that each section can have its own tracks. You can adjust heights of these sections. The sum of these heights is the total height of your RMW.
-* In order to reserve spaces for tracks, divide radially each section into as many as tracks you want by using the parameter, ``RadialDivision``
-* Using vector parameters, configure the tracks individually such as each block’s height, span angle, and material. Then assign vector parameter to the parameter, called ``Pattern``
+* Define the dimensions of the RMW drum, such as the thickness and material of the shell and hub (see the figure below). Tracks will be placed in between the hub and the shell.
+* This space (in between the hub and the shell) is vertically divided into three sections named, "Upper", "Middle", and "Bottom" such that each section can have its own tracks. You can adjust the heights of these sections. The sum of these heights is the total height of your RMW.
+* In order to reserve spaces for the tracks, divide each section radially into as many as tracks you want by using the ``RadialDivision`` parameter.
+* Assign a name to the ``Pattern`` parameter for each track. Vector parameters are then used to define that named pattern's height, span angle, and material.
 
 .. image:: RMW_1.png
 
-Illustration for TOPAS RMW dimensions. Tracks are placed in between Rout of Hub and Rin of Shell and this area is to be radially divided in case of placing multiple tracks. There are three vertical rooms, so it is possible to make double sided RMWs with an interface disk.
+The above figure illustrates the dimensions of the TOPAS. Tracks are placed in between the "Rout" of the Hub and the "Rin" of the Shell. This is the area that is to be radially divided in the case of multiple tracks. There are three vertical sections "Upper", "Middle", and "Bottom" make it possible to have double sided RMWs with an interface disk.
 
 .. image:: RMW_2.png
 
-An example of RMW; (a) Perspective view. Upper section is divided into two but only inner radial division has a track pattern. In middle section, two track patterns are used to make a hole. (b) X-Y view from +z of RMW and (c) X-Y view from -z of RMW. Tracks are drawn in wireframe style, so more lines on the tracks are shown than the number of blocks.
+The above figure depicts an example RMW, with a perspective view shown in panel (a). The upper section is divided in two but only the inner radial division has a track pattern. In the middle section, two track patterns are used to make a hole. Panel (b) depicts an X-Y view in the +Z direction of the RMW, and panel (c) depicts the same view from the -Z direction. Tracks are drawn in wireframe style, resulting in more lines on the tracks being shown than the number of blocks.
 
-Here is the complete set of the parameters for the above RMW (see :ref:`example_special_rmw` example)::
+Here is the complete set of the parameters for the above RMW (see the :ref:`example_special_rmw` example)::
 
     # Common parameters: type of geometry, position, and rotation
     s:Ge/RangeModulatorA/Type = "TsRangeModulator"
@@ -62,7 +60,7 @@ Here is the complete set of the parameters for the above RMW (see :ref:`example_
     d:Ge/RangeModulatorA/RotX = 0.0 deg
     d:Ge/RangeModulatorA/RotY = 0.0 deg
     d:Ge/RangeModulatorA/RotZ = 0.0 deg
-    b:Ge/RangeModulatorA/Invisible = "TRUE"
+    b:Ge/RangeModulatorA/Invisible = "True"
 
     # Set height of each sections and total height = 160.0 mm
     d:Ge/RangeModulatorA/HeightOfUpper = 150 mm
@@ -87,7 +85,7 @@ Here is the complete set of the parameters for the above RMW (see :ref:`example_
 
     # Setting tracks on Upper area
     # Two tracks Track1 (7.0 cm ~ 11.0 cm) and Track2 ( 11.0 cm ~ 15.0 cm)
-    dv:Ge/RangeModulatorA/Upper/RadialDivisions=1 11.0 cm
+    dv:Ge/RangeModulatorA/Upper/RadialDivisions = 1 11.0 cm
 
     # Assignment of track pattern of Upper area
     # Track1 refers the pattern named "LexanBlockT1" whose vector parameters are defined elsewhere (see below).
@@ -96,39 +94,34 @@ Here is the complete set of the parameters for the above RMW (see :ref:`example_
 
     # Track1 pattern: 14 blocks of Lexan.
     # Numbers of Angles, Heights, and Materials should be same.
-    d:Ge/LexanBlockT1/Offset=0.0 deg #means shift of zero-angle
+    d:Ge/LexanBlockT1/Offset = 0.0 deg #means shift of zero-angle
     # Angle divisions. The first block’s spans from 5.0 deg to 115.0 deg.
     # The last block starting at 324.0 deg spans to the first block’s boundary.
     # This case last block spans from 324.0 deg to 360.0 + 5.0 deg
-    dv:Ge/LexanBlockT1/Angles=14
+    dv:Ge/LexanBlockT1/Angles = 14
     5.00 115.00 146.50 173.2 195.07
     216.15 230.14 243.00 255.5 270.60
     282.20 294.60 306.20 324.00 deg
     # Height of each block.
     # Note that zero height means that no block in that angle range.
-    dv:Ge/LexanBlockT1/Heights=14
+    dv:Ge/LexanBlockT1/Heights = 14
     77.0 82.0 87.0 92.15 95.0
     100.4 106.0 110.2 115.3 119.5
     124.0 128.8 132.00 60.0 mm
 
     # Material of each block.
-    sv:Ge/LexanBlockT1/Materials=14
+    sv:Ge/LexanBlockT1/Materials= 14
     "Lexan" "Lexan" "Lexan" "Lexan" "Lexan"
     "Lexan" "Lexan" "Lexan" "Lexan" "Lexan"
     "Lexan" "Lexan" "Lexan" "Brass"
 
-In the same way, you can configure other tracks.
-Then the track1 on upper area looks like following figure.
+Other tracks can be similarly configured. In accordance with the above block of code, "Track1" on the "Upper" area looks like the figure below, where the image on the left shows a view of the complete set of tracks, while the figure on the right depicts the counterclockwise construction of the blocks.
 
 .. image:: RMW_3.png
 
-A track pattern from the parameter above; (left) a complete set of the track view. (right) blocks are constructed in counterclockwise.
-
-::
+The ``PrintInformation`` boolean parameter can be set to ``"True"`` to print out the angle, height, and material of each block to the concole::
 
     b:Ge/RangeModulatorA/PrintInformation = "True" #Print out specification, see below
-
-When TOPAS builds the geometry, you will see the numbers are input properly from console output as:
 
 .. code-block:: plain
 
@@ -155,8 +148,7 @@ When TOPAS builds the geometry, you will see the numbers are input properly from
       Material: Ts_Lexan
     ...
 
-TOPAS RMW is a specialized geometry and so allows only the rotation around z-axis as well as the propeller rotation. Two examples demonstrate how to rotate RMW and modulate beam current using :ref:`time_feature` (:ref:`example_special_rmw_constant` and :ref:`example_special_rmw_modulated`).
-
+Given that the TOPAS RMW is a specialized geometry, it only allows rotations around the Z-axis in addition to propeller rotations. The two examples :ref:`example_special_rmw_constant` and :ref:`example_special_rmw_modulated` demonstrate how RMW rotation and beam current modulation using :ref:`time_feature` can be performed.
 
 .. _geometry_propeller:
 
@@ -182,15 +174,15 @@ Here is the complete set of the parameters for the above Propeller::
     d:Ge/PropellerA/RotX = 0.0 deg
     d:Ge/PropellerA/RotY = 0.0 deg
     d:Ge/PropellerA/RotZ = 0.0 deg
-    b:Ge/PropellerA/Invisible = "true" #To avoid visualize propeller’s mother volume.
+    b:Ge/PropellerA/Invisible = "True" #To avoid visualize propeller’s mother volume.
 
     i:Ge/PropellerA/NbOfBlades = 4 #Number of blades
     d:Ge/PropellerA/Rin = 10.0 mm #Inner radius, Rin in the figure
     d:Ge/PropellerA/Rout = 127.5 mm #Outer radius, Rout in the figure
 
-    dv:Ge/PropellerA/Thickness =1 0.356 mm #thickness.
-    dv:Ge/PropellerA/Angles =1 63.15 deg #span angle of each blade.
-    sv:Ge/PropellerA/Materials =1 "G4_POLYVINYL_ACETATE" #material.
+    dv:Ge/PropellerA/Thickness = 1 0.356 mm #thickness.
+    dv:Ge/PropellerA/Angles = 1 63.15 deg #span angle of each blade.
+    sv:Ge/PropellerA/Materials = 1 "G4_POLYVINYL_ACETATE" #material.
 
     # Visualization attributes setting
     s:Ge/PropellerA/Blade/Material = Ge/PropellerA/Material
@@ -201,7 +193,7 @@ Here is the complete set of the parameters for the above Propeller::
     d:Ge/PropellerA/Blade/MaxStepSize = 10 mm
     b:Ge/PropellerA/PrintInformation = "True" #Print out specification, see below
 
-While TOPAS starts to build geometries, you can confirm whether the numbers you put are input properly from console output as:
+While TOPAS starts to build the geometries, you can confirm whether the numbers you specified are input properly by looking at the console output, which should look like the following:
 
 .. code-block:: plain
 
@@ -210,41 +202,39 @@ While TOPAS starts to build geometries, you can confirm whether the numbers you 
       Blade "1", Angle (88.425 deg, 151.575deg)
       Blade "2", Angle (208.425 deg, 271.575deg)
 
-With different numbers of blades, the angle of each blade will look like:
+With a different numbers of blades, the angle of each blade will look like the figure below, where the image on the left corresponds to ``Ge/PropellerA/NbOfBlades = 2`` and the image on the right corresponds to ``Ge/PropellerA/NbOfBlades = 3``.
 
 .. image:: Propeller_2.png
 
-(Left) ``Ge/PropellerA/NbOfBlades = 2``, (Right) ``Ge/PropellerA/NbOfBlades = 3``.
+You can model a multiple layered propeller by extending the vector parameters ``Thickness``, ``Angles``, and ``Materials`` as shown in the block of code below::
 
-You can model a multiple layered propeller just by extending the vector parameters, such as ``Thickness``, ``Angles``, and ``Materials`` (for more detail, see :ref:`example_special_propeller`)::
-
-    dv:Ge/PropellerA/Thickness=10
+    dv:Ge/PropellerA/Thickness = 10
     0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 1.4 mm
-    dv:Ge/PropellerA/Angles=10
+
+    dv:Ge/PropellerA/Angles = 10
     63.15 54.15 46.450 40.65 35.85 31.8 28.1 24.725 21.8 19.1 deg
-    sv:Ge/PropellerA/Materials=10
+
+    sv:Ge/PropellerA/Materials = 10
     "Lexan" "G4_WATER" "G4_POLYVINYL_ACETATE" "G4_POLYVINYL_ACETATE"
     "G4_POLYVINYL_ACETATE" "G4_POLYVINYL_ACETATE" "G4_POLYVINYL_ACETATE"
     "G4_POLYVINYL_ACETATE" "G4_POLYVINYL_ACETATE" "G4_POLYVINYL_ACETATE"
 
-Layers are created in the order of the parameter vector, i.e., Lexan is the bottom layer in this case, Water layer is the next, and so on. It is possible to make each layer with different thickness, angles, and materials. Note that these three vector parameters have same number of elements.
+For more details, see the :ref:`example_special_propeller` example.
 
-TOPAS propeller allows only the rotation around z-axis, which means that you can only assign rotation :ref:`Time Feature <time_feature>` to ``RotZ``, such as ``Ge/PropellerA/RotZ = Tf/ContinuousRotation/Value.`` Two examples demonstrate how to handle propeller rotations (:ref:`example_special_propeller_continuous` and :ref:`example_special_propeller_step`).
+Layers are created in the order of the parameter vector, i.e., ``Lexan`` is the bottom layer in this case, followed by the ``G4_WATER`` layer, and so on and so forth. It is possible to assign each layer a different thickness, angle, and material. Note that these three vector parameters need to have same number of elements.
 
-
+The TOPAS propeller only allows rotations around the Z-axis, meaning that you can only assign rotation :ref:`Time Feature's <time_feature>` to ``RotZ``, i.e. ``Ge/PropellerA/RotZ = Tf/ContinuousRotation/Value``. The examples :ref:`example_special_propeller_continuous` and :ref:`example_special_propeller_step` demonstrate how propeller rotations are handled.
 
 .. _geometry_ridgefilter:
 
 Ridge Filter
 ~~~~~~~~~~~~
 
-A ridge filter is an energy modulation component used in proton therapy. TOPAS offers a generic way to model an arbitrary shape of a ridge and place the replica. The shape of a ridge is defined in the x-z plane and then it becomes a volume by extending in the y direction.
+A ridge filter is an energy modulation component used in proton therapy. TOPAS offers a generic way to model an arbitrary shape of a ridge and place the replica. The shape of a ridge is defined in the X-Z plane and then it becomes a volume by extending in the Y direction.
 
 .. image:: RidgeFilter_1.png
 
-(left) A ridge shape in X-Z plane, represented by points-connection. Because the connection starts at the origin and ends at the last point, (width, 0), so users need to define the width of a ridge first. Depending on the topology of points, the arbitrary shape can be constructed. (right) A complete ridge by extending the shape along with y axis.
-
-Here is a complete set of the parameters for the above ridge filter (see :ref:`example_special_ridgefilter` example)::
+In the above figure, the image on the left depicts a ridge shape in the X-Z plane, represented by the connected points. Because the connection starts at the origin (X = 0) and ends at the last point (X = width), users need to first define the width of a ridge. Depending on the topology of the points, the arbitrary shape can be constructed. The right image depicts a complete ridge by extending the shape along the Y axis. Here is a complete set of the parameters for the above ridge filter (see the :ref:`example_special_ridgefilter` example)::
 
     # Common parameters: type of geometry, position, and rotation
     s:Ge/RidgeFilterA/Type = "TsRidgeFilter"
@@ -273,7 +263,7 @@ To check that the numbers are input properly::
 
     b:Ge/RidgeFilterA/PrintInformation = "True"
 
-will generate console output as:
+This will generate the following console output:
 
 .. code-block:: plain
 
@@ -289,69 +279,62 @@ will generate console output as:
       P 7th     : (0.4, 0.24) cm
       P final   : (0.4, 0) cm
 
-You can make replicas of the ridge and their positions along the x-axis.
-A total of 3 replicas of the ridge and placed at -5.0, 0.0, 5.0. Each point represents the x-coordinate of the center of ridge width::
+You can make replicas of the ridge and their positions along the x-axis. As an example, the code and image below represents 3 replicas of the ridge placed at -5.0, 0.0, 5.0. Each point represents the x-coordinate of the center of ridge width::
 
     dv:Ge/RidgeFilterA/Displacement = 3 -5.0 0.0 5.0 mm
 
 .. image:: RidgeFilter_2.png
-
-An example of replica set.
-
-
 
 .. _geometry_mwc:
 
 Multi Wire Chamber
 ~~~~~~~~~~~~~~~~~~
 
-A multi wire chamber may be built from many of geometry primitives such as TsBox and TsCylinder. However, It is quite cumbersome to place many wires individually and adjust their dimension on any request. So TOPAS multi wire chamber (TsMultiWireChamber) allows to instantiate many wires and to place them efficiently. TsMultiWireChamber is a box consisting of multiple sets of wires. Each set can have its own configuration, such as the dimension and material of the wires, spaces between wires, alignment axis, Z-positions, and drawing-style.
+A multi wire chamber may be built from many of geometry primitives such as ``TsBox`` or ``TsCylinder``. However, It is quite cumbersome to place many wires individually and adjust their dimension. Consequently, the TOPAS multi wire chamber ``TsMultiWireChamber`` specialized component exists, which allows one to instantiate many wires and efficiently place them. ``TsMultiWireChamber`` is a box consisting of multiple sets of wires. Each set can have its own configuration, such as the dimension and material of the wires, spaces between wires, alignment axis, Z-positions, and drawing-style.
 
-Here is an example of TsMultiWireChamber (see :ref:`example_special_mwc` example).
+Below is an example of ``TsMultiWireChamber`` (see the :ref:`example_special_mwc` example). This particular image consists of two wire sets aligned along the X and Y axes. Three red wires are aligned to the X axis while five gray wires are aligned to the Y axis. These two sets of wires are placed within their mother box which was filled with ``Air``.
 
 .. image:: MWC_1.png
 
-TOPAS multi wire chamber consists of two wire sets aligned along the X and Y axes. Three red wires are aligned to X axis while four gray wires are aligned to Y axis. These two sets of wires are placed within their mother box (gas filed).
-
-The following parameters show how to model the above multi wire chamber::
+The following parameters allow one to model the above-detailed multi wire chamber::
 
     s:Ge/WireChamberA/Parent = "World"
     s:Ge/WireChamberA/Type = "TsMultiWireChamber" #Type of geometry
-    d:Ge/WireChamberA/HLX=30.0 cm #Chamber dimension
-    d:Ge/WireChamberA/HLY=30.0 cm
-    d:Ge/WireChamberA/HLZ=10.0 cm
-    s:Ge/WireChamberA/Material="Air" #Chamber is filled with this material.
-    d:Ge/WireChamberA/TransX=0.0 cm
-    d:Ge/WireChamberA/TransY=0.0 cm
-    d:Ge/WireChamberA/TransZ=0.0 cm
-    d:Ge/WireChamberA/RotX=0.0 deg
-    d:Ge/WireChamberA/RotY=0.0 deg
-    d:Ge/WireChamberA/RotZ=0.0 deg
-    i:Ge/WireChamberA/NbOfLayers=2 #Number of wire sets.
+    d:Ge/WireChamberA/HLX = 30.0 cm #Chamber dimension
+    d:Ge/WireChamberA/HLY = 30.0 cm
+    d:Ge/WireChamberA/HLZ = 10.0 cm
+    s:Ge/WireChamberA/Material = "Air" #Chamber is filled with this material.
+    d:Ge/WireChamberA/TransX = 0.0 cm
+    d:Ge/WireChamberA/TransY = 0.0 cm
+    d:Ge/WireChamberA/TransZ = 0.0 cm
+    d:Ge/WireChamberA/RotX = 0.0 deg
+    d:Ge/WireChamberA/RotY = 0.0 deg
+    d:Ge/WireChamberA/RotZ = 0.0 deg
+    i:Ge/WireChamberA/NbOfLayers = 2 #Number of wire sets.
 
     # Parameters for specifying each wire set add ‘Layer#’ to geometry name.
     # So Layer1 to Layer’NumberofLayers’.
-    d:Ge/WireChamberA/Layer1/RMin=0.0 cm #Wire’s inner radius
-    d:Ge/WireChamberA/Layer1/RMax=1.0 cm #Wire’s outer radius
-    s:Ge/WireChamberA/Layer1/Material="Brass" #Wire material
-    d:Ge/WireChamberA/Layer1/HL=20.0 cm #Wire’s half length
-    s:Ge/WireChamberA/Layer1/Align= "X" #Align axis
-    dv:Ge/WireChamberA/Layer1/Displacement=3 -10 0 10 cm #number of wires and its position in Y, because wires are aligned to X axis)
-    d:Ge/WireChamberA/Layer1/PosZ=5.0 cm #Z-position w.r.t its mother box.
-    s:Ge/WireChamberA/Layer1/DrawingStyle="FullWireFrame"
-    s:Ge/WireChamberA/Layer1/Color="red"
+    d:Ge/WireChamberA/Layer1/RMin = 0.0 cm #Wire’s inner radius
+    d:Ge/WireChamberA/Layer1/RMax = 1.0 cm #Wire’s outer radius
+    s:Ge/WireChamberA/Layer1/Material = "Brass" #Wire material
+    d:Ge/WireChamberA/Layer1/HL = 20.0 cm #Wire’s half length
+    s:Ge/WireChamberA/Layer1/Align = "X" #Align axis
+    dv:Ge/WireChamberA/Layer1/Displacement = 3 -10 0 10 cm #number of wires and its position in Y, because wires are aligned to X axis)
+    d:Ge/WireChamberA/Layer1/PosZ = 5.0 cm #Z-position w.r.t its mother box.
+    s:Ge/WireChamberA/Layer1/DrawingStyle = "FullWireFrame"
+    s:Ge/WireChamberA/Layer1/Color = "red"
 
-    d:Ge/WireChamberA/Layer2/RMin=0.5 cm
-    d:Ge/WireChamberA/Layer2/RMax=1.0 cm
-    s:Ge/WireChamberA/Layer2/Material="Lexan"
-    d:Ge/WireChamberA/Layer2/HL=20.0 cm
-    s:Ge/WireChamberA/Layer2/Align= "Y"
-    dv:Ge/WireChamberA/Layer2/Displacement=5 -20 -10 0 10 20 cm
-    d:Ge/WireChamberA/Layer2/PosZ=-5.0 cm
-    s:Ge/WireChamberA/Layer2/DrawingStyle="Solid"
+    d:Ge/WireChamberA/Layer2/RMin = 0.5 cm
+    d:Ge/WireChamberA/Layer2/RMax = 1.0 cm
+    s:Ge/WireChamberA/Layer2/Material = "Lexan"
+    d:Ge/WireChamberA/Layer2/HL = 20.0 cm
+    s:Ge/WireChamberA/Layer2/Align = "Y"
+    dv:Ge/WireChamberA/Layer2/Displacement = 5 -20 -10 0 10 20 cm
+    d:Ge/WireChamberA/Layer2/PosZ = -5.0 cm
+    s:Ge/WireChamberA/Layer2/DrawingStyle = "Solid"
     b:Ge/WireChamberA/PrintInformation = "True" #Print out specification, see below
 
-When TOPAS starts to build geometries, you will see the numbers are input properly from console output as:
+When TOPAS starts to build the geometries, you can verify the wire dimensions and positions by looking at the console output:
 
 .. code-block:: plain
 
@@ -373,15 +356,12 @@ When TOPAS starts to build geometries, you will see the numbers are input proper
 Jaws
 ~~~~
 
-TOPAS provides a component to specify a pair of asymmetric, diverging jaws (type = TsJaws), e.g., 
+TOPAS provides a component to specify a pair of asymmetric, diverging jaws (``type = TsJaws``), e.g., 
 as part of a linear accelerator treatment head. The component is built from Geant4 trapezoids.
 
 .. image:: Jaws.png
 
-TsJaws component with select parameters set in the parameter control file shown in orange. In this 
-case there is an asymmetric pair of jaws upstream of a MLC bank. TransZ is at the middle of the 
-jaw (half thickness) and is provided as a changeable parameter in the TOPAS GUI even though it 
-is not present in a parameter control file.
+The above image depoicts a ``TsJaws`` component with select parameters defined in the parameter control file shown in orange. In this case there is an asymmetric pair of jaws upstream of a MLC bank. TransZ is at the middle of the jaw (half thickness) and is provided as a changeable parameter in the TOPAS GUI despite it not being present in the parameter control file.
 
 The following parameters are shown in the diagram above::
 
@@ -396,7 +376,7 @@ The following parameters are shown in the diagram above::
      setting used in treatment planning systems and at the machine. NegativeFieldSetting is less 
      than or equal to PositiveFieldSetting. 
 
-The following parameter set specifies a symmetric 40 cm wide field at isocenter collimated by a Siemens Oncor jaw::
+The following set of parameters define a symmetric 40 cm wide field at isocenter collimated by a Siemens Oncor jaw::
 
   s:Ge/Jaw/JawTravelAxis  = "X" # Jaw travel axis, "X" or "Y"
   d:Ge/Jaw/PositiveFieldSetting  = 20 cm
@@ -416,15 +396,14 @@ The following parameter set specifies a symmetric 40 cm wide field at isocenter 
 
 Multi Leaf Collimator
 ~~~~~~~~~~~~~~~~~~~~~
-TOPAS provides a simple Multi Leaf Collimator (MLC) and a doubly diverging MLC. The simple MLC (type = TsMultiLeafCollimator) is comprised of rectangular parallelopipeds (six rectangular surfaces, at right angles with each other).
 
-The simple TOPAS MLC has a minimal set of parameters to define the width and opening (travel) of each leaf.
+TOPAS provides a simple Multi Leaf Collimator (MLC) and a doubly diverging MLC. The simple MLC (``type = TsMultiLeafCollimator``) is comprised of rectangular parallelopipeds (six rectangular surfaces, at right angles with each other).
+
+The simple TOPAS MLC has a minimal set of parameters to define the width and opening (travel) of each leaf. The illustration below depicts the TOPAS MLC dimensions. The user can define an arbitrary number of leaves with a different width for each leaf. TOPAS detects leaf collision when it is built and leaves are repositioned by :ref:`time_feature` operations.
 
 .. image:: MLC_1.png
 
-Illustrations for TOPAS MLC dimensions. The user can define an arbitrary number of leaves with different width of each leaf. TOPAS detects leaf collision when it is built and leaves are repositioned by :ref:`time_feature` operations.
-
-Here is a complete set of the parameters for the above TOPAS MLC (see :ref:`example_special_mlc` example)::
+Here is a complete set of the parameters for the above TOPAS MLC (see the example :ref:`example_special_mlc`)::
 
     # Common parameters: type of geometry, position, and rotation
     s:Ge/MultiLeafCollimatorA/Type = "TsMultiLeafCollimator"
@@ -452,31 +431,23 @@ Here is a complete set of the parameters for the above TOPAS MLC (see :ref:`exam
     dv:Ge/MultiLeafCollimatorA/XMinusLeavesOpen = 5 0.0 -0.3 -0.2 -0.5 0.0 cm
     dv:Ge/MultiLeafCollimatorA/XPlusLeavesOpen = 5 0.0 0.3 0.2 0.5 0.0 cm
 
-TOPAS MLC is a specialized geometry and so allows only the reposition of each leaf as a function of time, using :ref:`time_feature` (see :ref:`example_special_mlc_sequence` example).
+TOPAS MLC is a specialized geometry and thus only allows for the repositioning of each leaf as a function of time using :ref:`time_feature` (see the :ref:`example_special_mlc_sequence` example).
 
 .. _geometry_divmlc:
 
 Doubly Diverging Multi Leaf Collimator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The doubly diverging MLC (type = TsDivergingMLC) is comprised of trapezoids. 
+The doubly diverging MLC (``type = TsDivergingMLC``) is comprised of trapezoids. The image below depicts a ``TsDivergingMLC`` component with select parameters defined in the parameter control file shown in orange. In this case there is an MLC bank downstream of an asymmetric pair of jaws. TransZ is at the middle of the MLC (half thickness) and is provided as a changeable parameter in the TOPAS GUI despite it not being present in the parameter control file.
 
 .. image:: MLC_2.png
 
-TsDivergingMLC component with select parameters set in the parameter control file shown in orange. 
-In this case there is an MLC bank downstream of an asymmetric pair of jaws. TransZ is at the middle 
-of the MLC (half thickness) and is provided as a changeable parameter in the TOPAS GUI even though 
-it is not present in a parameter control file.
-
-The following parameter set fully specifies a pair of MLC banks with doubly diverging leaves, in this 
-case, a symmetric 20 cm x 10 cm field at isocenter collimated by a Siemens Oncor MLC. If the leaf
-travel axis is X, the leaf numbering is from negative to positive along Y. If the leaf travel axis
-is Y, the leaf numbering is from positive to negative along X.::
+The following set of parameters fully specifies a pair of MLC banks with doubly diverging leaves. In this example, it describes a symmetric 20 cm x 10 cm field at isocenter collimated by a Siemens Oncor MLC. If the leaf travel axis is X, the leaf numbering is from negative to positive along Y. If the leaf travel axis is Y, the leaf numbering is from positive to negative along X::
 
   s:Ge/MLC/Parent           = "World" 
-  s:Ge/MLC/Type              = "TsDivergingMLC"
+  s:Ge/MLC/Type             = "TsDivergingMLC"
   s:Ge/MLC/Material         = "G4_W"
-  d:Ge/MLC/SAD               = 100. cm 
+  d:Ge/MLC/SAD              = 100. cm 
   d:Ge/MLC/SourceToUpstreamSurfaceDistance = 28.26  cm # Distance from source to MLC bank
   s:Ge/MLC/LeafTravelAxis   = "X" # Leaf travel axis, "X" or "Y"
   d:Ge/MLC/MaximumLeafOpen  = 20.0 cm # Actual limit of leaf travel
@@ -504,7 +475,7 @@ is Y, the leaf numbering is from positive to negative along X.::
 CAD (Computer Aided Design)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The TsCAD component allows you to turn any geometry that has been designed in a CAD system into a TOPAS Component. This allows you to incorporate arbitrarily complex geometries.
+The TsCAD component allows you to turn any geometry that has been designed in a CAD system into an TOPAS Component. This allows you to incorporate arbitrarily complex geometries.
 
 .. image:: CAD_1.png
 
@@ -515,7 +486,7 @@ The supported CAD formats are:
 
 STL and PLY files describe a geometry as a tessellation, providing a set of vertices and faces of triangular or quadrangular surfaces to approximate the volume. While some STL and PLY files also contain additional information such as material and color, TOPAS does not currently accept such information. The STL and PLY files you provide to TOPAS must contain only the tessellation information. Internally, TOPAS represents this component as a ``G4TessellatedSolid``.
 
-Most CAD systems allows direct export of parts to the above formats. If your CAD system does not support one of those formats, you may be able to convert from some other CAD format by using a free conversion tool such as `MeshLab <http://meshlab.sourceforge.net>`_.
+Most CAD systems allow direct export of parts to the above formats. If your CAD system does not support one of those formats, you may be able to convert from some other CAD format by using a free conversion tool such as `MeshLab <http://meshlab.sourceforge.net>`_.
 
 ::
 
@@ -540,7 +511,7 @@ TOPAS does not automatically know where the center of your CAD component will be
 
 .. image:: CAD_2.png
 
-Above, A plastic scintillator with customized groove. Left: CAD, Right: TOPAS
+The above figure depicts a plastic scintillator with a customized groove in CAD format on the left, and imported into TOPAS on the right.
 
 
 
@@ -549,19 +520,18 @@ Above, A plastic scintillator with customized groove. Left: CAD, Right: TOPAS
 Aperture
 ~~~~~~~~
 
-An aperture is a component used to shape the lateral penumbra of a (generally) double-scattered proton beam. It is basically a block of brass with a hole cut out from the middle, in the shape of the treatment volume. The purpose is to block the beam outside the desired irradiation path.
-TOPAS models the aperture by connecting the aperture file points to create a polygon and then extruding this polygon in Z to cut out the aperture hole.
+An aperture is a component used to shape the lateral penumbra of a (generally) double-scattered proton beam. It is basically a block of brass with a hole cut out from the middle, in the shape of the treatment volume. The purpose is to block the beam outside the desired irradiation path. TOPAS models the aperture by connecting the aperture file points to create a polygon and then extruding this polygon in Z to cut out the aperture hole.
 
 .. image:: Aperture_1.png
 
 A typical implementation of an apertures in TOPAS is given below followed by a more detailed description of each option
-(see :ref:`example_nozzle_scattering` example)::
+(see the :ref:`example_nozzle_scattering` example)::
 
     s:Ge/Aperture/Type = "TsAperture"
     s:Ge/Aperture/Parent = "Snout"
-    s:Ge/Aperture/Material= "Brass"
-    d:Ge/Aperture/RMax =4.5 cm
-    d:Ge/Aperture/HL= 2.5 cm
+    s:Ge/Aperture/Material = "Brass"
+    d:Ge/Aperture/RMax = 4.5 cm
+    d:Ge/Aperture/HL = 2.5 cm
     d:Ge/Aperture/TransX = 0.0 cm
     d:Ge/Aperture/TransY = 0.0 cm
     d:Ge/Aperture/TransZ = -13.0 cm
@@ -582,7 +552,7 @@ A typical implementation of an apertures in TOPAS is given below followed by a m
     * ...
     * xN,yN
 
-  N = numberOfPoints is the number of data points (xi, yi). This is a required condition. The units of the coordinates are millimeter.
+  N = numberOfPoints is the number of data points (xi, yi). This is a required condition. The units of the coordinates are millimeters.
 * ``"MGH"`` takes the milling data produced by the MGH machine shop. It consists of the same information as the ``"XYCoordinates"`` option, but with more overhead, such as:
 
     * patientName
@@ -594,7 +564,7 @@ A typical implementation of an apertures in TOPAS is given below followed by a m
     * N
     * x1 y1 x2 y2 ... xN yN
 
-  Data pairs are listed in a simple space-separated list. The units are in centimeter.
+  Data pairs are listed in a simple space-separated list. The units are in centimeters.
 
 
 
@@ -603,11 +573,11 @@ A typical implementation of an apertures in TOPAS is given below followed by a m
 Compensator
 ~~~~~~~~~~~
 
-A compensator is a component that is used to shape the distal edge of a proton beam by placing a varying amount of material in the beam path, usually behind the aperture. An example compensator is shown below in top and side views. The compensator consists of a material that is to be placed in the beam to attenuate the beam (usually lexan) and a number of drill holes that were drilled into the compensator.
+A compensator is a component that is used to shape the distal edge of a proton beam by placing a varying amount of material in the beam path, usually behind the aperture. An example compensator is shown below in top and side views. The compensator consists of a material that is to be placed in the beam to attenuate the beam (usually lexan) and a number of holes that were drilled into the compensator.
 
 .. image:: Compensator_1.png
 
-A typical compensator has the following parameters (see :ref:`example_nozzle_scattering` example)::
+A typical compensator has the following parameters (see the :ref:`example_nozzle_scattering` example)::
 
     s:Ge/Compensator/Type = "TsCompensator"
     s:Ge/Compensator/Parent = "Snout"
@@ -626,7 +596,7 @@ A typical compensator has the following parameters (see :ref:`example_nozzle_sca
     s:Ge/Compensator/Method = "ExtrudedSolid" # Polyhedra, ExtrudedSolid, SubtractionCylinders or UnionCylinders
     b:Ge/Compensator/PrintPoints = "True"
 
-``Thickness`` has the special parameter type, ``dc``, where the ``c`` means this dimensioned double is :ref:`changeable <changeable_parameters>`, that is, it can change on the fly based on what exact compensator is read in. Other parameters can then take this thickness into account when the perform placements.
+``Thickness`` has the special parameter type, ``dc``, meaning that it can be changed on the fly based on what exact compensator is read in. Other parameters can then take this thickness into account when they perform the placement.
 
 ``FileFormat`` has two options:
 
@@ -643,7 +613,7 @@ A typical compensator has the following parameters (see :ref:`example_nozzle_sca
     * nN deltaXn Xn Yn
     * D1 D2 ... DnN
 
-  NumberOfRows = N defines how many rows of drill holes there are (in Y), the MainCylinderThickness. The DrillHoleDiameter is the diameter of the drill hole, we approximate this by a hexagon. The values ni are the number of drill holes in X for each row of drill holes in Y, deltaXi defines the step size (and direction) and Xi and Yi are the starting position of the drilling for this row.
+  The number of drilled holes in Y, the MainCylinderThickness are defined by the numberofRows N. The DrillHoleDiameter is the diameter of the drill hole, we approximate this by a hexagon. The values ni are the number of drill holes in X for each row of drill holes in Y, deltaXi defines the step size (and direction) and Xi and Yi are the starting position of the drilling for this row.
 
 * ``"MGH"``: all sizes are in inches:
 
@@ -679,25 +649,13 @@ A typical compensator has the following parameters (see :ref:`example_nozzle_sca
 BrachyApplicator
 ~~~~~~~~~~~~~~~~
 
-A BrachyApplicator is a component that is used to precisely place
-source wires for brachytherapy applications.
-It is the first of what we intend to become a large library of new
-compoents for brachytherapy applications.
+A ``TsBrachyApplicator`` is a component that is used to precisely place source wires for brachytherapy applications. It is the first of what we intend to become a large library of new components for brachytherapy applications.
 
-The overall shape of the BrachyApplicator is a cylinder with a hemispherical cap on one end.
-There is one hole in the center into which a source wire can be driven,
-plus a configurable number of other holes located radially around this center.
-The component generates additional parameters at run-time to represent
-the x and y translations of these holes relative to the applicator center line.
-These parameters can be used to easily postion the source wire into these holes.
+The overall shape of the ``TsBrachyApplicator`` is a cylinder with a hemispherical cap on one end. There is one hole in the center into which a source wire can be driven, plus a configurable number of other holes located radially around this center. The component generates additional parameters at run-time to represent the x and y translations of these holes relative to the applicator center line. These parameters can be used to easily postion the source wire into these holes.
 
 .. image:: Applicator.png
 
-The following example parameters are taken from the new example:
-examples/Patient/Applicator.txt
-This example places the applicator inside of a patient,
-and then uses time features to drive a source wire to various dwell
-positions within this applicator.
+The following example parameters are taken from the :ref:`example_applicator` example. This example places the applicator inside of a patient, and then uses time features to drive a source wire to various dwell positions within this applicator.
 
 The parameters you set are as follows.::
 
@@ -740,7 +698,7 @@ They must run from Hole0 (for the central hole) to HoleN, for the Nth radial hol
 Pixelated box
 ~~~~~~~~~~~~~
 
-A TsPixelatedBox is a helpful component to simulate pixelated detectors. It consists of a 2D array of rectangular boxes with a constant gap in between. Thus, the pixel size and pitch must be provided, with the sole condition that the pitch values must be greater than the pixel sizes for the corresponding axes. For this component, the whole dimensions (not half lengths) of each pixel must be providen. The associated figure shows the general scheme of a detector array of 4 x 4 pixels. 
+A ``TsPixelatedBox`` is a helpful component to simulate pixelated detectors. It consists of a 2D array of rectangular boxes with a constant gap in between. Thus, the pixel size and pitch must be provided, with the sole condition that the pitch values must be greater than the pixel sizes for the corresponding axes. For this component, the whole dimensions (not half lengths) of each pixel must be providen. The associated figure shows the general scheme of a detector array of 4 x 4 pixels. 
 
 .. image:: PixelatedDetector.png
 
@@ -758,25 +716,22 @@ The parameters are as follows::
     i:Ge/MyComponent/NumberOfPixelsX= 4 
     i:Ge/MyComponent/NumberOfPixelsY= 4 
 
-As depicted, two materials must be assigned, one for an envelope volume automatically created to hold the pixels, the other for the pixels. It is also shown the index order with integer numbers for each pixel. Thus, the first pixel is placed on the bottom left. Currently, there is not a dedicated scorer for the TsPixelatedBox component. However, advanced users willing to create their scoring extensions could use the following line of code to access the pixel indices (which start from 1)::
+As depicted, two materials must be assigned, one for an envelope volume automatically created to hold the pixels, the other for the pixels. It is also shown the index order with integer numbers for each pixel. Thus, the first pixel is placed on the bottom left. Currently, there is not a dedicated scorer for the ``TsPixelatedBox`` component. However, advanced users willing to create their scoring extensions could use the following line of code to access the pixel indices (which start from 1)::
 
     G4int pixelIndex = aStep->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber();
 
-A sample of use of the TsPixelatedBox can be found in examples/Optical/PixelatedDetector.txt. The scoring in such an example is performed using a phase space placed behind the pixelated detector. 
-
-
+A sample use of the ``TsPixelatedBox`` can be found in the :ref:`example_pixel` example. The scoring in such an example is performed using a phase space placed behind the pixelated detector. 
 
 .. _geometry_eye:
 
 Eye Model
 ~~~~~~~~~
 
-The TsEye component provides a configurable model of the human eye.
+The ``TsEye`` component provides a configurable model of the human eye.
 
 .. image:: Eye.png
 
-The model lets you configure various parts as well as a tumor in the eye.
-The full set of configurable parts is:
+The model lets you configure various parts as well as a tumor in the eye. The full set of configurable parts is:
 
 * Tumor
 * Sclera
@@ -787,37 +742,26 @@ The full set of configurable parts is:
 * Lens
 * Optic Nerve
 
-For an example of how to use this component, see:
+For an example of how to use this component, see :ref:`example_eyemodel`.
 
-examples/Brachytherapy/EyeModel.txt
-
-
-
-.. _geometry_eyeplaqe:
+.. _geometry_eyeplaque:
 
 Eye Plaque
 ~~~~~~~~~~
 
-The TsEyePlaque component provides a configurable model of an eye plaque.
+The ``TsEyePlaque`` component provides a configurable model of an eye plaque.
 
 .. image:: EyePlaque.png
 
-The model consists of a back and a lip, such that it can be configured
-to represent any of the standard COMS eye plaques.
+The model consists of a back and a lip, such that it can be configured to represent any of the standard COMS eye plaques.
 
-To use the model, see:
-
-examples/Brachtherapy/COMSEyePlaque.txt
-
-One adjusts the following parameters to set the specific sizes for the plaque::
+To use the model, see :ref:`example_comseyeplaque`. One adjusts the following parameters to set the specific sizes for the plaque::
 
 	Ge/EyePlaque/SphereCutCylinder/RInner
 	Ge/EyePlaque/Cylinder/ROuter
 	Ge/EyePlaque/Cylinder/RInner
 
-The example already has helper parameters that contain the relevant sizes.
-So one can adjust the choice of plaque by simply changing the numbers in the plaque names
-in the right side of the expressions::
+The example already has helper parameters that contain the relevant sizes. So one can adjust the choice of plaque by simply changing the numbers in the plaque names on the right side of the expressions::
 
 	dc:Ge/EyePlaque/SphereCutCylinder/RInner = Ge/COMSEyePlaque22mmSphereCutCylinderRInner mm
 	dc:Ge/EyePlaque/Cylinder/ROuter		 = Ge/COMSEyePlaque22mmCylinderROuter mm

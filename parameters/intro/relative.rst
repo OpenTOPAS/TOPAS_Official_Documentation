@@ -21,6 +21,6 @@ TOPAS has a grammar for operations such as adding or multiplying parameters::
 
 .. warning::
 
-    Note that there must be a space before and after the plus sign.
+    There must be a space before and after the plus sign.
 
 Relative parameters allow only a limited number of functions, intentionally not a full math library, since other math functions may be ambiguous, requiring too much prior understanding of the mathematical syntax. The complete set of allowed syntax for any one parameter line is shown :ref:`here <parameters_syntax_all>`.

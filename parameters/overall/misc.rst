@@ -22,10 +22,10 @@ Dump Parameter Values
 
 Additional overall control parameters are::
 
-    b:Ts/DumpParameters = "True" # dump full list of params to file TopasParameterDump_Run0.html
+    b:Ts/DumpParameters = "True" # dump full list of params to file ParameterDump_Run0.html
     b:Ts/DumpNonDefaultParameters = "False" # Like above but omits defaults
-    sv:Ts/DumpParametersToSimpleFile = 2 "SomeParameter" "SomeOtherParameter" # Dumps the requested parameter types, names and values to a simple, human-readable file, TopasParameterDump_Run0.txt
-    sv:Ts/DumpParametersToSemicolonSeparatedFile = 2 "SomeParameter" "SomeOtherParameter" # Dumps the requested parameter types, names and values to a semicolon separated file, TopasParameterDumpSSF_Run0.txt. This file is suitable for easy import into other applications
+    sv:Ts/DumpParametersToSimpleFile = 2 "SomeParameter" "SomeOtherParameter" # Dumps the requested parameter types, names and values to a simple, human-readable file, ParameterDump_Run0.txt
+    sv:Ts/DumpParametersToSemicolonSeparatedFile = 2 "SomeParameter" "SomeOtherParameter" # Dumps the requested parameter types, names and values to a semicolon separated file, ParameterDumpSSF_Run0.txt. This file is suitable for easy import into other applications
 
 
 
@@ -39,14 +39,29 @@ Additional overall control parameters are::
     b:Ts/ShowHistoryCountOnSingleLine = "False" # Make count reuse a single line of console
     i:Ts/TrackingVerbosity = 0 # Set to larger integer to see details of tracking
 
-You can add time stamps to the history count:    b:Ts/IncludeTimeInHistoryCount = "True"
+You can add time stamps to the history count::
 
-You can have a "power-based" history count:    b:Ts/ShowHistoryCountLessFrequentlyAsSimulationProgressesAfter first ten histories, output will change to once for every 10, then to once for every 100, etc.An additional optional parameter:
+    b:Ts/IncludeTimeInHistoryCount = "True"
 
-    i:Ts/MaxShowHistoryCountInterval
+The ``ShowHistoryCountLessFrequentlyAsSimulationProgresses`` boolean parameter allows you to have a "power-based" history count. After the first ten histories, the output will change to once for every 10, then to once for every 100, etc. An additional optional parameter is the ``MaxShowHistoryCountInterval`` integer parameter, which puts an upper limit on how high the ``ShowHistoryCountInterval`` can be. For example::
 
-puts an upper limit on how high the ShowHistoryCountInterval can be.For example:    b:Ts/ShowHistoryCountLessFrequentlyAsSimulationProgresses    i:Ts/MaxShowHistoryCountInterval = 100Gives:
-    1    2    3    ...    9    10    20    30    ...    100but from there always keep counting by 100 (rather than going on to counting by 1000, 10,000, etc.)
+    b:Ts/ShowHistoryCountLessFrequentlyAsSimulationProgresses = "True"
+    i:Ts/MaxShowHistoryCountInterval = 100
+
+Gives::
+
+    1
+    2
+    3
+    ...
+    9
+    10
+    20
+    30
+    ...
+    100
+
+but from there always keep counting by 100 (rather than going on to increase the count interval to 1000, 10 000, etc.)
 
 
 

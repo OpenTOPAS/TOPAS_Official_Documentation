@@ -44,13 +44,9 @@ To define a parameter in terms of the value of the same parameter in an ``includ
 
 .. warning::
 
-    Note that there must be a space before and after the multiplication sign.
+    There must be a space before and after the multiplication sign.
 
-A basic set of TOPAS default parameters are built into the system
-(see :ref:`Default Parameters <parameters_default>`).
-You may override these defaults in your own parameter files if you wish.
-
-
+A basic set of TOPAS default parameters are built into the system (see :ref:`Default Parameters <parameters_default>`). You may override these defaults in your own parameter files if you wish.
 
 .. _parameters_file_graphs:
 
@@ -89,4 +85,7 @@ The basic paradigm controlling use of multiple parameter chains is that nothing 
 
 This also means that no chain can redefine any of the :ref:`Default Parameters <parameters_default>`, since all of the Default Parameters effectively belong at the base of every chain. The only place you can redefine the Default Parameters is in the top parameter file. This can feel like a heavy requirement, but it is essential. We want TOPAS to be a great tool for use in collaborative research environments where several people or teams may be contributing their own parts of the simulation setup.
 
-It can take some experience to design complex parameter file chains. If you get stuck, feel free to ask for help on the `TOPAS User Forum <http://topasmc.org>`_.
+It can take some experience to design complex parameter file chains. If you get stuck, feel free to ask for help on the Discussions_ tab of the TOPAS GitHub_ page.
+
+.. _Discussions: https://github.com/OpenTOPAS/OpenTOPAS/discussions
+.. _GitHub: https://github.com/OpenTOPAS/OpenTOPAS

@@ -5,8 +5,6 @@ Time mode
 
 If you do nothing special, TOPAS will do a single run with no time variation. We call this "Fixed Time Mode". Other available modes are "Sequential" and "Random".
 
-
-
 .. _time_mode_fixed:
 
 Fixed Time Mode
@@ -20,9 +18,7 @@ If your parameter files include :ref:`time_feature`, they will all be evaluated 
 
     d:Tf/TimelineStart = 10. s # defaults to zero
 
-If you have more than one source, the run will continue until all sources have run all of their histories. For each Geant4 "beamOn", each source will get called, but only those that have more histories left to produce will actually produce any.
-
-
+If you have more than one source, the run will continue until all sources have run all of their histories. For each Geant4 ``beamOn``, each source will get called, but only those that have more histories left to produce will actually produce any.
 
 .. _time_mode_sequential:
 
@@ -103,7 +99,7 @@ To implement **beam current modulation**, give your source a time-dependent ``Pr
 Fixed Time but with Very Large Number of Histories
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The maximum number of histories possible per run is limited by the size of some of Geant4's internal counters. If you need more than 10^9 histories at a fixed time, you can work around this limitation by breaking your session into multiple runs:
+The maximum number of histories possible per run is limited by the size of some of Geant4's internal counters. If you need more than 10\ :sup:`9` histories at a fixed time, you can work around this limitation by breaking your session into multiple runs:
 
 * Set ``Tf/NumberOfSequentialTimes`` to some value greater than 1
 * No need to actually set ``TimelineStart`` or ``TimelineEnd`` (they both default to 0)

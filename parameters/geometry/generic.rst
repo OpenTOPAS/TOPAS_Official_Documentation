@@ -3,20 +3,20 @@
 Generic Components
 ------------------
 
-You can create a Geometry Component for any of the standard solids defined in the geometry section of the `Geant4 Application Developers Guide <http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/ForApplicationDeveloper/html/Detector/Geometry/geometry.html>`_.
+You can create a Geometry Component for any of the standard solids defined in the Geometry_ section of the Geant4 Application Developers Guide.
 
 The :ref:`example_basic_shapesall` example demonstrates how to build each of the solids.
 
 .. image:: generic.png
 
 Below we list the parameters for each Geant4 solid.
-Further details about the parameters, along with helpful diagrams, can be found in the `Geant4 Application Developers Guide <http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/ForApplicationDeveloper/html/Detector/Geometry/geomSolids.html>`_.
+Further details about the parameters, along with helpful diagrams, can be found in the `Solids`_ subsection of the Geant4 Application Developers Guide.
 For most solids, sizes are specified in Half Lengths, denoted with an HL, such as HLX.
 For a few solids, sizes are specified in full Lengths, denoted with just L, such as LX.
 
 .. note::
 
-    The TsBox, TsCylinder and TsSphere should be used instead of G4Box, G4Tubs and G4Sphere respectively. See :ref:`geometry_dividable`.
+    The ``TsBox``, ``TsCylinder`` and ``TsSphere`` should be used instead of G4Box, G4Tubs and G4Sphere respectively. See :ref:`geometry_dividable`.
 
 
 Some examples of components that can be built just from Generic Components:
@@ -172,3 +172,6 @@ G4TwistedTubs       | Twist         | d
                     | HLZ           | d
                     | Phi           | d
 ================    =============   =========   ==============
+
+.. _Geometry: http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/ForApplicationDeveloper/html/Detector/Geometry/geometry.html
+.. _Solids: http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/ForApplicationDeveloper/html/Detector/Geometry/geomSolids.html

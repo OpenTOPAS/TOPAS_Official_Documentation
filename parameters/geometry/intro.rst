@@ -7,18 +7,18 @@ All Geometry Components must have at least the following parameters::
 
     s:Ge/MyComponent/Parent = "World"
     s:Ge/MyComponent/Type = "TsBox"
-    d:Ge/MyComponent/TransX=0.0 cm # defaults to 0
-    d:Ge/MyComponent/TransY=0.0 cm # defaults to 0
-    d:Ge/MyComponent/TransZ=0.0 cm # defaults to 0
-    d:Ge/MyComponent/RotX=0.0 deg # defaults to 0
-    d:Ge/MyComponent/RotY=0.0 deg # defaults to 0
-    d:Ge/MyComponent/RotZ=0.0 deg # defaults to 0
+    d:Ge/MyComponent/TransX = 0.0 cm # defaults to 0
+    d:Ge/MyComponent/TransY = 0.0 cm # defaults to 0
+    d:Ge/MyComponent/TransZ = 0.0 cm # defaults to 0
+    d:Ge/MyComponent/RotX = 0.0 deg # defaults to 0
+    d:Ge/MyComponent/RotY = 0.0 deg # defaults to 0
+    d:Ge/MyComponent/RotZ = 0.0 deg # defaults to 0
 
 The ``Parent``, ``Trans`` and ``Rot`` parameters place a component within its "mother" as described in :ref:`geometry_placement`.
 
 Each ``Type`` has its own set of additional required parameters, discussed elsewhere for each specific component type.
 
-The World can be either a TsBox, TsSphere or TsCylinder.
+The World can be either a ``TsBox``, ``TsSphere`` or ``TsCylinder``.
 
 The component name can include the forward slash character ``/``, and this is used in many examples to give some hints about component hierarchy , such as::
 
@@ -36,7 +36,7 @@ To deactivate a Component (and all its children), you can either comment out the
 
 While it is not forbidden to have unused components (components that are never assigned a ``Parent``), this can often be a sign that you have not correctly assigned the parents in your geometry. Accordingly, we check for unused components on startup and given a warning message if any are found. You can disable this warning message by setting::
 
-    Ge/CheckForUnusedComponents = "False"
+    b:Ge/CheckForUnusedComponents = "False"
 
 In some cases you may want to keep unused components around. This can be like keeping extra pieces of unused laboratory equipment handy on a shelf. They will have no effect on your simulation, but remain available to quickly plug in when needed by assigning a parent and setting placement parameters.
 

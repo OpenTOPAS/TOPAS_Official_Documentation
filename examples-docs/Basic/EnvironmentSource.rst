@@ -1,3 +1,5 @@
+.. _example_EnvironmentSource:
+
 EnvironmentSource.txt
 ---------------------
 

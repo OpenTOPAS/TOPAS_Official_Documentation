@@ -1,5 +1,5 @@
-The TOPAS Graphical User Interface
-=======================================
+TOPAS Graphical User Interface
+==============================
 
 TOPAS includes an optional Graphical User Interface (GUI).
 The GUI allows the user to easily manipulate graphics

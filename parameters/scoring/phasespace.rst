@@ -89,26 +89,6 @@ The phase space scorer and any custom n-tuple scorers buffer output to avoid exc
 Phase Space Format
 ~~~~~~~~~~~~~~~~~~
 
-Phase Space refers to the technique of saving or replaying a set of particles crossing a given surface.
-
-* When one saves a phase space, one defines a surface and then saves the position, particle type, energy and momentum of some or all particles crossing that surface.
-* When one replays a phase space, one starts a set of particles from the saved positions, with the saved particle types, energy and momentum.
-
-Phase Space enables separating two parts of a simulation or analysis job, and can be used to transfer sets of particles among different codes.
-
-A Phase Space is stored as a pair of related files:
-
-* A .header file tells the number of histories, the number of saved particles and the order of information in the .phsp file
-* A .phsp file contains all the details of all the saved particles
-
-We support three formats for Phase Space:
-
-* Binary is a compact format, with data encoded in a stream of bytes. The header file tells the contents and byte order per particle.
-* ASCII provides the same information as Binary, but presents it as a much less compact, but easier to read simple text file, which data encoded as a series of columns of text. The header file tells the contents and column order per particle.
-* Limited is an alternate binary format compatible with some legacy codes. It has fewer options for what data can be expressed, but is compatible with codes such as that used by Varian for their TrueBeam phase space files.
-
-You can additionally write phase space to `ROOT files <https://root.cern.ch>`_, however there is no corresponding ability to read phase space back in from these files.
-
 For the Binary and ASCII formats, Particle ID is encoded using the large set of integer codes specified by the Particle Data Group (PDG):
 
 * 22 = photon
@@ -132,7 +112,7 @@ The Binary and ASCII formats are self-describing, with the complete column or by
 If you are attempting to create TOPAS Binary or ASCII phase space from some application other than TOPAS, be advised that the formatting requirements are very specific. It is best to compare your phase space header and phsp files to those produced by the TOPAS examples listed above.
 Some things to watch out for:
 
-* First line of header has to be exactly as produced by TOPAS, with no extra spaces, tabs, etc.
+* The first line of the header has to be exactly as produced by TOPAS, with no extra spaces, tabs, etc.
 * Integer values in the ASCII phase space must not contain decimal points
 
 The Limited format uses the following byte order (the format is not self-describing):
@@ -158,7 +138,7 @@ Direction cosines are consistent between Binary, ASCII and Limited formats. Desc
 
 
 Handling of Empty Histories:
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to discuss 4D simulations, with applications to MLC sequences, treatment head or gantry motion, gated scoring, patient motion, etc., it is helpful to define some terms.
 
@@ -169,7 +149,7 @@ While it is true that VMAT or Tomo has a continuous beam delivery, for simulatio
 
 "Empty History": an original history for which no particles make it into the phsp.
 
-For many simulations, it is not important to know when the empty histories occured during the overall sequence, but only how many empty histories there were. This is Total Empty Histories.
+For many simulations, it is not important to know when the empty histories occurred during the overall sequence, but only how many empty histories there were. This is Total Empty Histories.
 But for some 4D simulations, it can be necessary to know which run those empty histories belonged to. This can be important for simulations in which one wants to score statistical information per history, or for when one wants to reproduce a 4D simulation. This is Empty Histories per Run.
 For debugging purposes, it may also be helpful to have a way to mark not just how many empty histories there were per run, but exactly which histories during that run were the empty ones. This is Empty Histories in Exact Order.
 

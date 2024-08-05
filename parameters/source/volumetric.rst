@@ -11,23 +11,23 @@ Specify source type as::
 
     s:So/MySource/Type = "Volumetric"
 
-And then add an additional required parameter:
+And then add an additional required parameter::
 
     s:So/MySource/ActiveMaterial
 
 to specify which material within the given component should be considered radioactive.
 
-So, for example, if you have:
+So, for example, if you have::
 
-    s:So/MySource/Type                = "Volumetric"
+    s:So/MySource/Type            = "Volumetric"
     s:So/MySource/Component       = "ActiveSource"
     sc:So/MySource/ActiveMaterial = "G4_Ir"
 
-particles will start from randomly sampled positions within the Iridium parts of the component named ActiveSource.
+particles will start from randomly sampled positions within the Iridium parts of the component named ``ActiveSource``.
 
 Examples that use this source can be found in:
 
-* examples/Brachytherapy
-* examples/Basic/VolumetricSource.txt
+* :ref:`example_brachytherapy`
+* :ref:`example_VolumetricSource`
 
 The energies and species of the emitted particles can be specified using the same parameters available to the :ref:`source_beam`.

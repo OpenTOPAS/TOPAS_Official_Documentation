@@ -1,3 +1,5 @@
+.. _example_xcat_materials:
+
 XCAT_Materials.txt
 -----------------------
 

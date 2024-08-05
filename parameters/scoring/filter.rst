@@ -111,7 +111,7 @@ Filter by Particle’s Origin Volume, Component, or Component and Subcomponents:
 
 If you specify multiple Volume or Component names, this is interpreted as an "OR", not "AND".
 
-You will see that you can specify a single Volume or a Component.
+You will see that you can specify a single Volume or a Component::
 
     sv:Sc/OnlyIncludeParticlesFromVolume/OnlyIncludeParticlesFromVolume = 2 "World" "Foil"
     sv:Sc/OnlyIncludeParticlesFromComponent/OnlyIncludeParticlesFromComponent = 2 "World" "Foil"

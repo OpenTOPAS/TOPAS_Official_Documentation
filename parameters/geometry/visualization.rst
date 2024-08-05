@@ -3,7 +3,7 @@ Visualization Attributes
 
 By default, Components are colored according to their materials, based on the default color that was assigned to the material, such as::
 
-    s:Ma/Air/DefaultColor="lightblue"
+    s:Ma/Air/DefaultColor = "lightblue"
 
 Parameters of the Component let you override this color and set other visualization attributes::
 
