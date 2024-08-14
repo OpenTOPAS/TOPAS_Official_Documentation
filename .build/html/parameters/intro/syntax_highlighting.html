@@ -1,0 +1,735 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Relative Parameters" href="relative.html" /><link rel="prev" title="Syntax" href="syntax.html" />
+
+    <!-- Generated with Sphinx 7.3.7 and Furo 2024.05.06 -->
+        <title>Syntax highlighting - TOPAS</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=0c75a980" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=387cc868" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dark_background.css?v=207d4a1c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/text_justification.css?v=3987e263" />
+    <link rel="stylesheet" type="text/css" href="../../_static/table_format.css?v=dfcdc9fb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/rtd_sphinx_search.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" /
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">TOPAS</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><div class="sidebar-scroll"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo_with_background.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting-started/install.html">Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Installation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started/MacOS.html">QuickStart Guide for MacOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started/Debian.html">QuickStart Guide for Debian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started/WSL.html">QuickStart Guide for WSL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/authors.html">Authors and Funding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/users.html">User Support and Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/G4_version.html">Geant4 Version</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulation Control</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Parameter Control System</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Parameter Control System</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="design.html">Design Philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syntax.html">Syntax</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Syntax highlighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relative.html">Relative Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hierarchy.html">Hierarchical Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch_jobs.html">Controlling Multiple Batch Jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../defaults.html">Default Parameters</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overall/index.html">Overall Control</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Overall Control</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overall/mode.html">Time mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overall/multithreading.html">Multithreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overall/seed.html">Random Number Seed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overall/repeatsequenceuntil.html">Set run duration based on statistical goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overall/misc.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../material.html">Materials</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry/index.html">Geometry Components</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Geometry Components</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/placement.html">Placement of Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/parallel_world.html">Parallel Worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/field.html">Electromagnetic Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/visualization.html">Visualization Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/dividable.html">Dividable Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/generic.html">Generic Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/group.html">Group Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/specialized.html">Specialized Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/patient.html">Patient Components</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/index.html">Particle Sources</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Particle Sources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/beam.html">Beam Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/distributed.html">Distributed Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/emittance.html">Emittance Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/environment.html">Environment Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/isotropic.html">Isotropic Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/volumetric.html">Volumetric Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/phasespace.html">Phase Space Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/misc.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../physics/index.html">Physics</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Physics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../physics/intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../physics/modular.html">Modular Physics Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../physics/reference.html">Reference Physics Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../physics/optical.html">Optical Physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../physics/misc.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scoring/index.html">Scoring</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Scoring</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scoring/intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scoring/volume.html">Volume Scorers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scoring/surface.html">Surface Scorers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scoring/phasespace.html">Phase Space Scorer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scoring/filter.html">Filtering Scorers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scoring/output.html">Output Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scoring/misc.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../graphics.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Features</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../variance/index.html">Variance Reduction</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Variance Reduction</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../variance/intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../variance/geometrical_particle_split.html">Geometrical Particle Splitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../variance/importance_sampling.html">Importance Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../variance/weight_window.html">Weight Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../variance/specific_particles.html">Tracking Only Specific Particles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../variance/secondary_biasing.html">Secondary Biasing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../variance/forced_interaction.html">Forced interaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../variance/crosssection_enhancement.html">Cross section enhancement</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../outcome.html">Outcome Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GUI.html">TOPAS Graphical User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameter_optimization.html">Parameter Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-docs/MVLinac/intro.html">IEC: LINAC Treatment Head Simulation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Example Parameter Files</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/Basic/index.html">Basic</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Basic</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/AllParameterForms.html">AllParameterForms.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/BatchJob1.html">BatchJob1.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/BatchJob2.html">BatchJob2.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/BatchJobShared.html">BatchJobShared.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/BoxRotatedAroundItsCorner.html">BoxRotatedAroundItsCorner.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/DistributedSourcePointsInShell.html">DistributedSourcePointsInShell.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/DistributedSourcePointsInSphereGaussian.html">DistributedSourcePointsInSphereGaussian.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/DistributedSourcePointsInSphere.html">DistributedSourcePointsInSphere.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/DistributedSourcePointsInTwistedTubs.html">DistributedSourcePointsInTwistedTubs.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/DividedComponents.html">DividedComponents.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/DNAModelByRegions.html">DNAModelByRegions.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/Emittance_Gaussian.html">Emittance_Gaussian.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/Emittance_Twiss.html">Emittance_Twiss.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/EmModelByRegions.html">EmModelByRegions.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/EnvironmentSource.html">EnvironmentSource.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/ExtraSequence1.html">ExtraSequence1.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/ExtraSequence2.html">ExtraSequence2.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/ExtraSequences.html">ExtraSequences.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/FlatteningFilter.html">FlatteningFilter.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/Isotope.html">Isotope.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/LayeredMassGeometry.html">LayeredMassGeometry.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/OneBox.html">OneBox.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/OneBoxRotate.html">OneBoxRotate.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/OneBoxTranslate.html">OneBoxTranslate.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/ParallelWorlds.html">ParallelWorlds.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/ParticleSourcesFromGroup.html">ParticleSourcesFromGroup.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/PhysicsSetting.html">PhysicsSetting.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/QtShapeTest.html">QtShapeTest.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/ShapeTestWithAllParameters.html">ShapeTestWithAllParameters.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/ShapeTestWithOnlyRequiredParameters.html">ShapeTestWithOnlyRequiredParameters.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/Spectrum.html">Spectrum.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/TwoBeams.html">TwoBeams.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/VolumetricSource.html">VolumetricSource.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Basic/VoxelMaterialsInDividedComponents.html">VoxelMaterialsInDividedComponents.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/Brachytherapy/index.html">Brachytherapy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Brachytherapy</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/intro.html">Brachytherapy package for TOPAS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/DoseTLE.html">DoseTLE.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/HDRSource.html">HDRSource.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/HDRSourceInApplicator.html">HDRSourceInApplicator.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/Ir192_Flexisource.html">Ir192_Flexisource.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/Ir192_MicroSelectronV2.html">Ir192_MicroSelectronV2.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/Ir192_TG186.html">Ir192_TG186.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/TG186Applicator.html">TG186Applicator.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/LDRSource.html">LDRSource.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/Cs131_IsoRay-CS-1-Rev2.html">Cs131_IsoRay-CS-1-Rev2.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/I125_BardSTM1251.html">I125_BardSTM1251.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/I125_Best2301.html">I125_Best2301.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/I125_IsoAid_IAI-125A.html">I125_IsoAid_IAI-125A.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/I125_OncoSeed6711.html">I125_OncoSeed6711.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/I125_SelectSeed.html">I125_SelectSeed.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/I125_SL-125.html">I125_SL-125.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/I125_Theragenic-AgX100.html">I125_Theragenic-AgX100.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/Pd103_Best2335.html">Pd103_Best2335.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/Pd103_IAPd103A.html">Pd103_IAPd103A.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/Pd103_Theraseed200Heavy.html">Pd103_Theraseed200Heavy.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/Pd103_Theraseed200Light.html">Pd103_Theraseed200Light.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/EyeModel.html">EyeModel.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Brachytherapy/COMSEyePlaque.html">COMSEyePlaque.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/Graphics/index.html">Graphics</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Graphics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorByCharge.html">ColorByCharge.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorByCreatorProcess.html">ColorByCreatorProcess.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorByEnergy.html">ColorByEnergy.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorByGeneration.html">ColorByGeneration.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorByMomentum.html">ColorByMomentum.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorByOriginComponent.html">ColorByOriginComponent.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorByOriginComponentOrSubComponent.html">ColorByOriginComponentOrSubComponent.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorByOriginVolume.html">ColorByOriginVolume.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorByParticleType.html">ColorByParticleType.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ColorTest.html">ColorTest.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/FilterByCreatorProcess.html">FilterByCreatorProcess.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/FilterByEnergy.html">FilterByEnergy.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/FilterByMomentum.html">FilterByMomentum.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/FilterByOriginComponent.html">FilterByOriginComponent.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/FilterByOriginComponentOrSubComponent.html">FilterByOriginComponentOrSubComponent.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/FilterByOriginVolume.html">FilterByOriginVolume.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/FilterByParticleCharge.html">FilterByParticleCharge.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/FilterByParticleType.html">FilterByParticleType.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/NanoMeterScaleTest.html">NanoMeterScaleTest.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/ParticleFlight.html">ParticleFlight.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/QtTest.html">QtTest.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/SolidSphere.html">SolidSphere.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/TestGraphics.html">TestGraphics.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Graphics/TwoProjections.html">TwoProjections.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/MVLinac/index.html">MVLinac</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of MVLinac</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/intro.html">IEC: LINAC Treatment Head Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/Field.html">Field.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/FixedTxHead.html">FixedTxHead.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/Flattener6MV.html">Flattener6MV.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/Flattener18MV.html">Flattener18MV.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/FullTxHeadField.html">FullTxHeadField.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/Jaws.html">Jaws.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/LinacDefaults.html">LinacDefaults.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/MLC.html">MLC.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/MainTxHead.html">MainTxHead.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/Monitor.html">Monitor.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/ScoreEnergyFluence.html">ScoreEnergyFluence.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/ScoreEnergySpectrum.html">ScoreEnergySpectrum.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/ScorePhaseSpace.html">ScorePhaseSpace.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/Target.html">Target.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/TestComponent.html">TestComponent.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/VRT_1.html">VRT_1b.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/VRT_2.html">VRT_2.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/VRT_3.html">VRT_3.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/VRT_HD.html">VRT_HD.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/WaterBox.html">WaterBox.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/MVLinac/WaterPhantom.html">WaterPhantom.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/Nozzle/index.html">Nozzle</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Nozzle</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/ConstantsForNozzles.html">ConstantsForNozzles.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/RasterScanningPattern.html">RasterScanningPattern.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/ScanningNozzle.html">ScanningNozzle.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/ScanningStationaryTarget.html">ScanningStationaryTarget.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/ScanningTargetMovingHorizontal.html">ScanningTargetMovingHorizontal.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/ScanningTargetMovingInDepth.html">ScanningTargetMovingInDepth.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/ScatteringNozzle.html">ScatteringNozzle.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/ScatteringNozzle_QtTest.html">ScatteringNozzle_QtTest.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/ScatteringNozzle_run.html">ScatteringNozzle_run.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/ScatteringNozzle_run_QtTest.html">ScatteringNozzle_run_QtTest.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/TargetInWaterPhantom.html">TargetInWaterPhantom.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/TsAnalysisWaterPhantom.html">TsAnalysisWaterPhantom.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Nozzle/Viewer.html">Viewer.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/Optical/index.html">Optical</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of Optical</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Optical/OpticalMaterialSample.html">OpticalMaterialSample.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Optical/OpticalPhotonCount.html">OpticalPhotonCount.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Optical/PixelatedDetector.html">PixelatedDetector.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Optical/PlasticScintillator.html">PlasticScintillator.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Optical/Rotating_Surfaces.html">Rotating_Surfaces.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Optical/Surfaces.html">Surfaces.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Optical/WavelengthShifter.html">WavelengthShifter.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/Outcome/index.html">Outcome</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Outcome</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Outcome/CEModelBurman.html">CEModelBurman.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Outcome/CVModelStavrev.html">CVModelStavrev.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Outcome/LKMModelBurman.html">LKMModelBurman.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Outcome/Phantom.html">Phantom.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Outcome/PoissonModelOkunieff.html">PoissonModelOkuneff.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Outcome/TestOutcomeModel.html">TestOutcomeModel.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Outcome/TestRestoreModel.html">TestRestoreModel.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/Patient/index.html">Patient</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of Patient</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/Applicator.html">Applicator.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/DicomCutaway.html">DicomCutaway.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/DoseTo4DCT.html">DoseTo4DCT.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/DoseToCT.html">DoseToCT.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/HUtoMaterialSchneider.html">HUtoMaterialSchneider.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/HUtoMaterialSchneider2.html">HUtoMaterialSchneider2.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/Implant.html">Implant.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/PatientInIEC_1.html">PatientInIEC_1.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/PatientInIEC_2_time_feature.html">PatientInIEC_2_time_feature.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/PatientInIEC_2.html">PatientInIEC_2.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/PatientInIEC_3.html">PatientInIEC_3.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/TwoDicoms.html">TwoDicoms.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/ViewAbdomen_rtdose.html">ViewAbdomen_rtdose.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/ViewAbdomen.html">ViewAbdomen.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/XCAT_Materials.html">XCAT_Materials.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Patient/XCAT.html">XCAT.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/PhaseSpace/index.html">PhaseSpace</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle navigation of PhaseSpace</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/MultiRun_Write_ASCII.html">MultiRun_Write_ASCII.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/ReadASCII.html">ReadASCII.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/ReadBinary.html">ReadBinary.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/ReadLimited.html">ReadLimited.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/ReadElekta.html">ReadElekta.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/ReadVarian.html">ReadVarian.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/WriteASCII.html">WriteASCII.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/WriteBinary.html">WriteBinary.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/WriteIonsASCII.html">WriteIonsASCII.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/WriteLimited.html">WriteLimited.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/PhaseSpace/WriteROOT.html">WriteROOT.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/Scoring/index.html">Scoring</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle navigation of Scoring</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/ChargeInSphere.html">ChargeInSphere.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/Complex.html">Complex.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/DepthDose.html">DepthDose.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/Dose.html">Dose.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/DoseInVoxelMaterials.html">DoseInVoxelMaterials.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/DoseToMediumVsWater.html">DoseToMediumVsWater.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/DoseVolumeHistogram.html">DoseVolumeHistogram.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/EnergyAndDose.html">EnergyAndDose.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/EnergyDepositBinnedByEnergy.html">EnergyDepositBinnedByEnergy.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/EnergyDivisions.html">EnergyDivisions.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/EnergyInBinnedCylinder.html">EnergyInBinnedCylinder.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/FilterByInteractionCount.html">FilterByInteractionCount.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/Filters.html">Filters.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/FoilToBox.html">FoilToBox.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/FoilToCylinder.html">FoilToCylinder.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/FoilToSphere.html">FoilToSphere.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/Gated.html">Gated.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/GeometryDivisions.html">GeometryDivisions.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/Histograms.html">Histograms.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/Inactive.html">Inactive.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/Ion.html">Ion.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/Origin.html">Origin.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/OriginCount.html">OriginCount.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/ParallelBoxRebinned.html">ParallelBoxRebinned.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/SparsifyAndSingleIndex.html">SparsifyAndSingleIndex.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/SplitByTimeFeature.html">SplitByTimeFeature.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/Surfaces.html">Surfaces.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/Scoring/VoxelMaterials.html">VoxelMaterials.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/SpecialComponents/index.html">SpecialComponents</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle navigation of SpecialComponents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/CAD.html">CAD.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/DipoleMagnet.html">DipoleMagnet.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/MultiLeafCollimator.html">MultiLeafCollimator.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/MultiLeafCollimator_sequence.html">MultiLeafCollimator_sequence.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/MultiWire_Chamber.html">MultiWire_Chamber.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/Propeller_ContinuousRotation.html">Propeller_ContinuousRotation.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/Propeller_StepRotation.html">Propeller_StepRotation.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/Propeller.html">Propeller.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/PurgingMagnet_move.html">PurgingMagnet_move.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/QuadAndDipoleMagnets.html">QuadAndDipoleMagnets.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/QuadInMovingNozzle.html">QuadInMovingNozzle.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/QuadrupoleMagnet.html">QuadrupoleMagnet.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/RangeModulator_ConstantBeam.html">RangeModulator_ConstantBeam.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/RangeModulator_CurrentModulatedBeam.html">RangeModulator_CurrentModulatedBeam.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/RangeModulator.html">RangeModulator.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/RidgeFilter.html">RidgeFilter.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/RotatingMagnet.html">RotatingMagnet.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/SpecialComponents/UniformElectroMagneticField.html">UniformElectroMagneticField.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/TimeFeature/index.html">TimeFeature</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of TimeFeature</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/BoxWithinBox.html">BoxWithinBox.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/CameraRotateAndZoom.html">CameraRotateAndZoom.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/ChangingKEFilterByTimeFeature.html">ChangingKEFilterByTimeFeature.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/ColorChange.html">ColorChange.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/CylinderGrowingInPhi.html">CylinderGrowingInPhi.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/Darkening.html">Darkening.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/Logo.html">Logo.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/RasterScanOnMovingTarget.html">RasterScanOnMovingTarget.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/RotateResizeRecolor.html">RotateResizeRecolor.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/RotatingCylinderWithPhiCut.html">RotatingCylinderWithPhiCut.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/Rotation.html">Rotation.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/RunRandom_Mode.html">RunRandom_Mode.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/TimeFeature/RunSequential_Mode.html">RunSequential_Mode.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/UCSFETF/index.html">UCSFETF</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle navigation of UCSFETF</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/UCSF_Beamline_Base.html">UCSF_Beamline_Base.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/UCSF_Beamline_Propeller10.html">UCSF_Beamline_Propeller10.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/UCSF_Beamline_Propeller15.html">UCSF_Beamline_Propeller15.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/UCSF_Beamline_Propeller20.html">UCSF_Beamline_Propeller20.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/UCSF_Beamline_Propeller24.html">UCSF_Beamline_Propeller24.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/UCSF_DefaultParameters.html">UCSF_DefaultParameters.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/UCSF_WaterPhantom.html">UCSF_WaterPhantom.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/User_Beamline_WC_Viewer.html">User_Beamline_WC_Viewer.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/User_BP_R28_WaterPhantom.html">User_BP_R28_WaterPhantom.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/User_SOBP24_R28_WaterPhantom.html">User_SOBP24_R28_WaterPhantom.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/User_SOBP24_Viewer.html">User_SOBP24_Viewer.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/UCSFETF/Viewer.html">Viewer.txt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples-docs/VarianceReduction/index.html">VarianceReduction</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><div class="visually-hidden">Toggle navigation of VarianceReduction</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/VarianceReduction/AmbientDoseEquivalent.html">AmbientDoseEquivalent.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/VarianceReduction/CrossSectionEnhancement.html">CrossSectionEnhancement.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/VarianceReduction/ForcedInteraction.html">ForcedInteraction.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/VarianceReduction/GeometricalParticleSplit.html">GeometricalParticleSplit.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/VarianceReduction/ImportanceSampling.html">ImportanceSampling.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/VarianceReduction/ImportanceSamplingMassGeometry.html">ImportanceSamplingMassGeometry.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/VarianceReduction/ImportanceSamplingSecondaryBiasing.html">ImportanceSamplingSecondaryBiasing.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/VarianceReduction/SecondaryBiasing.html">SecondaryBiasing.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples-docs/VarianceReduction/WeightWindow.html">WeightWindow.txt</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to Extend OpenTOPAS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/intro.html">Introduction to Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/geometry.html">Custom Geometry Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/source.html">Custom Particle Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/physics.html">Custom Physics Lists and Physics Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/scoring.html">Custom Scorers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/outcome.html">Custom Outcome Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/filtering.html">Custom Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/field.html">Custom Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/imaging.html">Custom Imaging to Material Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extension-docs/user_hook.html">Additional User Hooks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Provided Extensions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions/rbe/intro.html">Proton RBE Scorers</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../extensions/imaging/index.html">Imaging Extension</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><div class="visually-hidden">Toggle navigation of Imaging Extension</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../extensions/imaging/imaging_geometries.html">Detector Geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../extensions/imaging/imaging_scorers.html">Scorers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../extensions/imaging/examples_CBCT/cbct.html">CBCT Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../extensions/imaging/examples_PET/pet.html">PET Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions/microdosimetry/intro.html">Microdosimetry Extension</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/OpenTOPAS/TOPAS_Official_Documentation/blob/main/parameters/intro/syntax_highlighting.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/OpenTOPAS/TOPAS_Official_Documentation/edit/main/parameters/intro/syntax_highlighting.rst" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="syntax-highlighting">
+<h1>Syntax highlighting<a class="headerlink" href="#syntax-highlighting" title="Link to this heading">¶</a></h1>
+<p>It can be very useful to have a text editor capable of performing syntax highlighting.
+The following editors currently support topas syntax highlighting:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://atom.io/">Atom</a>:
+Go to Packages &gt;&gt; Settings View &gt;&gt; Install Packages/Themes, and search for topas. This package should recognise both *.tps and *.topas files and highlight them automatically. Otherwise you have to manually turn on syntax highlighting in the bottom right of your screen</p></li>
+<li><p><a class="reference external" href="https://www.sublimetext.com/">Sublime text</a>
+open the Command Palette (cmd+shift+p on Mac, ctrl+shift+p on Linux/Windows)
+select Package Control: Install Package
+search for Topas Syntax</p></li>
+<li><p><a class="reference external" href="https://www.vim.org/">Vim</a>
+see <a class="reference external" href="https://github.com/murdock-grewar/topas-vim">here</a> for instructions</p></li>
+</ul>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="relative.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Relative Parameters</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="syntax.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Syntax</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, 2024, The TOPAS Collaboration
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=3304f9e4"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../../_static/js/rtd_sphinx_search.min.js"></script>
+    </body>
+</html>
