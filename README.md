@@ -1,10 +1,15 @@
 # TOPAS-docs
 
+## To visualize the documentation
+
 In order to **view the documentation locally**, use the following commands:
 
 	git clone https://github.com/OpenTOPAS/TOPAS_Official_Documentation
 	cd TOPAS_Official_Documentation
 	open .build/html/index.html
+
+
+## To make modifications of the documentation
 
 The documentation is written in reStructuredText format (reST). It is hosted by [ReadTheDocs](https://docs.readthedocs.org). A good resource on reST is the [Sphinx documentation](http://www.sphinx-doc.org), but please note that not all features described there are supported by ReadTheDocs. It also describes some Python-only features, since that is its domain.
 
