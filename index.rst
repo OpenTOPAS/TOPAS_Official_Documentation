@@ -1,3 +1,5 @@
+.. image:: ./images/OpenTOPASatRRS.png
+
 Welcome to the TOPAS documentation!
 =======================================
 
