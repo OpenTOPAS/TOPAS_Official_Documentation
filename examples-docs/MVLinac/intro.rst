@@ -39,7 +39,7 @@ Once this simulation is complete, in order to run the simulation with Field.txt,
 
 Again, the TOPAS GUI will not be initiated. All of the particles in the phase space from the fixed portion of the simulation will be run for the field-dependent portion of the simulation and a dose distribution will be scored in a water phantom positioned with its surface at the SAD. 
 
-The following include files are available in :ref:`example_linac_maintxhead`. Only one of these should be selected at a time:
+In summary, the following include files are available in :ref:`example_linac_maintxhead` for selection in the MainTxHead.txt PCF. Only one of these should be selected at a time:
 
      1. FullTxHead.txt: Simulation of the full treatment head from the electron source position in vacuum through the fixed and variable portions of the treatment head, into a water box, with the water surface coinciding with the machine isocenter. While a few parameters are set in FullTxHead.txt, most are set in the component includeFile files. Simulation parameter values in these files may be changed, for example, to simulate a treatment head from a different vendor. Parameters set in FullTxHead.txt include graphics parameters, the random number seed, the SAD, and the electron source details of mean energy and peak width, width of the angular distribution, and spot size. The TOPAS GUI is set to display the linac and run the simulation. 	
      2. FixedTxHead.txt: Simulation of the fixed components of the linac, with phase-space scored on a plane perpendicular to the primary collimator axis just upstream of the jaws. Uniform bremsstrahlung splitting variance reduction is used to improve the efficiency of the simulation. The parameter file is set to run a large number of histories without displaying the simulation. The electron source for the 6 MV Oncor x-ray beam is given by default. The electron source for the 18 MV Oncor x-ray beam is available, commented out. The Siemens Oncor flattener for the 18 MV x-ray beam is provided in Flattener18MV.txt (available as an includeFile in place of the Flattener6MV.txt includeFile). 	
@@ -62,9 +62,19 @@ The parameter control files used to provide values for the parameters of the var
     4.	WaterPhantom.txt: A multi-voxel water phantom used in Field.txt to score dose distributions. 
     5.	LinacDefaults.txt: This file is required to provide default values of certain parameters to allow users to set preferred values of these parameters in higher level include files.
 
+Try using the TestComponent.txt PCF to see the result of adjusting parameters in these different PCF's. To do so, first edit MainTxHead.txt to comment out the line ``include Field.txt`` and remove the comment character ``#`` from the line ``#include TestComponent.txt``. Next, edit TestComponent.txt to include the components you want to simulate by removing the comment character, commenting out the others. Then, edit the PCF's corresponding to the components you want to simulate. Finally, enter the same command on the command line as used previously, this time to run a single (or combination of) component(s)::
+
+    /Applications/topas/bin/topas MainTxHead.txt
+
+In this case the TOPAS GUI will be initiated for viewing the geometry and simulation of particle tracks through the geometry.  
 
 A set of parameter control files are provided to score information about the simulated beam on the scoring plane positioned just upstream of the jaws: 
     1.	ScorePhaseSpace.txt: Default in FixedTxHead.txt
     2.	ScoreEnergyFluence.txt: An option is provided, for demonstration purposes, to score the spatial distribution of energy fluence in FixedTxHead.txt. 
     3.	ScoreEnergySpectrum.txt: An option is provided, for demonstration purposes, to score the energy spectrum in FixedTxHead.txt.
 
+A set of PCFs are provided to take advantage of different VRTs: 
+    1. VRT_1 activates uniform particle split for bremsstrahlung x-rays produced by the linac target. In this technique, each time a bremsstrahlung x-ray is produced, it is split into N photons of different energy and direction, randomly chosen from the bremsstrahlung cross-section. Their statistical weight is readjusted to 1/N to avoid biasing the results. The number of split photons is set by the user. 
+    2. VRT_2 activates secondary particles’ production cuts per regions. It inherits uniform particle split from VRT_1.txt. 
+    3. VRT_3 activates geometry importance sampling. It defines a wrapped volume in parallel world mode around the linac with an importance value A. Outside this volume, the importance value is B. It is recommended that A is set to an integer multiple of B. If A >> B, Russian roulette is applied to particles leaving the volume. VRT_3 inherits parameters from VRT_2.txt. Values of A and B are set by the user. 
+    4. VRT_HD activates directional bremsstrahlung split. In this technique, if a photon produced by uniform particle split is not directed towards a region of interest, it is subject to Russian roulette. In this version, the geometry parameters of the region of interest are defined with respect to the world only. This limits the gantry axis (g) to align with the world axis (W). However, since the bulk of bremsstrahlung occurs in the fixed linac components (exit window and target), this is not a serious limitation as the common practice is to score a phase-space file immediately downstream of the fixed components, then reuse the scored phase-space when simulating the remainder of the linac with patient-specific settings (gantry and collimator rotation, jaw and MLC positions). 
