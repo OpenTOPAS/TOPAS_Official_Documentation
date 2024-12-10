@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="../../_static/dark_background.css?v=207d4a1c" />
     <link rel="stylesheet" type="text/css" href="../../_static/text_justification.css?v=3987e263" />
     <link rel="stylesheet" type="text/css" href="../../_static/table_format.css?v=dfcdc9fb" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/rtd_sphinx_search.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     
     
@@ -677,7 +676,7 @@
 </pre></div>
 </div>
 <p>If you are using the <code class="docutils literal notranslate"><span class="pre">FlatImager</span></code> parameter as described in the <a class="reference internal" href="imaging_geometries.html#flat-panel"><span class="std std-ref">Flat-panel Detector</span></a> section, there is more than one single surface and you thus need to define which surface will be used for scoring. To score on the surface between the scintillator and the photodetector layers, you need to set:</p>
-<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="kt">s</span><span class="n">:</span><span class="nc">Sc/Scorer/</span><span class="na">Surface</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="s">&quot;Imager/PhotoDetectorScintillatorInterface&quot;</span>
+<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="kt">s</span><span class="n">:</span><span class="nc">Sc/Scorer/</span><span class="na">Surface</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="s">&quot;Imager/ZPlusSurface&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -727,6 +726,18 @@
 </div>
 <p>TOPAS parameters to simulate an OSF can be found in the example parameter files. One can find a detailed description of OSF measuring in a previous publication <a class="reference internal" href="#shi2019" id="id5"><span>[Shi2019]</span></a>.</p>
 </section>
+<section id="uncertainty-calculation">
+<span id="uncertainty"></span><h2>Uncertainty calculation<a class="headerlink" href="#uncertainty-calculation" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CBCTScorer</span></code> supports scoring squared quantities and the number of interacted particles in the detector to calculate the uncertainty using the history-by-history method <a class="reference internal" href="#chetty2006" id="id6"><span>[Chetty2006]</span></a>. You can turn these on by setting either:</p>
+<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="kt">s</span><span class="n">:</span><span class="nc">Sc/CBCTscorer/</span><span class="na">ScoreSquare</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="kc">&quot;True&quot;</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="kt">s</span><span class="n">:</span><span class="nc">Sc/CBCTscorer/</span><span class="na">ScoreCount</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="kc">&quot;True&quot;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ScoreSquare</span></code> and <code class="docutils literal notranslate"><span class="pre">ScoreCount</span></code> cannot be “True” at the same time. This will return an error.</p>
+</section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
 <div role="list" class="citation-list">
@@ -738,6 +749,10 @@
 <div class="citation" id="oconnel2021" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">OConnel2021</a><span class="fn-bracket">]</span></span>
 <p>O’Connel, J. Bazalova-Carter, M., 2021. fastCAT: Fast cone beam CT (CBCT) simulation. Medical Physics, 48(8), pp.4448-4458</p>
+</div>
+<div class="citation" id="chetty2006" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">Chetty2006</a><span class="fn-bracket">]</span></span>
+<p>Chetty, I. j. et al., 2006. Reporting and analyzing statistical uncertainties in Monte Carlo–based treatment planning. International Journal of Radiation Oncology*Biology*Physics, 65(4), pp.1249-1259</p>
 </div>
 </div>
 </section>
@@ -803,6 +818,7 @@
 <li><a class="reference internal" href="#ntuple-scorer">NTuple scorer</a></li>
 <li><a class="reference internal" href="#digitizers">Digitizers</a></li>
 <li><a class="reference internal" href="#optical-spread-function">Optical Spread Function</a></li>
+<li><a class="reference internal" href="#uncertainty-calculation">Uncertainty calculation</a></li>
 <li><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -819,6 +835,6 @@
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
-    <script src="../../_static/js/rtd_sphinx_search.min.js"></script>
+    <script src="../../_static/search.js?v=71be8f69"></script>
     </body>
 </html>

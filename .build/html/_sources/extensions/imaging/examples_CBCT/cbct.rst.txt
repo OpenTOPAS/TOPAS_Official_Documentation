@@ -176,15 +176,59 @@ Scorer
 The following should be included in your ``scorer.txt`` parameter file::
 
     #============== CBCT Scorer ========
-    s:Sc/CBCTscorer/Quantity                   = "CBCTScorer"
-    s:Sc/CBCTscorer/Component                  = "CBCTImager"
-    s:Sc/CBCTscorer/Surface                    = "CBCTImager/PhotoDetectorScintillatorInterface"
-    s:Sc/CBCTscorer/OutputType                 = "binary"
-    b:Sc/CBCTscorer/OutputToConsole            = "False"
-    i:Sc/CBCTscorer/XBins                      = 512
-    i:Sc/CBCTscorer/YBins                      = 512
-    sv:Sc/CBCTscorer/OnlyIncludeParticlesNamed = 1 "gamma"
-    s:Sc/CBCTscorer/IfOutputFileAlreadyExists  = "Overwrite"
+    s:Sc/CBCTscorer/Quantity                                               = "CBCTScorer"
+    s:Sc/CBCTscorer/Surface                                                = "CBCTImager/ZPlusSurface"
+    s:Sc/CBCTscorer/OutputType                                             = "binary"
+    b:Sc/CBCTscorer/OutputToConsole                                        = "False"
+    i:Sc/CBCTscorer/XBins                                                  = 512
+    i:Sc/CBCTscorer/YBins                                                  = 512
+    sv:Sc/CBCTscorer/OnlyIncludeParticlesNamed                             = 1 "gamma"
+    s:Sc/CBCTscorer/IfOutputFileAlreadyExists                              = "Overwrite"
+    s:Sc/CBCTscorer/OpticalSpreadFunction/OSFPath                          = "<Optical spread function data path>"
+    b:Sc/CBCTscorer/OpticalSpreadFunction/Enable                           = "True"
+    # Optical spread function (OSF) information
+    i:Sc/CBCTscorer/OpticalSpreadFunction/KernelU                          = 5 # Must be odd, half of the kernel
+    i:Sc/CBCTscorer/OpticalSpreadFunction/KernelV                          = 5 # Must be odd, half of the kernel
+    dv:Sc/CBCTscorer/OpticalSpreadFunction/DetectorEfficiency/Energies     = 32 5.0 10.0 15.0 20.0 25.0 30.0 35.0 40.0 45.0 50.0 55.0 60.0 65.0 70.0 75.0 80.0 85.0 90.0 95.0 100.0 105.0 110.0 115.0 120.0 125.0 130.0 135.0 140.0 145.0 150.0 155.0 160.0 keV
+    uv:Sc/CBCTscorer/OpticalSpreadFunction/DetectorEfficiency/Efficiency   = 32 0.345 0.881 0.962 0.966 0.881 0.731 0.937 0.967 0.925 0.862 0.786 0.705 0.626 0.552 0.486 0.427 0.375 0.330 0.292 0.258 0.228 0.204 0.182 0.164 0.147 0.133 0.121 0.110 0.099 0.091 0.083 0.077
+    b:Sc/CBCTscorer/ScoreSquare                                            = "False"
+    b:Sc/CBCTscorer/ScoreCount                                             = "False"
+
+    #============== CBCT Score squared quantity ========
+    s:Sc/CBCTScorerSquare/Quantity                                               = "CBCTScorer"
+    s:Sc/CBCTScorerSquare/Surface                                                = "CBCTImager/ZPlusSurface"
+    s:Sc/CBCTScorerSquare/OutputType                                             = "binary"
+    b:Sc/CBCTScorerSquare/OutputToConsole                                        = "False"
+    i:Sc/CBCTScorerSquare/XBins                                                  = 512
+    i:Sc/CBCTScorerSquare/YBins                                                  = 512
+    sv:Sc/CBCTScorerSquare/OnlyIncludeIfIncidentParticlesNamed                   = 1 "gamma"
+    s:Sc/CBCTScorerSquare/IfOutputFileAlreadyExists                              = "Overwrite"
+    s:Sc/CBCTScorerSquare/OpticalSpreadFunction/OSFPath                          = "<Optical spread function data path>"
+    b:Sc/CBCTScorerSquare/OpticalSpreadFunction/Enable                           = "True"
+    i:Sc/CBCTScorerSquare/OpticalSpreadFunction/KernelU                          = 5 # Must be odd, half of the kernel
+    i:Sc/CBCTScorerSquare/OpticalSpreadFunction/KernelV                          = 5 # Must be odd, half of the kernel
+    dv:Sc/CBCTScorerSquare/OpticalSpreadFunction/DetectorEfficiency/Energies     = 32 5.0 10.0 15.0 20.0 25.0 30.0 35.0 40.0 45.0 50.0 55.0 60.0 65.0 70.0 75.0 80.0 85.0 90.0 95.0 100.0 105.0 110.0 115.0 120.0 125.0 130.0 135.0 140.0 145.0 150.0 155.0 160.0 keV
+    uv:Sc/CBCTScorerSquare/OpticalSpreadFunction/DetectorEfficiency/Efficiency   = 32 0.345 0.881 0.962 0.966 0.881 0.731 0.937 0.967 0.925 0.862 0.786 0.705 0.626 0.552 0.486 0.427 0.375 0.330 0.292 0.258 0.228 0.204 0.182 0.164 0.147 0.133 0.121 0.110 0.099 0.091 0.083 0.077
+    b:Sc/CBCTScorerSquare/ScoreSquare                                            = "True"
+
+    #============== CBCT Score photon count ========
+    s:Sc/CBCTScorerCount/Quantity                                               = "CBCTScorer"
+    s:Sc/CBCTScorerCount/Surface                                                = "CBCTImager/ZPlusSurface"
+    s:Sc/CBCTScorerCount/OutputType                                             = "binary"
+    b:Sc/CBCTScorerCount/OutputToConsole                                        = "False"
+    i:Sc/CBCTScorerCount/XBins                                                  = 512
+    i:Sc/CBCTScorerCount/YBins                                                  = 512
+    sv:Sc/CBCTScorerCount/OnlyIncludeIfIncidentParticlesNamed                   = 1 "gamma"
+    s:Sc/CBCTScorerCount/IfOutputFileAlreadyExists                              = "Overwrite"
+    s:Sc/CBCTScorerCount/OpticalSpreadFunction/OSFPath                          = "<Optical spread function data path>"
+    b:Sc/CBCTScorerCount/OpticalSpreadFunction/Enable                           = "True"
+    i:Sc/CBCTScorerCount/OpticalSpreadFunction/KernelU                          = 5 # Must be odd, half of the kernel
+    i:Sc/CBCTScorerCount/OpticalSpreadFunction/KernelV                          = 5 # Must be odd, half of the kernel
+    dv:Sc/CBCTScorerCount/OpticalSpreadFunction/DetectorEfficiency/Energies     = 32 5.0 10.0 15.0 20.0 25.0 30.0 35.0 40.0 45.0 50.0 55.0 60.0 65.0 70.0 75.0 80.0 85.0 90.0 95.0 100.0 105.0 110.0 115.0 120.0 125.0 130.0 135.0 140.0 145.0 150.0 155.0 160.0 keV
+    uv:Sc/CBCTScorerCount/OpticalSpreadFunction/DetectorEfficiency/Efficiency   = 32 0.345 0.881 0.962 0.966 0.881 0.731 0.937 0.967 0.925 0.862 0.786 0.705 0.626 0.552 0.486 0.427 0.375 0.330 0.292 0.258 0.228 0.204 0.182 0.164 0.147 0.133 0.121 0.110 0.099 0.091 0.083 0.077
+    b:Sc/CBCTScorerCount/ScoreCount                                             = "True"
+
+The squared quantity and count can be utilized to calculate the uncertainty of results.
 
 
 .. _cbct_shepp_logan:

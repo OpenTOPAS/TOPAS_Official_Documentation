@@ -33,7 +33,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx.ext.todo',
-    'sphinx_search.extension',
+    # 'sphinx_search.extension', # DEPRECATED as of Jul 15: https://github.com/readthedocs/readthedocs-sphinx-search/issues/144
     'myst_parser'
 ]
 
@@ -172,6 +172,9 @@ html_logo = "./getting-started/logos/logo_with_background.png"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['.static']
+
+# directory for custom javascript files
+html_js_files = ['search.js']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied

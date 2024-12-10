@@ -22,8 +22,7 @@ The binned scorer accumuates detected signals on a divided volume. The binned sc
 
 If you are using the ``FlatImager`` parameter as described in the :ref:`flat_panel` section, there is more than one single surface and you thus need to define which surface will be used for scoring. To score on the surface between the scintillator and the photodetector layers, you need to set::
 
-	s:Sc/Scorer/Surface = "Imager/PhotoDetectorScintillatorInterface"
-
+	s:Sc/Scorer/Surface = "Imager/ZPlusSurface"
 
 .. _ntuple_scorer:
 
@@ -81,8 +80,26 @@ In radiation detection, photons can be converted into visible light (a.k.a. opti
 
 TOPAS parameters to simulate an OSF can be found in the example parameter files. One can find a detailed description of OSF measuring in a previous publication [Shi2019]_.
 
+
+.. _uncertainty:
+
+Uncertainty calculation
+~~~~~~~~~~~~~~~~~~~~~~~
+
+``CBCTScorer`` supports scoring squared quantities and the number of interacted particles in the detector to calculate the uncertainty using the history-by-history method [Chetty2006]_. You can turn these on by setting either::
+
+	s:Sc/CBCTscorer/ScoreSquare = "True"
+
+or::
+
+	s:Sc/CBCTscorer/ScoreCount = "True"
+
+``ScoreSquare`` and ``ScoreCount`` cannot be "True" at the same time. This will return an error.
+
+
 References
 ~~~~~~~~~~
 
 .. [Shi2019] Shi, M. et al., 2019. A novel method for fast image simulation of flat panel detectors. Physics in Medicine & Biology, 64(9), 095019
 .. [OConnel2021] O'Connel, J. Bazalova-Carter, M., 2021. fastCAT: Fast cone beam CT (CBCT) simulation. Medical Physics, 48(8), pp.4448-4458
+.. [Chetty2006] Chetty, I. j. et al., 2006. Reporting and analyzing statistical uncertainties in Monte Carlo–based treatment planning. International Journal of Radiation Oncology*Biology*Physics, 65(4), pp.1249-1259

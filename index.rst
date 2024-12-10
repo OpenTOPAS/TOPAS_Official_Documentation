@@ -1,8 +1,3 @@
-The next TOPAS user meeting will be at FRPT
-===============================
-Are you attending the FRPT meeting? Then come join us for the next TOPAS user meeting. Details to follow.
-
-
 Welcome to the TOPAS documentation!
 =======================================
 
