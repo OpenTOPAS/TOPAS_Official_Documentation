@@ -61,6 +61,11 @@ Download the documentation:
 
 You can now edit any of the .txt and .rst files in the subfolders. When ready to view the changes locally, navigate to the `/TOPAS_Official_Documentation` directory and
 
-	make clean
+	source /Applications/TOPAS/OTPythonTools/bin/activate
+ 	make clean
 	make html
 	open .build/html/index.html
+
+Once you are finished you can deactivate the virtual environment with:
+
+	deactivate
