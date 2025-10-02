@@ -239,6 +239,14 @@ html_js_files = ['search.js']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'TOPASdoc'
 
+# -- Announcement everywhere ---------------------------------------------
+rst_prolog = """
+.. attention::
+    | **Virtual User Meeting**
+    | We will be holding a virtual user meetin on Oct. 21, 11am EST. 
+    | For more, see https://github.com/OpenTOPAS/OpenTOPAS/discussions/167
+"""
+
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
