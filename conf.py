@@ -242,9 +242,9 @@ htmlhelp_basename = 'TOPASdoc'
 # -- Announcement everywhere ---------------------------------------------
 rst_prolog = """
 .. attention::
-    | **Virtual User Meeting**
-    | We will be holding a virtual user meetin on Oct. 21, 11am EST. 
-    | For more, see https://github.com/OpenTOPAS/OpenTOPAS/discussions/167
+    | **New: Sign up for TOPAS Announcements Email List**
+    | Get updates on user meetings, code releases, and more. 
+    | For more, see https://github.com/OpenTOPAS/OpenTOPAS/discussions/185
 """
 
 # -- Options for LaTeX output ---------------------------------------------
