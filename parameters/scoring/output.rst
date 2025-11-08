@@ -42,8 +42,11 @@ For binary output of 3D data, such as from scoring in a water phantom or a patie
 +-----------+--------------+-------------------+-------------------+
 | Amide     |  X           |  Y                |  Z                |
 +-----------+--------------+-------------------+-------------------+
-| Numpy     |  Use the python module topas2numpy_                  |
+| Numpy     |   ``data = np.fromfile('myfile.bin',dtype='d');``    |
+|           |   ``data = data.reshape([fNk, fNj, fNi])``           |
 +-----------+--------------+-------------------+-------------------+
+
+For Numpy, an external tool for reading binary files could be used topas2numpy_ 
 
 .. _topas2numpy: http://topas2numpy.readthedocs.io
 
