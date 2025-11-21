@@ -109,9 +109,11 @@ Build Geant4. Take note of the following warnings before running the commands sh
 ```{admonition} Warning
 :class: warning
 
-Geant4 requires a minimum `CMake` version (between <em>3.16</em> and <em>3.243</em>). Check your version of `CMake` as follows:
+Geant4 requires a minimum `CMake` version (between <em>3.16</em> and <em>3.24.3</em>). Check your version of `CMake` as follows:
 
         cmake --version
+
+Using the most recent versions of CMake might trigger undesireable warnings or errors. If this occurs we **recommend downgrading to 3.24.3 or 3.28.1**, which we've tested and confirmed works.
 ```
 
 ```{admonition} Warning
