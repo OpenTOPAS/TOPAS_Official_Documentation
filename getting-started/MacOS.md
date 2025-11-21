@@ -125,6 +125,14 @@ Verify that `qt@6` is not linked or installed in your system. The following comm
 ```{admonition} Warning
 :class: warning
 
+Depending on your MacOS version you may or may not have XQuartz installed on your system. This can be tested with the following command which should yield no output if it is **NOT** installed. If this is the case please head to the official [Xquartz](https://www.xquartz.org) website to download the application.
+
+        which xquartz
+```
+
+```{admonition} Warning
+:class: warning
+
 Those with M1, M2 or M3 chips (check by going to the apple logo on the upper left of your screen and clicking on “About this Mac”) have `arm64` architecture and should include this architecture in the `DCMAKE_OSX_ARCHITECTURES` option of the cmake command in step 6.2 below. Those with Intel chips should not include this command and can delete the last line of the cmake command.
 ```
 
