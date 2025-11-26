@@ -1,89 +1,104 @@
 TOPAS Graphical User Interface
 ==============================
 
-TOPAS includes an optional Graphical User Interface (GUI).
-The GUI allows the user to easily manipulate graphics
-(rotate, zoom and click on graphical elements to get more
-information about the selected geometry element or particle track)
-and inspect and adjust TOPAS parameters.
+The Qt GUI adds a **Parameter Control** tab to TOPAS for quickly inspecting geometry, tweaking changeable parameters, running sequences, and capturing views. Use it for rapid prototyping; large production runs typically stay batch-only.
 
-The GUI is intended as a rapid prototyping extension of TOPAS.
-It allows you to easily see and adjust geometry
-and review the behavior of a small set of particle histories.
-The GUI then gives you the ability to save the new parameters,
-such that these saved values can later be loaded back in to a new
-TOPAS session, with or without the GUI.
+Enable the GUI
+--------------
+- Build TOPAS with Qt/OpenGL available. The GUI auto-activates on some platforms when OpenGL is requested when you add in your parameter file::
 
-For larger, high precision runs, with larger numbers of histories,
-the user will generally run on a batch system (cluster or cloud)
-without the GUI.
+    b:Ts/UseQt = "True" 
 
-Future developments will extend the system such that users will
-be able to directly launch cluster or cloud jobs from the GUI,
-with the GUI serving to monitor the progress of those jobs and
-display their results.
+- Optional: to keep the default Geant4 Qt widgets use the following parameter, otherwise the TOPAS tab replaces them.::
 
-The GUI is based on the Qt Toolkit. To activate the GUI,
-include the following parameter in your TOPAS Parameter Control File::
+    Ts/IncludeDefaultGeant4QtWidgets = "True"
 
-  Ts/UseQt = "True"
+- Run TOPAS normally; the Qt window opens with the TOPAS tab added.
 
-TOPAS will then bring up the GUI.
+.. image:: ./GUI.png
+   :alt: TOPAS Qt GUI window
+   :width: 90%
 
-.. image:: GUI.png
+Mouse controls (graphics window)
+--------------------------------
+Top-row Geant4 Qt icons control interaction: pick, zoom in/out, move (pan), rotate, perspective view, orthogonal view and exit. Use these to explore the scene while adjusting parameters.
 
-**Mouse Control**
-----------------------------------
+.. image:: ./GUI_top_row.png
+   :alt: Geant4 top tool bar
+   :width: 50%
 
-The top row of icons determine the behavior of the mouse when
-one clicks in the graphics window. Going from left to right:
+Parameter Control
+-----------------------
 
-- Pick to Translate the Image. Moving the mouse will move the image left right up or down
+.. image:: ./GUI_icons.png
+   :alt: TOPAS tool bar 
+   :width: 50%
 
-- Pick to Inquire. A pop-up window will give details about the selected object within the image (name of geometry, material, density etc., or type of particle track, partile energy, etc.).
-
-- Pick to Zoom out
-
-- Pick to Zoom in
-
-- Pick to Rotate. Moving the mouse will rotate the image.
-
-**The Parameter Control Table**
-----------------------------------
-
-The Parameter Control Table includes one row for each of the parameters that you can adjust.
-Click on the given value to adjust.
-There may be a slider or a text input box, depending on the parameter type.
-If you type an invalid entry, a warning message will appear in the session console area on the lower right, and the previous value will be restored.
- 
-You choose which of your TOPAS parameters will be displayed here
-by adding the prefix character "c" (for "changeable") to the parameter type. So, for example, to have the Z Half Length of a component named
-MyBox be included in this control area, specify it in the parameter control file as::
-
-  ic:Ge/MyBox/HLX = 2
-
-Or to have this NOT be present in the control area::
-
-  i:Ge/MyBox/HLX = 2
-
-**Additional Functions**
-----------------------------------
-A set of buttons above the parameter control table support additional functions:
-
-- Save: saves the current set of parameters to a new file in your current directory. The file name will be displayed in the session console area on the lower right. The new file will NOT overwrite your original parameter file. Rather, it will create a new parameter file that includes only your changes, and that then uses the TOPAS inclueFile mechanism to bring in your original parameter file for the other, unchanged values.
-
-- +Geom: Brings up a window to let you add a new Geometry Component
-
-- +Scorer: Brings up a window to let you add a new Scorer. Note that due to constraints in the way Geant4 initializes various functions, you can only add scorers Before the first run.
-
-- +Source: Brings up a window to let you add a new Particle Source. Note that due to constraints in the way Geant4 initializes various functions, you can only add scorers Before the first run.
-
-- Run: Runs your simulation. You can issue this as many times as you wish, changing parameters and re-running to see new results.
-
-- PDF: Saved the current graphics window to a PDF file in your current directory.
-
-**Scene Tree**
+Toolbar actions
 ---------------
-You can switch from the Parameter Control widget to another widget called the Scene Tree.
-Scene Tree shows you the hierarchy of geometry volumes.
-You can turn on or off various volumes to better understand your geometry.
+- Hover over an icon displays its funtion.
+- |save_icon| **Save**: prompt for a filename (defaults to ``Ts/ChangedParametersFile`` or ``ChangedParameters_1.txt``) and write only parameters changed in the session. 
+- |geom_icon| **+Geom**: create new geometry components. Components can optionally be placed in dipole/quadrupole fields (before the first run) and given initial translations/rotations.
+- |scorer_icon| **+Scorer**: create new scorers, can only be added before the first run.
+- |source_icon| **+Source**: create new sources, can only be added before the first run.
+- |run_icon| **Run**: execute the sequence with current edits. If ``Ge/QuitIfOverlapDetected`` is true and overlaps exist, the run is blocked.
+- |capture_icon| **Capture**: export the current OpenGL view to PDF.
+- **Expand/Collapse**: toggle expansion of all parameter categories.
+
+Parameter Control table
+-----------------------
+- Rows appear for parameters marked changeable: prefix the type with ``c``/``ic``/``dc`` etc. (for example ``ic:Ge/MyBox/HLX = 2``). Non-changeable variants (``i:...``) are hidden.
+- Items in bold are read-only (e.g., geometry type/parent, scorer quantity/component, source type). Booleans use checkboxes; enums use drop-downs; other values are inline-editable with units.
+
+.. image:: ./GUI_parameter_table.png
+   :alt: TOPAS parameter table 
+   :width: 50%
+
+- Filter bar above the tree matches names or values. Edits apply immediately; invalid entries revert with a warning.
+- Hover over a parameter displays its full TOPAS parameter syntax
+
+.. image:: ./GUI_filter.png
+   :alt: TOPAS filter 
+   :width: 50%
+
+Context menu and duplication
+----------------------------
+- Right-click a geometry or source header in the tree to duplicate it.
+- **Duplicate Geometry** copies a component; you can override translation/rotation before creating the copy.
+- **Duplicate Geometry Tree** copies a component and all descendants using a chosen prefix while remapping parents inside the subtree.
+- **Duplicate Source** is available only before the first run. Scorers cannot be duplicated because key scorer parameters are read-only.
+
+.. image:: ./GUI_duplicate.png
+   :alt: TOPAS duplicate 
+   :width: 70%
+
+Scene Tree
+----------
+You can switch from the Parameter Control widget to the Scene Tree to view the geometry hierarchy. Toggle volumes on/off to inspect complex setups.
+
+Notes and tips
+--------------
+- Added components/scorers/sources start with suggested names; change them before creation if desired. A read-only notice can be suppressed via “Don't show again.”
+- Save files from the GUI can be included in later runs to replay a GUI session in batch mode or as a starting point for scripted runs.
+- Extra sequence files listed in ``Ts/ExtraSequenceFiles`` run after the main sequence when you press **Run**.
+
+More on extra sequence files
+----------------------------
+- ``Ts/ExtraSequenceFiles`` lists parameter files that run **after** the main sequence completes. Each file is read, its parameters applied, rebuilds occur, and a fresh sequence run starts.
+- Files must not contain ``IncludeFile`` directives. If a listed file is missing, TOPAS sleeps ``Ts/ExtraSequenceSleepInterval`` between checks until ``Ts/ExtraSequenceSleepLimit`` is reached, then quits.
+- Typical uses: chaining follow-on runs with small tweaks (geometry offsets, source settings, output names) or letting an external script drop in the next parameter set while TOPAS waits.
+
+
+.. |save_icon| image:: ./save_as.svg
+   :height: 32
+.. |geom_icon| image:: ./add_box.svg
+   :height: 32
+.. |scorer_icon| image:: ./add_chart.svg
+   :height: 32
+.. |source_icon| image:: ./add_flash.svg
+   :height: 32
+.. |run_icon| image:: ./play.svg
+   :height: 32
+.. |capture_icon| image:: ./photo.svg
+   :height: 32
+

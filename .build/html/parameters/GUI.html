@@ -1,18 +1,19 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Parameter Optimization" href="parameter_optimization.html" /><link rel="prev" title="Outcome Modeling" href="outcome.html" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Parameter Optimization" href="parameter_optimization.html"><link rel="prev" title="Outcome Modeling" href="outcome.html">
+        <link rel="prefetch" href="../_static/logo_with_background.png" as="image">
 
-    <!-- Generated with Sphinx 7.3.7 and Furo 2024.05.06 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
         <title>TOPAS Graphical User Interface - TOPAS</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=0c75a980" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=387cc868" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=577e202f" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/dark_background.css?v=207d4a1c" />
     <link rel="stylesheet" type="text/css" href="../_static/text_justification.css?v=3987e263" />
     <link rel="stylesheet" type="text/css" href="../_static/table_format.css?v=dfcdc9fb" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
@@ -91,19 +92,6 @@
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
   </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
-    </svg>
-  </symbol>
   <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
     <title>Auto light/dark, in light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -144,7 +132,7 @@
       <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
       <path d="M13.5 6.5l4 4" />
       <path d="M20 21l2 -2l-2 -2" />
-      <path d="M17 17l-2 2l2 2" /
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
   <symbol id="svg-eye" viewBox="0 0 24 24">
@@ -160,14 +148,10 @@
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 <a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
@@ -177,8 +161,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
       </label>
     </div>
     <div class="header-center">
@@ -186,8 +169,7 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
           <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
           <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -195,8 +177,7 @@
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
   </header>
@@ -204,7 +185,6 @@
     <div class="sidebar-container">
       
       <div class="sidebar-sticky"><div class="sidebar-scroll"><a class="sidebar-brand" href="../index.html">
-  
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo_with_background.png" alt="Logo"/>
   </div>
@@ -218,7 +198,7 @@
 <div id="searchbox"></div><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started/install.html">Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Installation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started/install.html">Installation</a><input aria-label="Toggle navigation of Installation" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting-started/MacOS.html">QuickStart Guide for MacOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting-started/Debian.html">QuickStart Guide for Debian</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting-started/WSL.html">QuickStart Guide for WSL</a></li>
@@ -231,7 +211,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Simulation Control</span></p>
 <ul class="current">
-<li class="toctree-l1 has-children"><a class="reference internal" href="intro/index.html">Parameter Control System</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Parameter Control System</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="intro/index.html">Parameter Control System</a><input aria-label="Toggle navigation of Parameter Control System" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro/design.html">Design Philosophy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro/syntax.html">Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro/syntax_highlighting.html">Syntax highlighting</a></li>
@@ -241,7 +221,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="defaults.html">Default Parameters</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="overall/index.html">Overall Control</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Overall Control</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="overall/index.html">Overall Control</a><input aria-label="Toggle navigation of Overall Control" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="overall/mode.html">Time mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overall/multithreading.html">Multithreading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overall/seed.html">Random Number Seed</a></li>
@@ -250,7 +230,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">Materials</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="geometry/index.html">Geometry Components</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Geometry Components</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="geometry/index.html">Geometry Components</a><input aria-label="Toggle navigation of Geometry Components" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="geometry/intro.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="geometry/placement.html">Placement of Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="geometry/parallel_world.html">Parallel Worlds</a></li>
@@ -263,7 +243,7 @@
 <li class="toctree-l2"><a class="reference internal" href="geometry/patient.html">Patient Components</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="source/index.html">Particle Sources</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Particle Sources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="source/index.html">Particle Sources</a><input aria-label="Toggle navigation of Particle Sources" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="source/intro.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/beam.html">Beam Sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/distributed.html">Distributed Source</a></li>
@@ -275,7 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="source/misc.html">Miscellaneous</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="physics/index.html">Physics</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Physics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="physics/index.html">Physics</a><input aria-label="Toggle navigation of Physics" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="physics/intro.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="physics/modular.html">Modular Physics Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="physics/reference.html">Reference Physics Lists</a></li>
@@ -283,7 +263,7 @@
 <li class="toctree-l2"><a class="reference internal" href="physics/misc.html">Miscellaneous</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="scoring/index.html">Scoring</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Scoring</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scoring/index.html">Scoring</a><input aria-label="Toggle navigation of Scoring" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="scoring/intro.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scoring/volume.html">Volume Scorers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scoring/surface.html">Surface Scorers</a></li>
@@ -295,7 +275,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">Graphics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Features</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="variance/index.html">Variance Reduction</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Variance Reduction</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="variance/index.html">Variance Reduction</a><input aria-label="Toggle navigation of Variance Reduction" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="variance/intro.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variance/geometrical_particle_split.html">Geometrical Particle Splitting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variance/importance_sampling.html">Importance Sampling</a></li>
@@ -303,6 +283,7 @@
 <li class="toctree-l2"><a class="reference internal" href="variance/specific_particles.html">Tracking Only Specific Particles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variance/secondary_biasing.html">Secondary Biasing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variance/forced_interaction.html">Forced interaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variance/periodic_boundary.html">Periodic Boundary Condition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variance/crosssection_enhancement.html">Cross section enhancement</a></li>
 </ul>
 </li>
@@ -313,7 +294,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Example Parameter Files</span></p>
 <ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Basic/index.html">Basic</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Basic</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Basic/index.html">Basic</a><input aria-label="Toggle navigation of Basic" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Basic/AllParameterForms.html">AllParameterForms.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Basic/BatchJob1.html">BatchJob1.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Basic/BatchJob2.html">BatchJob2.txt</a></li>
@@ -350,7 +331,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Basic/VoxelMaterialsInDividedComponents.html">VoxelMaterialsInDividedComponents.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Brachytherapy/index.html">Brachytherapy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Brachytherapy</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Brachytherapy/index.html">Brachytherapy</a><input aria-label="Toggle navigation of Brachytherapy" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Brachytherapy/intro.html">Brachytherapy package for TOPAS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Brachytherapy/DoseTLE.html">DoseTLE.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Brachytherapy/HDRSource.html">HDRSource.txt</a></li>
@@ -376,7 +357,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Brachytherapy/COMSEyePlaque.html">COMSEyePlaque.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Graphics/index.html">Graphics</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Graphics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Graphics/index.html">Graphics</a><input aria-label="Toggle navigation of Graphics" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Graphics/ColorByCharge.html">ColorByCharge.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Graphics/ColorByCreatorProcess.html">ColorByCreatorProcess.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Graphics/ColorByEnergy.html">ColorByEnergy.txt</a></li>
@@ -403,7 +384,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Graphics/TwoProjections.html">TwoProjections.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/MVLinac/index.html">MVLinac</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of MVLinac</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/MVLinac/index.html">MVLinac</a><input aria-label="Toggle navigation of MVLinac" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/MVLinac/intro.html">IEC: LINAC Treatment Head Simulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/MVLinac/Field.html">Field.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/MVLinac/FixedTxHead.html">FixedTxHead.txt</a></li>
@@ -428,7 +409,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/MVLinac/WaterPhantom.html">WaterPhantom.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Nozzle/index.html">Nozzle</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Nozzle</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Nozzle/index.html">Nozzle</a><input aria-label="Toggle navigation of Nozzle" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Nozzle/ConstantsForNozzles.html">ConstantsForNozzles.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Nozzle/RasterScanningPattern.html">RasterScanningPattern.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Nozzle/ScanningNozzle.html">ScanningNozzle.txt</a></li>
@@ -444,7 +425,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Nozzle/Viewer.html">Viewer.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Optical/index.html">Optical</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of Optical</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Optical/index.html">Optical</a><input aria-label="Toggle navigation of Optical" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Optical/OpticalMaterialSample.html">OpticalMaterialSample.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Optical/OpticalPhotonCount.html">OpticalPhotonCount.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Optical/PixelatedDetector.html">PixelatedDetector.txt</a></li>
@@ -454,7 +435,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Optical/WavelengthShifter.html">WavelengthShifter.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Outcome/index.html">Outcome</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Outcome</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Outcome/index.html">Outcome</a><input aria-label="Toggle navigation of Outcome" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Outcome/CEModelBurman.html">CEModelBurman.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Outcome/CVModelStavrev.html">CVModelStavrev.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Outcome/LKMModelBurman.html">LKMModelBurman.txt</a></li>
@@ -464,7 +445,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Outcome/TestRestoreModel.html">TestRestoreModel.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Patient/index.html">Patient</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of Patient</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Patient/index.html">Patient</a><input aria-label="Toggle navigation of Patient" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Patient/Applicator.html">Applicator.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Patient/DicomCutaway.html">DicomCutaway.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Patient/DoseTo4DCT.html">DoseTo4DCT.txt</a></li>
@@ -483,7 +464,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Patient/XCAT.html">XCAT.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/PhaseSpace/index.html">PhaseSpace</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle navigation of PhaseSpace</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/PhaseSpace/index.html">PhaseSpace</a><input aria-label="Toggle navigation of PhaseSpace" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/PhaseSpace/MultiRun_Write_ASCII.html">MultiRun_Write_ASCII.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/PhaseSpace/ReadASCII.html">ReadASCII.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/PhaseSpace/ReadBinary.html">ReadBinary.txt</a></li>
@@ -497,7 +478,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/PhaseSpace/WriteROOT.html">WriteROOT.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Scoring/index.html">Scoring</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle navigation of Scoring</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/Scoring/index.html">Scoring</a><input aria-label="Toggle navigation of Scoring" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Scoring/ChargeInSphere.html">ChargeInSphere.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Scoring/Complex.html">Complex.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Scoring/DepthDose.html">DepthDose.txt</a></li>
@@ -528,7 +509,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/Scoring/VoxelMaterials.html">VoxelMaterials.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/SpecialComponents/index.html">SpecialComponents</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle navigation of SpecialComponents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/SpecialComponents/index.html">SpecialComponents</a><input aria-label="Toggle navigation of SpecialComponents" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/SpecialComponents/CAD.html">CAD.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/SpecialComponents/DipoleMagnet.html">DipoleMagnet.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/SpecialComponents/MultiLeafCollimator.html">MultiLeafCollimator.txt</a></li>
@@ -549,7 +530,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/SpecialComponents/UniformElectroMagneticField.html">UniformElectroMagneticField.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/TimeFeature/index.html">TimeFeature</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of TimeFeature</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/TimeFeature/index.html">TimeFeature</a><input aria-label="Toggle navigation of TimeFeature" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/TimeFeature/BoxWithinBox.html">BoxWithinBox.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/TimeFeature/CameraRotateAndZoom.html">CameraRotateAndZoom.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/TimeFeature/ChangingKEFilterByTimeFeature.html">ChangingKEFilterByTimeFeature.txt</a></li>
@@ -565,7 +546,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/TimeFeature/RunSequential_Mode.html">RunSequential_Mode.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/UCSFETF/index.html">UCSFETF</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle navigation of UCSFETF</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/UCSFETF/index.html">UCSFETF</a><input aria-label="Toggle navigation of UCSFETF" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/UCSFETF/UCSF_Beamline_Base.html">UCSF_Beamline_Base.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/UCSFETF/UCSF_Beamline_Propeller10.html">UCSF_Beamline_Propeller10.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/UCSFETF/UCSF_Beamline_Propeller15.html">UCSF_Beamline_Propeller15.txt</a></li>
@@ -580,7 +561,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/UCSFETF/Viewer.html">Viewer.txt</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/VarianceReduction/index.html">VarianceReduction</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><div class="visually-hidden">Toggle navigation of VarianceReduction</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples-docs/VarianceReduction/index.html">VarianceReduction</a><input aria-label="Toggle navigation of VarianceReduction" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/VarianceReduction/AmbientDoseEquivalent.html">AmbientDoseEquivalent.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/VarianceReduction/CrossSectionEnhancement.html">CrossSectionEnhancement.txt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples-docs/VarianceReduction/ForcedInteraction.html">ForcedInteraction.txt</a></li>
@@ -609,7 +590,7 @@
 <p class="caption" role="heading"><span class="caption-text">Provided Extensions</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../extensions/rbe/intro.html">Proton RBE Scorers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../extensions/imaging/index.html">Imaging Extension</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><div class="visually-hidden">Toggle navigation of Imaging Extension</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extensions/imaging/index.html">Imaging Extension</a><input aria-label="Toggle navigation of Imaging Extension" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../extensions/imaging/imaging_geometries.html">Detector Geometries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extensions/imaging/imaging_scorers.html">Scorers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extensions/imaging/examples_CBCT/cbct.html">CBCT Example</a></li>
@@ -641,13 +622,12 @@
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/OpenTOPAS/TOPAS_Official_Documentation/edit/main/parameters/GUI.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/OpenTOPAS/TOPAS_Official_Documentation/edit/main/parameters/GUI.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
 </div><div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -655,84 +635,108 @@
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="topas-graphical-user-interface">
+          <div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<div class="line-block">
+<div class="line"><strong>New: Sign up for TOPAS Announcements Email List</strong></div>
+<div class="line">Get updates on user meetings, code releases, and more. </div>
+<div class="line">For more, see <a class="reference external" href="https://github.com/OpenTOPAS/OpenTOPAS/discussions/185">https://github.com/OpenTOPAS/OpenTOPAS/discussions/185</a></div>
+</div>
+</div>
+<section id="topas-graphical-user-interface">
 <h1>TOPAS Graphical User Interface<a class="headerlink" href="#topas-graphical-user-interface" title="Link to this heading">¶</a></h1>
-<p>TOPAS includes an optional Graphical User Interface (GUI).
-The GUI allows the user to easily manipulate graphics
-(rotate, zoom and click on graphical elements to get more
-information about the selected geometry element or particle track)
-and inspect and adjust TOPAS parameters.</p>
-<p>The GUI is intended as a rapid prototyping extension of TOPAS.
-It allows you to easily see and adjust geometry
-and review the behavior of a small set of particle histories.
-The GUI then gives you the ability to save the new parameters,
-such that these saved values can later be loaded back in to a new
-TOPAS session, with or without the GUI.</p>
-<p>For larger, high precision runs, with larger numbers of histories,
-the user will generally run on a batch system (cluster or cloud)
-without the GUI.</p>
-<p>Future developments will extend the system such that users will
-be able to directly launch cluster or cloud jobs from the GUI,
-with the GUI serving to monitor the progress of those jobs and
-display their results.</p>
-<p>The GUI is based on the Qt Toolkit. To activate the GUI,
-include the following parameter in your TOPAS Parameter Control File:</p>
-<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="nc">Ts/</span><span class="na">UseQt</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="kc">&quot;True&quot;</span>
+<p>The Qt GUI adds a <strong>Parameter Control</strong> tab to TOPAS for quickly inspecting geometry, tweaking changeable parameters, running sequences, and capturing views. Use it for rapid prototyping; large production runs typically stay batch-only.</p>
+<section id="enable-the-gui">
+<h2>Enable the GUI<a class="headerlink" href="#enable-the-gui" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>Build TOPAS with Qt/OpenGL available. The GUI auto-activates on some platforms when OpenGL is requested when you add in your parameter file:</p>
+<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="kt">b</span><span class="n">:</span><span class="nc">Ts/</span><span class="na">UseQt</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="kc">&quot;True&quot;</span>
 </pre></div>
 </div>
-<p>TOPAS will then bring up the GUI.</p>
-<img alt="../_images/GUI.png" src="../_images/GUI.png" />
-<section id="mouse-control">
-<h2><strong>Mouse Control</strong><a class="headerlink" href="#mouse-control" title="Link to this heading">¶</a></h2>
-<p>The top row of icons determine the behavior of the mouse when
-one clicks in the graphics window. Going from left to right:</p>
+</li>
+<li><p>Optional: to keep the default Geant4 Qt widgets use the following parameter, otherwise the TOPAS tab replaces them.:</p>
+<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="nc">Ts/</span><span class="na">IncludeDefaultGeant4QtWidgets</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="kc">&quot;True&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run TOPAS normally; the Qt window opens with the TOPAS tab added.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GUI.png"><img alt="TOPAS Qt GUI window" src="../_images/GUI.png" style="width: 90%;" />
+</a>
+</section>
+<section id="mouse-controls-graphics-window">
+<h2>Mouse controls (graphics window)<a class="headerlink" href="#mouse-controls-graphics-window" title="Link to this heading">¶</a></h2>
+<p>Top-row Geant4 Qt icons control interaction: pick, zoom in/out, move (pan), rotate, perspective view, orthogonal view and exit. Use these to explore the scene while adjusting parameters.</p>
+<a class="reference internal image-reference" href="../_images/GUI_top_row.png"><img alt="Geant4 top tool bar" src="../_images/GUI_top_row.png" style="width: 50%;" />
+</a>
+</section>
+<section id="parameter-control">
+<h2>Parameter Control<a class="headerlink" href="#parameter-control" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/GUI_icons.png"><img alt="TOPAS tool bar" src="../_images/GUI_icons.png" style="width: 50%;" />
+</a>
+</section>
+<section id="toolbar-actions">
+<h2>Toolbar actions<a class="headerlink" href="#toolbar-actions" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Pick to Translate the Image. Moving the mouse will move the image left right up or down</p></li>
-<li><p>Pick to Inquire. A pop-up window will give details about the selected object within the image (name of geometry, material, density etc., or type of particle track, partile energy, etc.).</p></li>
-<li><p>Pick to Zoom out</p></li>
-<li><p>Pick to Zoom in</p></li>
-<li><p>Pick to Rotate. Moving the mouse will rotate the image.</p></li>
+<li><p>Hover over an icon displays its funtion.</p></li>
+<li><p><a class="reference internal" href="../_images/save_as.svg"><img alt="save_icon" src="../_images/save_as.svg" style="height: 32px;" /></a> <strong>Save</strong>: prompt for a filename (defaults to <code class="docutils literal notranslate"><span class="pre">Ts/ChangedParametersFile</span></code> or <code class="docutils literal notranslate"><span class="pre">ChangedParameters_1.txt</span></code>) and write only parameters changed in the session.</p></li>
+<li><p><a class="reference internal" href="../_images/add_box.svg"><img alt="geom_icon" src="../_images/add_box.svg" style="height: 32px;" /></a> <strong>+Geom</strong>: create new geometry components. Components can optionally be placed in dipole/quadrupole fields (before the first run) and given initial translations/rotations.</p></li>
+<li><p><a class="reference internal" href="../_images/add_chart.svg"><img alt="scorer_icon" src="../_images/add_chart.svg" style="height: 32px;" /></a> <strong>+Scorer</strong>: create new scorers, can only be added before the first run.</p></li>
+<li><p><a class="reference internal" href="../_images/add_flash.svg"><img alt="source_icon" src="../_images/add_flash.svg" style="height: 32px;" /></a> <strong>+Source</strong>: create new sources, can only be added before the first run.</p></li>
+<li><p><a class="reference internal" href="../_images/play.svg"><img alt="run_icon" src="../_images/play.svg" style="height: 32px;" /></a> <strong>Run</strong>: execute the sequence with current edits. If <code class="docutils literal notranslate"><span class="pre">Ge/QuitIfOverlapDetected</span></code> is true and overlaps exist, the run is blocked.</p></li>
+<li><p><a class="reference internal" href="../_images/photo.svg"><img alt="capture_icon" src="../_images/photo.svg" style="height: 32px;" /></a> <strong>Capture</strong>: export the current OpenGL view to PDF.</p></li>
+<li><p><strong>Expand/Collapse</strong>: toggle expansion of all parameter categories.</p></li>
 </ul>
 </section>
-<section id="the-parameter-control-table">
-<h2><strong>The Parameter Control Table</strong><a class="headerlink" href="#the-parameter-control-table" title="Link to this heading">¶</a></h2>
-<p>The Parameter Control Table includes one row for each of the parameters that you can adjust.
-Click on the given value to adjust.
-There may be a slider or a text input box, depending on the parameter type.
-If you type an invalid entry, a warning message will appear in the session console area on the lower right, and the previous value will be restored.</p>
-<p>You choose which of your TOPAS parameters will be displayed here
-by adding the prefix character “c” (for “changeable”) to the parameter type. So, for example, to have the Z Half Length of a component named
-MyBox be included in this control area, specify it in the parameter control file as:</p>
-<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="kt">ic</span><span class="n">:</span><span class="nc">Ge/MyBox/</span><span class="na">HLX</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="m">2</span>
-</pre></div>
-</div>
-<p>Or to have this NOT be present in the control area:</p>
-<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="kt">i</span><span class="n">:</span><span class="nc">Ge/MyBox/</span><span class="na">HLX</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="m">2</span>
-</pre></div>
-</div>
-</section>
-<section id="additional-functions">
-<h2><strong>Additional Functions</strong><a class="headerlink" href="#additional-functions" title="Link to this heading">¶</a></h2>
-<p>A set of buttons above the parameter control table support additional functions:</p>
+<section id="parameter-control-table">
+<h2>Parameter Control table<a class="headerlink" href="#parameter-control-table" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Save: saves the current set of parameters to a new file in your current directory. The file name will be displayed in the session console area on the lower right. The new file will NOT overwrite your original parameter file. Rather, it will create a new parameter file that includes only your changes, and that then uses the TOPAS inclueFile mechanism to bring in your original parameter file for the other, unchanged values.</p></li>
-<li><p>+Geom: Brings up a window to let you add a new Geometry Component</p></li>
-<li><p>+Scorer: Brings up a window to let you add a new Scorer. Note that due to constraints in the way Geant4 initializes various functions, you can only add scorers Before the first run.</p></li>
-<li><p>+Source: Brings up a window to let you add a new Particle Source. Note that due to constraints in the way Geant4 initializes various functions, you can only add scorers Before the first run.</p></li>
-<li><p>Run: Runs your simulation. You can issue this as many times as you wish, changing parameters and re-running to see new results.</p></li>
-<li><p>PDF: Saved the current graphics window to a PDF file in your current directory.</p></li>
+<li><p>Rows appear for parameters marked changeable: prefix the type with <code class="docutils literal notranslate"><span class="pre">c</span></code>/<code class="docutils literal notranslate"><span class="pre">ic</span></code>/<code class="docutils literal notranslate"><span class="pre">dc</span></code> etc. (for example <code class="docutils literal notranslate"><span class="pre">ic:Ge/MyBox/HLX</span> <span class="pre">=</span> <span class="pre">2</span></code>). Non-changeable variants (<code class="docutils literal notranslate"><span class="pre">i:...</span></code>) are hidden.</p></li>
+<li><p>Items in bold are read-only (e.g., geometry type/parent, scorer quantity/component, source type). Booleans use checkboxes; enums use drop-downs; other values are inline-editable with units.</p></li>
 </ul>
+<a class="reference internal image-reference" href="../_images/GUI_parameter_table.png"><img alt="TOPAS parameter table" src="../_images/GUI_parameter_table.png" style="width: 50%;" />
+</a>
+<ul class="simple">
+<li><p>Filter bar above the tree matches names or values. Edits apply immediately; invalid entries revert with a warning.</p></li>
+<li><p>Hover over a parameter displays its full TOPAS parameter syntax</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GUI_filter.png"><img alt="TOPAS filter" src="../_images/GUI_filter.png" style="width: 50%;" />
+</a>
+</section>
+<section id="context-menu-and-duplication">
+<h2>Context menu and duplication<a class="headerlink" href="#context-menu-and-duplication" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Right-click a geometry or source header in the tree to duplicate it.</p></li>
+<li><p><strong>Duplicate Geometry</strong> copies a component; you can override translation/rotation before creating the copy.</p></li>
+<li><p><strong>Duplicate Geometry Tree</strong> copies a component and all descendants using a chosen prefix while remapping parents inside the subtree.</p></li>
+<li><p><strong>Duplicate Source</strong> is available only before the first run. Scorers cannot be duplicated because key scorer parameters are read-only.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GUI_duplicate.png"><img alt="TOPAS duplicate" src="../_images/GUI_duplicate.png" style="width: 70%;" />
+</a>
 </section>
 <section id="scene-tree">
-<h2><strong>Scene Tree</strong><a class="headerlink" href="#scene-tree" title="Link to this heading">¶</a></h2>
-<p>You can switch from the Parameter Control widget to another widget called the Scene Tree.
-Scene Tree shows you the hierarchy of geometry volumes.
-You can turn on or off various volumes to better understand your geometry.</p>
+<h2>Scene Tree<a class="headerlink" href="#scene-tree" title="Link to this heading">¶</a></h2>
+<p>You can switch from the Parameter Control widget to the Scene Tree to view the geometry hierarchy. Toggle volumes on/off to inspect complex setups.</p>
+</section>
+<section id="notes-and-tips">
+<h2>Notes and tips<a class="headerlink" href="#notes-and-tips" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Added components/scorers/sources start with suggested names; change them before creation if desired. A read-only notice can be suppressed via “Don’t show again.”</p></li>
+<li><p>Save files from the GUI can be included in later runs to replay a GUI session in batch mode or as a starting point for scripted runs.</p></li>
+<li><p>Extra sequence files listed in <code class="docutils literal notranslate"><span class="pre">Ts/ExtraSequenceFiles</span></code> run after the main sequence when you press <strong>Run</strong>.</p></li>
+</ul>
+</section>
+<section id="more-on-extra-sequence-files">
+<h2>More on extra sequence files<a class="headerlink" href="#more-on-extra-sequence-files" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Ts/ExtraSequenceFiles</span></code> lists parameter files that run <strong>after</strong> the main sequence completes. Each file is read, its parameters applied, rebuilds occur, and a fresh sequence run starts.</p></li>
+<li><p>Files must not contain <code class="docutils literal notranslate"><span class="pre">IncludeFile</span></code> directives. If a listed file is missing, TOPAS sleeps <code class="docutils literal notranslate"><span class="pre">Ts/ExtraSequenceSleepInterval</span></code> between checks until <code class="docutils literal notranslate"><span class="pre">Ts/ExtraSequenceSleepLimit</span></code> is reached, then quits.</p></li>
+<li><p>Typical uses: chaining follow-on runs with small tweaks (geometry offsets, source settings, output names) or letting an external script drop in the next parameter set while TOPAS waits.</p></li>
+</ul>
 </section>
 </section>
 
@@ -792,10 +796,15 @@ You can turn on or off various volumes to better understand your geometry.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">TOPAS Graphical User Interface</a><ul>
-<li><a class="reference internal" href="#mouse-control"><strong>Mouse Control</strong></a></li>
-<li><a class="reference internal" href="#the-parameter-control-table"><strong>The Parameter Control Table</strong></a></li>
-<li><a class="reference internal" href="#additional-functions"><strong>Additional Functions</strong></a></li>
-<li><a class="reference internal" href="#scene-tree"><strong>Scene Tree</strong></a></li>
+<li><a class="reference internal" href="#enable-the-gui">Enable the GUI</a></li>
+<li><a class="reference internal" href="#mouse-controls-graphics-window">Mouse controls (graphics window)</a></li>
+<li><a class="reference internal" href="#parameter-control">Parameter Control</a></li>
+<li><a class="reference internal" href="#toolbar-actions">Toolbar actions</a></li>
+<li><a class="reference internal" href="#parameter-control-table">Parameter Control table</a></li>
+<li><a class="reference internal" href="#context-menu-and-duplication">Context menu and duplication</a></li>
+<li><a class="reference internal" href="#scene-tree">Scene Tree</a></li>
+<li><a class="reference internal" href="#notes-and-tips">Notes and tips</a></li>
+<li><a class="reference internal" href="#more-on-extra-sequence-files">More on extra sequence files</a></li>
 </ul>
 </li>
 </ul>
@@ -808,9 +817,9 @@ You can turn on or off various volumes to better understand your geometry.</p>
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=3304f9e4"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     <script src="../_static/search.js?v=71be8f69"></script>
     </body>
 </html>

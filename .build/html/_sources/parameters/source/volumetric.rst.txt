@@ -30,4 +30,23 @@ Examples that use this source can be found in:
 * :ref:`example_brachytherapy`
 * :ref:`example_VolumetricSource`
 
-The energies and species of the emitted particles can be specified using the same parameters available to the :ref:`source_beam`.
+The energies and species of the emitted particles can be specified using ::
+
+  s:So/MySource/VolumetricParticle = "gamma"
+  d:So/MySource/VolumetricEnergy = 1 MeV
+  u:So/MySource/VolumetricEnergySpread = 0
+
+or if using a spectrum::
+
+  s:So/MySource/VolumetricEnergySpectrumType = "Discreate" # Either "None", "Discreate" or "Continous" 
+  dv:So/MySource/VolumetricEnergySpectrumValues = 3 50. 100. 150 MeV
+  uv:So/MySource/VolumetricEnergySpectrumWeights = 3 0.2 0.6 0.2 
+
+
+.. admonition:: Warning
+   :class: warning
+
+   For this source type BeamParticle, BeamEnergy, BeamEnergySpread, BeamEnergySpectrumType, Values and Weights are deprecated. Now, use the source type as prefix for these parameters.
+
+
+

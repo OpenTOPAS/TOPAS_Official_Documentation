@@ -13,6 +13,7 @@ Overall program control
 ::
 
     i:Ts/Seed = 1 # starting random seed
+    b:Ts/ShowCPUTime = "True" # shows initialization, execution and finalization times 
     i:Ts/MaxStepNumber = 1000000 # limit on number of steps before a track is killed
     i:Ts/MaxInterruptedHistories = 10 # limit on how many histories can throw rare Geant4 errors
     b:Ts/DumpParameters = "False" # Set true to dump full set of parameters to html file TopasParameterDump_Run0.html

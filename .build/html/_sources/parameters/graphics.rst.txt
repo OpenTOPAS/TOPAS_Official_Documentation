@@ -88,7 +88,7 @@ Extra options used by OpenGL::
     d:Gr/MyGraphic1/Theta = 45. deg # view angle as in /vis/viewer/set/viewpointThetaPhi
     d:Gr/MyGraphic1/Phi = 45. deg # view angle as in /vis/viewer/set/viewpointThetaPhi
     u:Gr/MyGraphic1/TransX = 0. # move left or right in the view window
-    d:Gr/MyGraphic1/TransY = 0. # move up or down in the view window
+    u:Gr/MyGraphic1/TransY = 0. # move up or down in the view window
     s:Gr/MyGraphic1/Projection = "Perspective" # Defaults to "Orthogonal"
     d:Gr/MyGraphic1/PerspectiveAngle = 10. deg # Increase for stronger perspective effect
     i:Gr/MyGraphic1/WindowSizeX = 600
@@ -248,3 +248,4 @@ We sometimes see error messages from visualization of the following form:
 Such messages can be ignored. They do not affect the simulation results. We will revisit how to solve these error messages once we move to the next Geant4 version.
 
 .. todo:: Visualization error messages
+

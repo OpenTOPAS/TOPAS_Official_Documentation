@@ -67,5 +67,22 @@ See the example: :ref:`example_EnvironmentSource`
 
     The world must be bigger than the radiation cavity, which may be bigger than a box enclosing your geometry. TOPAS will tell you if you need to increase the world size.
 
-The energies and species of the emitted particles can be specified using the same parameters available to the :ref:`source_beam`.
+The energies and species of the emitted particles can be specified using ::
+
+  s:So/MySource/EnvironmentParticle = "gamma"
+  d:So/MySource/EnvironmentEnergy = 1 MeV
+  u:So/MySource/EnvironmentEnergySpread = 0
+
+or if using a spectrum::
+
+  s:So/MySource/EnvironmentEnergySpectrumType = "Discreate" # Either "None", "Discreate" or "Continous" 
+  dv:So/MySource/EnvironmentEnergySpectrumValues = 3 50. 100. 150 MeV
+  uv:So/MySource/EnvironmentEnergySpectrumWeights = 3 0.2 0.6 0.2 
+
+.. admonition:: Warning
+   :class: warning
+
+   For this source type BeamParticle, BeamEnergy, BeamEnergySpread, BeamEnergySpectrumType, Values and Weights are deprecated. Now, use the source type as prefix for these parameters.
+
+
 

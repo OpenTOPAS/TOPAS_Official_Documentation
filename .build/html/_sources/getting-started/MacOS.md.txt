@@ -109,9 +109,11 @@ Build Geant4. Take note of the following warnings before running the commands sh
 ```{admonition} Warning
 :class: warning
 
-Geant4 requires a minimum `CMake` version (between <em>3.16</em> and <em>3.243</em>). Check your version of `CMake` as follows:
+Geant4 requires a minimum `CMake` version (between <em>3.16</em> and <em>3.24.3</em>). Check your version of `CMake` as follows:
 
         cmake --version
+
+Using the most recent versions of CMake might trigger undesireable warnings or errors. If this occurs we **recommend downgrading to 3.24.3 or 3.28.1**, which we've tested and confirmed works.
 ```
 
 ```{admonition} Warning
@@ -120,6 +122,14 @@ Geant4 requires a minimum `CMake` version (between <em>3.16</em> and <em>3.243</
 Verify that `qt@6` is not linked or installed in your system. The following command should yield no output if `qt@6` is indeed **NOT** installed on your system. See the warning at the top of the document about `qt@6` compatibility.
 
         brew list --versions qt@6
+```
+
+```{admonition} Warning
+:class: warning
+
+Depending on your MacOS version you may or may not have XQuartz installed on your system. This can be tested with the following command which should yield no output if it is **NOT** installed. If this is the case please head to the official [Xquartz](https://www.xquartz.org) website to download the application.
+
+        which xquartz
 ```
 
 ```{admonition} Warning

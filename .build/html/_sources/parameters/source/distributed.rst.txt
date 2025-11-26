@@ -28,9 +28,20 @@ Additional required Parameters for the Distributed Source are::
 
 And then the usual other parameters to control particle type, energy, etc., such as::
 
-    s:So/Example/BeamParticle = "gamma"
-    d:So/Example/BeamEnergy = 10. keV
-    u:So/Example/BeamEnergySpread = 0.
+    s:So/Example/VolumetricParticle = "gamma"
+    d:So/Example/VolumetricEnergy = 10. keV
+    u:So/Example/VolumetricEnergySpread = 0.
+
+or if using a spectrum::
+
+    s:So/Example/VolumetricEnergySpectrumType = "Discreate" # Either "None", "Discreate" or "Continous" 
+    dv:So/Example/VolumetricEnergySpectrumValues = 3 50. 100. 150 MeV
+    uv:So/Example/VolumetricEnergySpectrumWeights = 3 0.2 0.6 0.2 
+
+.. admonition:: Warning
+   :class: warning
+
+   For this source type BeamParticle, BeamEnergy, BeamEnergySpread, BeamEnergySpectrumType, Values and Weights are deprecated. Now, use the source type as prefix for these parameters.
 
 Examples that use this source can be found in:
 

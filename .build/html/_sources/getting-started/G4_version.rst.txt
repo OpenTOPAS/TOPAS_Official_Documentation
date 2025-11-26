@@ -8,7 +8,7 @@ The following table lists the appropriate Geant4_ version to be used with TOPAS_
 ================= ========================
 TOPAS version     Geant4 version           
 ================= ========================
-OpenTOPAS v4.0.0  11.1.3                           
+OpenTOPAS v4.2.0  11.3.2                           
 ================= ========================
 
 For information pertaining to the appropriate Geant4 version/release notes of earlier versions of the software, please refer to the `old documentation`_.

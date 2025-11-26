@@ -136,10 +136,18 @@ You can ask TOPAS to print out the slice separation that it finds in in the DICO
 
     b:Ge/MyComponent/ShowSliceSeparations = "True"
 
+
+DICOM RT-Structures
+~~~~~~~~~~~~~~~~~~~~~~~
+
 TOPAS can also read DICOM RT Structure Sets.
-A structure set is an extra file in the DICOM directory that provides information on structures such as organs, tumors, PTVs, etc. that have been outlined (contoured) in the planning process. The data is stored as a set of polygons, up to one per slice for each contoured structure. TOPAS can color code DICOM components according to this structure information and can filter scoring based on these structures (see the ``OnlyIncludeIfInRTStructure`` filter in the :ref:`Filtering Scorers <scoring_filter>` section).
+A structure set is an extra file in the DICOM directory (or external file) that provides information on structures such as organs, tumors, PTVs, etc. that have been outlined (contoured) in the planning process. The data is stored as a set of polygons, up to one per slice for each contoured structure. TOPAS can color code DICOM components according to this structure information and can filter scoring based on these structures (see the ``OnlyIncludeIfInRTStructure`` filter in the :ref:`Filtering Scorers <scoring_filter>` section).
 
 .. todo:: DICOM RTSTRUCT actually supports multiple polygons per structure per slice
+
+TOPAS can automatically detect a DICOM-RT file within the DICOM CT directory. Optionally, user can supply the full path to the DICOM-RT file::
+
+    s:Ge/Patient/DicomRTStructFile = "/full/path/dicom-rt.dcm
 
 To make TOPAS color the voxels according to the structure::
 
@@ -151,6 +159,10 @@ To make TOPAS color the voxels according to the structure::
 * To allow easy testing of this feature in simple DICOM examples that don’t really have any structures, the following parameter will "fake" an RT structure set, assigning the given structure to all voxels in the lower XY quadrant::
 
     b:Ge/Patient/FakeStructures = "True"
+
+
+Utilities for handling DICOM RT-PLAN and RT-DOSE files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TOPAS can automatically set DicomOrigin parameters to help with patient positioning.
 

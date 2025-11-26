@@ -13,4 +13,5 @@ Variance Reduction
     specific_particles
     secondary_biasing
     forced_interaction
+    periodic_boundary
     crosssection_enhancement
