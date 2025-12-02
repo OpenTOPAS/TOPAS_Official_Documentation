@@ -650,6 +650,15 @@
 <section id="topas-graphical-user-interface">
 <h1>TOPAS Graphical User Interface<a class="headerlink" href="#topas-graphical-user-interface" title="Link to this heading">¶</a></h1>
 <p>The Qt GUI adds a <strong>Parameter Control</strong> tab to TOPAS for quickly inspecting geometry, tweaking changeable parameters, running sequences, and capturing views. Use it for rapid prototyping; large production runs typically stay batch-only.</p>
+<section id="version">
+<h2>Version<a class="headerlink" href="#version" title="Link to this heading">¶</a></h2>
+<p>QT5 and QT6 are supported, and the selection of which version will be used by TOPAS is done at <cite>cmake</cite> time by adding the variables <cite>TOPAS_USE_QT</cite> and <cite>TOPAS_USEQT</cite> (<strong>there is no default</strong>) as follows:</p>
+<ul class="simple">
+<li><p>QT5 version: <cite>-DTOPAS_USE_QT=ON -DTOPAS_USE QT6=OFF</cite></p></li>
+<li><p>QT6 version: <cite>-DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON</cite></p></li>
+</ul>
+<p><strong>The docker image only supports QT5</strong></p>
+</section>
 <section id="enable-the-gui">
 <h2>Enable the GUI<a class="headerlink" href="#enable-the-gui" title="Link to this heading">¶</a></h2>
 <ul>
@@ -692,6 +701,17 @@
 <li><p><strong>Expand/Collapse</strong>: toggle expansion of all parameter categories.</p></li>
 </ul>
 </section>
+<section id="required-parameter-prompts">
+<h2>Required-parameter prompts<a class="headerlink" href="#required-parameter-prompts" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>The “Select Component Type” dropdown is editable with type-ahead search.</p></li>
+<li><p>When adding components from the GUI, any known required parameters are collected up front in a dialog.</p></li>
+<li><p>String fields are auto-quoted if you omit quotes; numeric fields still expect units when applicable.</p></li>
+<li><p>Leaving a field blank skips adding that parameter (useful when you plan to supply defaults via include files).</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GUI_requiredparam.png"><img alt="TOPAS create new geometry" src="../_images/GUI_requiredparam.png" style="width: 90%;" />
+</a>
+</section>
 <section id="parameter-control-table">
 <h2>Parameter Control table<a class="headerlink" href="#parameter-control-table" title="Link to this heading">¶</a></h2>
 <ul class="simple">
@@ -711,22 +731,19 @@
 <h2>Context menu and duplication<a class="headerlink" href="#context-menu-and-duplication" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Right-click a geometry or source header in the tree to duplicate it.</p></li>
-<li><p><strong>Duplicate Geometry</strong> copies a component; you can override translation/rotation before creating the copy.</p></li>
+<li><p><strong>Duplicate Geometry</strong> copies a component; you can override translation/rotation before creating the copy. <strong>Duplicates have not changable parameters</strong>.</p></li>
 <li><p><strong>Duplicate Geometry Tree</strong> copies a component and all descendants using a chosen prefix while remapping parents inside the subtree.</p></li>
 <li><p><strong>Duplicate Source</strong> is available only before the first run. Scorers cannot be duplicated because key scorer parameters are read-only.</p></li>
 </ul>
 <a class="reference internal image-reference" href="../_images/GUI_duplicate.png"><img alt="TOPAS duplicate" src="../_images/GUI_duplicate.png" style="width: 70%;" />
 </a>
 </section>
-<section id="scene-tree">
-<h2>Scene Tree<a class="headerlink" href="#scene-tree" title="Link to this heading">¶</a></h2>
-<p>You can switch from the Parameter Control widget to the Scene Tree to view the geometry hierarchy. Toggle volumes on/off to inspect complex setups.</p>
-</section>
 <section id="notes-and-tips">
 <h2>Notes and tips<a class="headerlink" href="#notes-and-tips" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Added components/scorers/sources start with suggested names; change them before creation if desired. A read-only notice can be suppressed via “Don’t show again.”</p></li>
 <li><p>Save files from the GUI can be included in later runs to replay a GUI session in batch mode or as a starting point for scripted runs.</p></li>
+<li><p><strong>TsDicomPatient</strong>: when creating a geometry component using DICOM ensure that the image-to-material conversion parameters match with the name of the new component. E.g., in the examples/Patient/ files, the component name “Patient” is used, and <cite>HUtoMaterialSchneider.txt</cite> has parameters associated to this.</p></li>
 <li><p>Extra sequence files listed in <code class="docutils literal notranslate"><span class="pre">Ts/ExtraSequenceFiles</span></code> run after the main sequence when you press <strong>Run</strong>.</p></li>
 </ul>
 </section>
@@ -736,6 +753,50 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Ts/ExtraSequenceFiles</span></code> lists parameter files that run <strong>after</strong> the main sequence completes. Each file is read, its parameters applied, rebuilds occur, and a fresh sequence run starts.</p></li>
 <li><p>Files must not contain <code class="docutils literal notranslate"><span class="pre">IncludeFile</span></code> directives. If a listed file is missing, TOPAS sleeps <code class="docutils literal notranslate"><span class="pre">Ts/ExtraSequenceSleepInterval</span></code> between checks until <code class="docutils literal notranslate"><span class="pre">Ts/ExtraSequenceSleepLimit</span></code> is reached, then quits.</p></li>
 <li><p>Typical uses: chaining follow-on runs with small tweaks (geometry offsets, source settings, output names) or letting an external script drop in the next parameter set while TOPAS waits.</p></li>
+</ul>
+</section>
+<section id="geometry-extensions">
+<h2>Geometry Extensions<a class="headerlink" href="#geometry-extensions" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>User-defined Geometry Extensions can self-register via <code class="docutils literal notranslate"><span class="pre">TsGeometryHub::RegisterGeometryType</span></code>, so their types appear in the GUI selector automatically and can declare required fields for prompting.</p></li>
+<li><p>All registered types are listed in the GUI; user-defined extensions built with <code class="docutils literal notranslate"><span class="pre">-DTOPAS_EXTENSIONS_DIR=...</span></code> shown heir own parameters.</p></li>
+</ul>
+</section>
+<section id="example-registering-an-extension-component">
+<h2>Example: registering an extension component<a class="headerlink" href="#example-registering-an-extension-component" title="Link to this heading">¶</a></h2>
+<p>Add a small register in your component’s code before the constructor (recommended)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TsGeometryHub.hh&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TsMyCustomComponent.hh&quot;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">RegisterMyCustomComponent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RegisterMyCustomComponent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TsGeometryHub</span><span class="o">::</span><span class="n">RegisterGeometryType</span><span class="p">({</span>
+<span class="w">            </span><span class="s">&quot;TsMyCustomComponent&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Canonical GUI name</span>
+<span class="w">            </span><span class="p">[](</span><span class="n">TsParameterManager</span><span class="o">*</span><span class="w"> </span><span class="n">pM</span><span class="p">,</span><span class="w"> </span><span class="n">TsExtensionManager</span><span class="o">*</span><span class="w"> </span><span class="n">eM</span><span class="p">,</span>
+<span class="w">               </span><span class="n">TsMaterialManager</span><span class="o">*</span><span class="w"> </span><span class="n">mM</span><span class="p">,</span><span class="w"> </span><span class="n">TsGeometryManager</span><span class="o">*</span><span class="w"> </span><span class="n">gM</span><span class="p">,</span>
+<span class="w">               </span><span class="n">TsVGeometryComponent</span><span class="o">*</span><span class="w"> </span><span class="n">pgc</span><span class="p">,</span><span class="w"> </span><span class="n">G4VPhysicalVolume</span><span class="o">*</span><span class="w"> </span><span class="n">pv</span><span class="p">,</span>
+<span class="w">               </span><span class="n">G4String</span><span class="o">&amp;</span><span class="w"> </span><span class="n">childName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TsMyCustomComponent</span><span class="p">(</span><span class="n">pM</span><span class="p">,</span><span class="w"> </span><span class="n">eM</span><span class="p">,</span><span class="w"> </span><span class="n">mM</span><span class="p">,</span><span class="w"> </span><span class="n">gM</span><span class="p">,</span><span class="w"> </span><span class="n">pgc</span><span class="p">,</span><span class="w"> </span><span class="n">pv</span><span class="p">,</span><span class="w"> </span><span class="n">childName</span><span class="p">);</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="cm">/* DefaultsCreator */</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="c1">// optional; seed defaults if desired</span>
+<span class="w">            </span><span class="p">{</span><span class="w">   </span><span class="c1">// Required-at-creation params; leave DefaultValue &quot;&quot; to force a GUI prompt</span>
+<span class="w">                </span><span class="p">{</span><span class="s">&quot;s:Ge/{child}/InputFile&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">},</span><span class="w">  </span><span class="c1">// string will auto-quote if user omits quotes</span>
+<span class="w">                </span><span class="p">{</span><span class="s">&quot;dc:Ge/{child}/Size&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1. cm&quot;</span><span class="p">}</span><span class="w">  </span><span class="c1">// example with a default</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span><span class="w"> </span><span class="n">registerMyCustomComponent</span><span class="p">;</span><span class="w"> </span><span class="c1">// static instance</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace</span>
+
+<span class="n">TsMyCustomComponent</span><span class="o">::</span><span class="n">TsMyCustomComponent</span><span class="p">(</span><span class="n">TsParameterManager</span><span class="o">*</span><span class="w"> </span><span class="n">pM</span><span class="p">,</span><span class="w"> </span><span class="n">TsExtensionManager</span><span class="o">*</span><span class="w"> </span><span class="n">eM</span><span class="p">,</span><span class="w"> </span><span class="n">TsMaterialManager</span><span class="o">*</span><span class="w"> </span><span class="n">mM</span><span class="p">,</span><span class="w"> </span><span class="n">TsGeometryManager</span><span class="o">*</span><span class="w"> </span><span class="n">gM</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>TsVGeometryComponent* parentComponent, G4VPhysicalVolume* parentVolume, G4String&amp; name) {;}</p>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>Placing the register in the component’s <code class="docutils literal notranslate"><span class="pre">.cc</span></code> ensures registration happens when the extension is loaded; no changes to core are needed.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">RequiredParameters</span></code> to drive the GUI prompt; defaults are auto-added only when provided.</p></li>
 </ul>
 </section>
 </section>
@@ -796,15 +857,18 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">TOPAS Graphical User Interface</a><ul>
+<li><a class="reference internal" href="#version">Version</a></li>
 <li><a class="reference internal" href="#enable-the-gui">Enable the GUI</a></li>
 <li><a class="reference internal" href="#mouse-controls-graphics-window">Mouse controls (graphics window)</a></li>
 <li><a class="reference internal" href="#parameter-control">Parameter Control</a></li>
 <li><a class="reference internal" href="#toolbar-actions">Toolbar actions</a></li>
+<li><a class="reference internal" href="#required-parameter-prompts">Required-parameter prompts</a></li>
 <li><a class="reference internal" href="#parameter-control-table">Parameter Control table</a></li>
 <li><a class="reference internal" href="#context-menu-and-duplication">Context menu and duplication</a></li>
-<li><a class="reference internal" href="#scene-tree">Scene Tree</a></li>
 <li><a class="reference internal" href="#notes-and-tips">Notes and tips</a></li>
 <li><a class="reference internal" href="#more-on-extra-sequence-files">More on extra sequence files</a></li>
+<li><a class="reference internal" href="#geometry-extensions">Geometry Extensions</a></li>
+<li><a class="reference internal" href="#example-registering-an-extension-component">Example: registering an extension component</a></li>
 </ul>
 </li>
 </ul>
