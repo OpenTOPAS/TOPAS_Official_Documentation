@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="Graphics" href="../graphics.html"><link rel="prev" title="Output Specification" href="output.html">
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="Graphics" href="../graphics.html"><link rel="prev" title="Statistical Information" href="statinfo.html">
         <link rel="prefetch" href="../../_static/logo_with_background.png" as="image">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
@@ -270,6 +270,7 @@
 <li class="toctree-l2"><a class="reference internal" href="phasespace.html">Phase Space Scorer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="filter.html">Filtering Scorers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output.html">Output Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statinfo.html">Statistical Information</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Miscellaneous</a></li>
 </ul>
 </li>
@@ -762,39 +763,6 @@ This is the energy of the final scored particle, or its ancestor, when that part
 </div>
 <p>See the <a class="reference internal" href="../../examples-docs/Scoring/SplitByTimeFeature.html#example-scoring-timefeature"><span class="std std-ref">SplitByTimeFeature.txt</span></a> and <a class="reference internal" href="../../examples-docs/Patient/DoseTo4DCT.html#example-dicom-time"><span class="std std-ref">DoseTo4DCT.txt</span></a> examples.</p>
 </section>
-<section id="statistical-information">
-<h2>Statistical Information<a class="headerlink" href="#statistical-information" title="Link to this heading">¶</a></h2>
-<p>By default, scorers will report the sum of the scored quantity over all histories, but many additional reporting options are available:</p>
-<div class="highlight-topas notranslate"><div class="highlight"><pre><span></span><span class="kt">sv</span><span class="n">:</span><span class="nc">Sc/MyScorer/</span><span class="na">Report</span><span class="n"> </span><span class="o">=</span><span class="n"> </span><span class="m">1</span><span class="n"> </span><span class="s">&quot;Sum&quot;</span><span class="n"> </span><span class="c"># One or more of Sum, Mean, Histories, Count_In_Bin, Second_Moment, Variance, Standard_Deviation, Min, Max</span>
-</pre></div>
-</div>
-<p>Output columns will be in the same order as the values in the <code class="docutils literal notranslate"><span class="pre">Report</span></code> parameter.</p>
-<p>When there is binning by energy or time, and there is more than one <code class="docutils literal notranslate"><span class="pre">Report</span></code> option (such as <code class="docutils literal notranslate"><span class="pre">&quot;Sum&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Mean&quot;</span></code>), the output will be ordered as:</p>
-<ul class="simple">
-<li><p>Sum (underflow), Mean (underflow), Sum (bin 1), Mean (bin 1), Sum (bin 2), Mean (bin 2), etc.</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">&quot;Histories&quot;</span></code> is the total number of histories that were simulated while this scorer was active (that is, excludes any histories that were produced when this scorer was gated to inactive).</p>
-<p><code class="docutils literal notranslate"><span class="pre">&quot;Count_In_Bin&quot;</span></code> is the number of histories that contributed to this bin (that is, excludes any histories for which no particles hit this bin).</p>
-<p>If only <code class="docutils literal notranslate"><span class="pre">&quot;Sum&quot;</span></code> is requested, simple accumulation is used.
-If <code class="docutils literal notranslate"><span class="pre">&quot;Mean&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Second_Moment&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Variance&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Standard_Deviation&quot;</span></code> is requested, accumulation uses a numerically stable algorithm from:
-Donald E. Knuth (1998). The Art of Computer Programming, volume 2: Seminumerical Algorithms, 3rd edn., p. 232. Boston: Addison-Wesley:</p>
-<div class="highlight-plain notranslate"><div class="highlight"><pre><span></span><span class="n">for x in data:</span>
-<span class="n">    n = n+1</span>
-<span class="n">    delta = x - mean</span>
-<span class="n">    mean = mean + delta/n</span>
-<span class="n">    M2 = M2 + delta*(x - mean)</span>
-<span class="n">sum = n * mean</span>
-<span class="n">variance = M2/(n - 1)</span>
-<span class="n">standard deviation = sqrt(variance)</span>
-</pre></div>
-</div>
-<p>Note that if your geometry has many divisions (such as the 70M voxels of a 512 x 512 x 256 CT), and you ask for <code class="docutils literal notranslate"><span class="pre">&quot;Mean&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Second_Moment&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Variance&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Standard_Deviation&quot;</span></code>, you will see a speed penalty. This occurs because any bin that has ever been hit will then have to recalculate its mean or second moment to account for the new history (even if the current history doesn’t hit this bin).</p>
-<p>TOPAS calculates the variance (and hence the standard deviation) associated with the distribution of the quantity of interest (dose, fluence, etc).</p>
-<ul class="simple">
-<li><p>For the standard deviation of the mean value, divide the standard deviation from TOPAS by the square root of the total number of histories.</p></li>
-<li><p>For the standard deviation of the sum, multiply the standard deviation from TOPAS by the square root of the total number of histories.</p></li>
-</ul>
-</section>
 <section id="change-component-color-based-on-scoring">
 <h2>Change Component Color Based on Scoring<a class="headerlink" href="#change-component-color-based-on-scoring" title="Link to this heading">¶</a></h2>
 <p>You can make TOPAS recolor a component during simulation to reflect a scored value. Using this technique, you can, for example, make a box become darker as it accumulates dose. See the <a class="reference internal" href="../../examples-docs/TimeFeature/Darkening.html#example-timefeature-darkening"><span class="std std-ref">Darkening.txt</span></a> example.</p>
@@ -862,14 +830,14 @@ without having to repeat the full simulation.</p>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="output.html">
+          <a class="prev-page" href="statinfo.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Output Specification</div>
+                <div class="title">Statistical Information</div>
                 
               </div>
             </a>
@@ -908,7 +876,6 @@ without having to repeat the full simulation.</p>
 <li><a class="reference internal" href="#binning-by-energy">Binning by Energy</a></li>
 <li><a class="reference internal" href="#binning-by-time">Binning by Time</a></li>
 <li><a class="reference internal" href="#splitting-by-time-feature">Splitting by Time Feature</a></li>
-<li><a class="reference internal" href="#statistical-information">Statistical Information</a></li>
 <li><a class="reference internal" href="#change-component-color-based-on-scoring">Change Component Color Based on Scoring</a></li>
 <li><a class="reference internal" href="#toggling-a-scorer-off-and-on">Toggling a Scorer Off and On</a></li>
 <li><a class="reference internal" href="#restoring-results-from-files">Restoring Results from Files</a></li>

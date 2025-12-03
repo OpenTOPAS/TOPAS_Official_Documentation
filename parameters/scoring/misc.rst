@@ -138,48 +138,6 @@ creating one scorer for each defined range of ``PropellerRotation``::
 See the :ref:`example_scoring_timefeature` and :ref:`example_dicom_time` examples.
 
 
-
-Statistical Information
-~~~~~~~~~~~~~~~~~~~~~~~
-
-By default, scorers will report the sum of the scored quantity over all histories, but many additional reporting options are available::
-
-    sv:Sc/MyScorer/Report = 1 "Sum" # One or more of Sum, Mean, Histories, Count_In_Bin, Second_Moment, Variance, Standard_Deviation, Min, Max
-
-Output columns will be in the same order as the values in the ``Report`` parameter.
-
-When there is binning by energy or time, and there is more than one ``Report`` option (such as ``"Sum"`` and ``"Mean"``), the output will be ordered as:
-
-* Sum (underflow), Mean (underflow), Sum (bin 1), Mean (bin 1), Sum (bin 2), Mean (bin 2), etc.
-
-``"Histories"`` is the total number of histories that were simulated while this scorer was active (that is, excludes any histories that were produced when this scorer was gated to inactive).
-
-``"Count_In_Bin"`` is the number of histories that contributed to this bin (that is, excludes any histories for which no particles hit this bin).
-
-If only ``"Sum"`` is requested, simple accumulation is used.
-If ``"Mean"``, ``"Second_Moment"``, ``"Variance"`` or ``"Standard_Deviation"`` is requested, accumulation uses a numerically stable algorithm from:
-Donald E. Knuth (1998). The Art of Computer Programming, volume 2: Seminumerical Algorithms, 3rd edn., p. 232. Boston: Addison-Wesley:
-
-.. code-block:: plain
-
-    for x in data:
-        n = n+1
-        delta = x - mean
-        mean = mean + delta/n
-        M2 = M2 + delta*(x - mean)
-    sum = n * mean
-    variance = M2/(n - 1)
-    standard deviation = sqrt(variance)
-
-Note that if your geometry has many divisions (such as the 70M voxels of a 512 x 512 x 256 CT), and you ask for ``"Mean"``, ``"Second_Moment"``, ``"Variance"`` or ``"Standard_Deviation"``, you will see a speed penalty. This occurs because any bin that has ever been hit will then have to recalculate its mean or second moment to account for the new history (even if the current history doesn't hit this bin).
-
-TOPAS calculates the variance (and hence the standard deviation) associated with the distribution of the quantity of interest (dose, fluence, etc).
-
-* For the standard deviation of the mean value, divide the standard deviation from TOPAS by the square root of the total number of histories.
-* For the standard deviation of the sum, multiply the standard deviation from TOPAS by the square root of the total number of histories.
-
-
-
 Change Component Color Based on Scoring
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

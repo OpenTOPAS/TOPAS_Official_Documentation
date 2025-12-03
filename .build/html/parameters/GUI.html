@@ -270,6 +270,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scoring/phasespace.html">Phase Space Scorer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scoring/filter.html">Filtering Scorers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scoring/output.html">Output Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scoring/statinfo.html">Statistical Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scoring/misc.html">Miscellaneous</a></li>
 </ul>
 </li>
@@ -652,10 +653,10 @@
 <p>The Qt GUI adds a <strong>Parameter Control</strong> tab to TOPAS for quickly inspecting geometry, tweaking changeable parameters, running sequences, and capturing views. Use it for rapid prototyping; large production runs typically stay batch-only.</p>
 <section id="version">
 <h2>Version<a class="headerlink" href="#version" title="Link to this heading">¶</a></h2>
-<p>QT5 and QT6 are supported, and the selection of which version will be used by TOPAS is done at <cite>cmake</cite> time by adding the variables <cite>TOPAS_USE_QT</cite> and <cite>TOPAS_USEQT</cite> (<strong>there is no default</strong>) as follows:</p>
+<p>QT5 and QT6 are supported, and the selection of which version will be used by TOPAS is done at <cite>cmake</cite> time by adding the variables <cite>TOPAS_USE_QT</cite> and <cite>TOPAS_USE_QT6</cite> (<strong>there is no default</strong>) as follows:</p>
 <ul class="simple">
-<li><p>QT5 version: <cite>-DTOPAS_USE_QT=ON -DTOPAS_USE QT6=OFF</cite></p></li>
-<li><p>QT6 version: <cite>-DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON</cite></p></li>
+<li><p>QT5 version active: <cite>-DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=OFF</cite></p></li>
+<li><p>QT6 version active: <cite>-DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON</cite></p></li>
 </ul>
 <p><strong>The docker image only supports QT5</strong></p>
 </section>

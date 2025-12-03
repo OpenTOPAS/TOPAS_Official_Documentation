@@ -5,10 +5,10 @@ The Qt GUI adds a **Parameter Control** tab to TOPAS for quickly inspecting geom
 
 Version
 --------
-QT5 and QT6 are supported, and the selection of which version will be used by TOPAS is done at `cmake` time by adding the variables `TOPAS_USE_QT` and `TOPAS_USEQT` (**there is no default**) as follows:
+QT5 and QT6 are supported, and the selection of which version will be used by TOPAS is done at `cmake` time by adding the variables `TOPAS_USE_QT` and `TOPAS_USE_QT6` (**there is no default**) as follows:
 
-- QT5 version: `-DTOPAS_USE_QT=ON -DTOPAS_USE QT6=OFF`
-- QT6 version: `-DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON`
+- QT5 version active: `-DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=OFF`
+- QT6 version active: `-DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON`
 
 **The docker image only supports QT5**
 

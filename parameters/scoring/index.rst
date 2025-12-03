@@ -12,4 +12,5 @@ Scoring
     phasespace
     filter
     output
+    statinfo
     misc
