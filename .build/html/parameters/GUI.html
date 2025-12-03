@@ -770,7 +770,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TsMyCustomComponent.hh&quot;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="p">{</span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">RegisterMyCustomComponent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">RegisterMyCustomComponent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">RegisterMyCustomComponent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">TsGeometryHub</span><span class="o">::</span><span class="n">RegisterGeometryType</span><span class="p">({</span>
 <span class="w">            </span><span class="s">&quot;TsMyCustomComponent&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Canonical GUI name</span>
@@ -787,13 +787,12 @@
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">});</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="p">}</span><span class="w"> </span><span class="n">registerMyCustomComponent</span><span class="p">;</span><span class="w"> </span><span class="c1">// static instance</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">registerMyCustomComponent</span><span class="p">;</span><span class="w"> </span><span class="c1">// static instance</span>
 <span class="p">}</span><span class="w"> </span><span class="c1">// namespace</span>
 
-<span class="n">TsMyCustomComponent</span><span class="o">::</span><span class="n">TsMyCustomComponent</span><span class="p">(</span><span class="n">TsParameterManager</span><span class="o">*</span><span class="w"> </span><span class="n">pM</span><span class="p">,</span><span class="w"> </span><span class="n">TsExtensionManager</span><span class="o">*</span><span class="w"> </span><span class="n">eM</span><span class="p">,</span><span class="w"> </span><span class="n">TsMaterialManager</span><span class="o">*</span><span class="w"> </span><span class="n">mM</span><span class="p">,</span><span class="w"> </span><span class="n">TsGeometryManager</span><span class="o">*</span><span class="w"> </span><span class="n">gM</span><span class="p">,</span>
+<span class="n">TsMyCustomComponent</span><span class="o">::</span><span class="n">TsMyCustomComponent</span><span class="p">(</span><span class="n">TsParameterManager</span><span class="o">*</span><span class="w"> </span><span class="n">pM</span><span class="p">,</span><span class="w"> </span><span class="n">TsExtensionManager</span><span class="o">*</span><span class="w"> </span><span class="n">eM</span><span class="p">,</span><span class="w"> </span><span class="n">TsMaterialManager</span><span class="o">*</span><span class="w"> </span><span class="n">mM</span><span class="p">,</span><span class="w"> </span><span class="n">TsGeometryManager</span><span class="o">*</span><span class="w"> </span><span class="n">gM</span><span class="p">,</span><span class="w"> </span><span class="n">TsVGeometryComponent</span><span class="o">*</span><span class="w"> </span><span class="n">parentComponent</span><span class="p">,</span><span class="w"> </span><span class="n">G4VPhysicalVolume</span><span class="o">*</span><span class="w"> </span><span class="n">parentVolume</span><span class="p">,</span><span class="w"> </span><span class="n">G4String</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{;}</span>
 </pre></div>
 </div>
-<p>TsVGeometryComponent* parentComponent, G4VPhysicalVolume* parentVolume, G4String&amp; name) {;}</p>
 <p>Notes:</p>
 <ul class="simple">
 <li><p>Placing the register in the component’s <code class="docutils literal notranslate"><span class="pre">.cc</span></code> ensures registration happens when the extension is loaded; no changes to core are needed.</p></li>

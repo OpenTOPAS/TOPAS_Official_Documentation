@@ -122,7 +122,7 @@ Add a small register in your component’s code before the constructor (recommen
    #include "TsMyCustomComponent.hh"
 
    namespace {
-   struct RegisterMyCustomComponent {
+     struct RegisterMyCustomComponent {
        RegisterMyCustomComponent() {
            TsGeometryHub::RegisterGeometryType({
                "TsMyCustomComponent",  // Canonical GUI name
@@ -139,11 +139,10 @@ Add a small register in your component’s code before the constructor (recommen
                }
            });
        }
-   } registerMyCustomComponent; // static instance
+     } registerMyCustomComponent; // static instance
    } // namespace
 
-   TsMyCustomComponent::TsMyCustomComponent(TsParameterManager* pM, TsExtensionManager* eM, TsMaterialManager* mM, TsGeometryManager* gM,
-TsVGeometryComponent* parentComponent, G4VPhysicalVolume* parentVolume, G4String& name) {;}
+   TsMyCustomComponent::TsMyCustomComponent(TsParameterManager* pM, TsExtensionManager* eM, TsMaterialManager* mM, TsGeometryManager* gM, TsVGeometryComponent* parentComponent, G4VPhysicalVolume* parentVolume, G4String& name) {;}
 
 
 Notes:
