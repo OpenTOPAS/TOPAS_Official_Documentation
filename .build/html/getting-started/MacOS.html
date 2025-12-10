@@ -270,6 +270,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/phasespace.html">Phase Space Scorer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/filter.html">Filtering Scorers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/output.html">Output Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/statinfo.html">Statistical Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/misc.html">Miscellaneous</a></li>
 </ul>
 </li>
@@ -644,7 +645,7 @@
 <p>This page details the steps to be followed by <ins>Mac users</ins> in order to install OpenTOPAS and launch your first simulation.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>We recommend macOS version 14.0 (Sonoma) or higher. Furthermore these instructions are only compatible with <code class="docutils literal notranslate"><span class="pre">qt&#64;5</span></code> (see the warnings in Step 6 to ensure that <code class="docutils literal notranslate"><span class="pre">qt&#64;6</span></code> is not installed on your system). We take no responsibility for users who wish to proceed with <code class="docutils literal notranslate"><span class="pre">qt&#64;6</span></code> already installed on their system.</p>
+<p>We recommend macOS version 14.0 (Sonoma) or higher. Furthermore following these instructions are solely responsability of the end user.</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
@@ -675,8 +676,8 @@
 </section>
 <section id="step-3">
 <h2>Step 3<a class="headerlink" href="#step-3" title="Link to this heading">¶</a></h2>
-<p>Once Homebrew is installed, you will have access to the command <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span></code>. Use this command to install <code class="docutils literal notranslate"><span class="pre">qt&#64;5</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">wget</span></code>, and <code class="docutils literal notranslate"><span class="pre">cmake</span></code> by entering the following commands into your terminal:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    brew install qt@5
+<p>Once Homebrew is installed, you will have access to the command <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span></code>. Use this command to install <code class="docutils literal notranslate"><span class="pre">qt</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">wget</span></code>, and <code class="docutils literal notranslate"><span class="pre">cmake</span></code> by entering the following commands into your terminal:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    brew install qt
     brew install git
     brew install wget
     brew install cmake
@@ -689,13 +690,13 @@
 </section>
 <section id="step-4">
 <h2>Step 4<a class="headerlink" href="#step-4" title="Link to this heading">¶</a></h2>
-<p>If you have not done so already, download Geant4 version <em>11.1.3</em> (or <em>11.1.2</em>).</p>
-<p>4.1. For a manual download, go to the Geant4 <a class="reference external" href="https://geant4.web.cern.ch/download/all">website</a>, choose your version, scroll down to “Source code”, and download the compressed file. Create a directory called <code class="docutils literal notranslate"><span class="pre">GEANT4</span></code> in your <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> directory, move the compressed folder into this directory, and decompress the file. Assuming you downloaded version <em>11.1.3</em>, you should have the directory <code class="docutils literal notranslate"><span class="pre">/Applications/GEANT4/geant4-v11.1.3</span></code></p>
+<p>If you have not done so already, download Geant4 version <em>11.3.2</em></p>
+<p>4.1. For a manual download, go to the Geant4 <a class="reference external" href="https://geant4.web.cern.ch/download/all">website</a>, choose your version, scroll down to “Source code”, and download the compressed file. Create a directory called <code class="docutils literal notranslate"><span class="pre">GEANT4</span></code> in your <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> directory, move the compressed folder into this directory, and decompress the file. Assuming you downloaded version <em>11.3.1</em>, you should have the directory <code class="docutils literal notranslate"><span class="pre">/Applications/GEANT4/geant4-v11.3.2</span></code></p>
 <p>4.2. Alternatively, download Geant4 from the terminal as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    mkdir /Applications/GEANT4
     cd /Applications/GEANT4
-    wget https://gitlab.cern.ch/geant4/geant4/-/archive/v11.1.3/geant4-v11.1.3.tar.gz
-    tar zxf geant4-v11.1.3.tar.gz
+    wget https://gitlab.cern.ch/geant4/geant4/-/archive/v11.3.2/geant4-v11.3.2.tar.gz
+    tar zxf geant4-v11.3.2.tar.gz
 </pre></div>
 </div>
 </section>
@@ -707,36 +708,36 @@
     mkdir G4DATA
 </pre></div>
 </div>
-<p>5.2. Next, download the data files which correspond to your version of Geant4. The datasets for the latest Geant4 release may be donwloaded from (https://geant4.web.cern.ch/download/all). The datesets for earlier versions of Geant4 can be found by going to the specific webpage for your Geant4 <a class="reference external" href="https://geant4.web.cern.ch/download/11.1.3.html">version</a>. On the webpage, scroll down to “Datasets”, and hover over each data set name. For a manual download, get the <em>.tar.gz</em> files from the website, move them into <code class="docutils literal notranslate"><span class="pre">/Applications/GEANT4/G4DATA</span></code>, and decompress them.</p>
-<p>5.3. Alternatively, download the files using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command in your terminal; e.g., for Geant4-11.1.3:</p>
+<p>5.2. Next, download the data files which correspond to your version of Geant4. The datasets for the latest Geant4 release may be donwloaded from (https://geant4.web.cern.ch/download/all). The datesets for earlier versions of Geant4 can be found by going to the specific webpage for your Geant4 <a class="reference external" href="https://geant4.web.cern.ch/download/11.3.2.html">version</a>. On the webpage, scroll down to “Datasets”, and hover over each data set name. For a manual download, get the <em>.tar.gz</em> files from the website, move them into <code class="docutils literal notranslate"><span class="pre">/Applications/GEANT4/G4DATA</span></code>, and decompress them.</p>
+<p>5.3. Alternatively, download the files using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command in your terminal; e.g., for Geant4-11.3.2:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    cd /Applications/GEANT4/G4DATA/
-    wget https://cern.ch/geant4-data/datasets/G4NDL.4.7.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4EMLOW.8.2.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4PhotonEvaporation.5.7.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4RadioactiveDecay.5.6.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4PARTICLEXS.4.0.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4NDL.4.7.1.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4EMLOW.8.6.1.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4PhotonEvaporation.6.1.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4RadioactiveDecay.6.1.2.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4PARTICLEXS.4.1.tar.gz
     wget https://cern.ch/geant4-data/datasets/G4PII.1.3.tar.gz
     wget https://cern.ch/geant4-data/datasets/G4RealSurface.2.2.tar.gz
     wget https://cern.ch/geant4-data/datasets/G4SAIDDATA.2.0.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4ABLA.3.1.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4INCL.1.0.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4ENSDFSTATE.2.3.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4ABLA.3.3.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4INCL.1.2.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4ENSDFSTATE.3.0.tar.gz
     wget https://cern.ch/geant4-data/datasets/G4TENDL.1.4.tar.gz
     wget ftp://gdo-nuclear.ucllnl.org/LEND_GND1.3/LEND_GND1.3_ENDF.BVII.1.tar.gz
 </pre></div>
 </div>
 <p>5.4. Decompress them using <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">zxf</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    tar zxf G4NDL.4.7.tar.gz
-    tar zxf G4EMLOW.8.2.tar.gz
-    tar zxf G4PhotonEvaporation.5.7.tar.gz
-    tar zxf G4RadioactiveDecay.5.6.tar.gz
-    tar zxf G4PARTICLEXS.4.0.tar.gz
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    tar zxf G4NDL.4.7.1.tar.gz
+    tar zxf G4EMLOW.8.6.1.tar.gz
+    tar zxf G4PhotonEvaporation.6.1.tar.gz
+    tar zxf G4RadioactiveDecay.6.1.2.tar.gz
+    tar zxf G4PARTICLEXS.4.1.tar.gz
     tar zxf G4PII.1.3.tar.gz
     tar zxf G4RealSurface.2.2.tar.gz
     tar zxf G4SAIDDATA.2.0.tar.gz
-    tar zxf G4ABLA.3.1.tar.gz
-    tar zxf G4INCL.1.0.tar.gz
-    tar zxf G4ENSDFSTATE.2.3.tar.gz
+    tar zxf G4ABLA.3.3.tar.gz
+    tar zxf G4INCL.1.2.tar.gz
+    tar zxf G4ENSDFSTATE.3.0.tar.gz
     tar zxf G4TENDL.1.4.tar.gz
     tar zxf LEND_GND1.3_ENDF.BVII.1.tar.gz
 </pre></div>
@@ -755,13 +756,6 @@
 </div>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>Verify that <code class="docutils literal notranslate"><span class="pre">qt&#64;6</span></code> is not linked or installed in your system. The following command should yield no output if <code class="docutils literal notranslate"><span class="pre">qt&#64;6</span></code> is indeed <strong>NOT</strong> installed on your system. See the warning at the top of the document about <code class="docutils literal notranslate"><span class="pre">qt&#64;6</span></code> compatibility.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    brew list --versions qt@6
-</pre></div>
-</div>
-</div>
-<div class="warning admonition">
-<p class="admonition-title">Warning</p>
 <p>Depending on your MacOS version you may or may not have XQuartz installed on your system. This can be tested with the following command which should yield no output if it is <strong>NOT</strong> installed. If this is the case please head to the official <a class="reference external" href="https://www.xquartz.org">Xquartz</a> website to download the application.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    which xquartz
 </pre></div>
@@ -771,20 +765,21 @@
 <p class="admonition-title">Warning</p>
 <p>Those with M1, M2 or M3 chips (check by going to the apple logo on the upper left of your screen and clicking on “About this Mac”) have <code class="docutils literal notranslate"><span class="pre">arm64</span></code> architecture and should include this architecture in the <code class="docutils literal notranslate"><span class="pre">DCMAKE_OSX_ARCHITECTURES</span></code> option of the cmake command in step 6.2 below. Those with Intel chips should not include this command and can delete the last line of the cmake command.</p>
 </div>
-<p>6.1. Check which <code class="docutils literal notranslate"><span class="pre">qt&#64;5</span></code> version you have installed using the following command. If your qt&#64;5 version is 5.15.11 you can run the cmake command as shown in step 6.2 as is. Otherwise, replace the qt&#64;5 version in that command with the one you have on your system:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    brew list --versions qt@5
+<p>6.1. Check which <code class="docutils literal notranslate"><span class="pre">qt</span></code> version you have installed using the following command. If your qt version is e.g., 6.9.3 you can run the cmake command as shown in step 6.2 as is. Otherwise, replace the qt version in that command with the one you have on your system:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    brew list --versions qt
 </pre></div>
 </div>
 <p>6.2. Run the following commands:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    cd /Applications/GEANT4/
     mkdir geant4-{build,install}
     cd geant4-build
-    cmake ../geant4-v11.1.3 -DGEANT4_INSTALL_DATA=OFF \
+    cmake ../geant4-v11.3.2 -DGEANT4_INSTALL_DATA=OFF \
                             -DGEANT4_BUILD_MULTITHREADED=ON \
                             -DCMAKE_INSTALL_PREFIX=../geant4-install \
-                            -DCMAKE_PREFIX_PATH=/opt/homebrew/Cellar/qt@5/5.15.11 \
-                            -DGEANT4_USE_QT=ON -DGEANT4_USE_OPENGL_X11=ON \
-                            -DGEANT4_USE_RAYTRACER_X11=ON \
+                            -DCMAKE_PREFIX_PATH=/opt/homebrew/Cellar/qt/6.9.3 \
+                            -DGEANT4_USE_QT=ON -DGEANT4_USE_QT_QT6=ON -DGEANT4_USE_OPENGL=ON \
+                            -Geant4_USE_SYSTEM_ZLIB=ON \
+                            -DGEANT4_BUILD_VERBOSE_CODE=OFF \
                             -DCMAKE_OSX_ARCHITECTURES=arm64
     make -j20 install
 </pre></div>
@@ -830,9 +825,11 @@
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    cd /Applications/TOPAS
     mkdir OpenTOPAS-{build,install}
     cd OpenTOPAS-build
+    QT_PREFIX=$(brew --prefix qt)
+    export CMAKE_PREFIX_PATH=&quot;$QT_PREFIX:$CMAKE_PREFIX_PATH&quot;
     export Geant4_DIR=/Applications/GEANT4/geant4-install \
            GDCM_DIR=/Applications/GDCM/gdcm-install/
-    cmake ../OpenTOPAS -DCMAKE_INSTALL_PREFIX=../OpenTOPAS-install
+    cmake ../OpenTOPAS -DCMAKE_INSTALL_PREFIX=../OpenTOPAS-install -DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON -DCMAKE_PREFIX_PATH=&quot;$QT5_PREFIX&quot;
     make -j20 install
 </pre></div>
 </div>
@@ -947,7 +944,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2022, 2024, The TOPAS Collaboration
+                Copyright &#169; 2025 The TOPAS Collaboration
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -995,7 +992,7 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=3304f9e4"></script>
+</div><script src="../_static/documentation_options.js?v=ce74c6a2"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>

@@ -4,7 +4,7 @@ This page details the steps to be followed by <ins>Mac users</ins> in order to i
 ```{admonition} Warning
 :class: warning
 
-We recommend macOS version 14.0 (Sonoma) or higher. Furthermore these instructions are only compatible with `qt@5` (see the warnings in Step 6 to ensure that `qt@6` is not installed on your system). We take no responsibility for users who wish to proceed with `qt@6` already installed on their system.
+We recommend macOS version 14.0 (Sonoma) or higher. Furthermore following these instructions are solely responsability of the end user. 
 ```
 
 ```{admonition} Note
@@ -35,9 +35,9 @@ Follow the instructions posted to your terminal at the end of the Homebrew insta
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ## Step 3
-Once Homebrew is installed, you will have access to the command `brew install`. Use this command to install `qt@5`, `git`, `wget`, and `cmake` by entering the following commands into your terminal:
+Once Homebrew is installed, you will have access to the command `brew install`. Use this command to install `qt`, `git`, `wget`, and `cmake` by entering the following commands into your terminal:
 
-        brew install qt@5
+        brew install qt
         brew install git
         brew install wget
         brew install cmake
@@ -49,16 +49,16 @@ Steps 4-6 are used to install Geant4, the Monte Carlo toolkit that provides the 
 ```
 
 ## Step 4
-If you have not done so already, download Geant4 version <em>11.1.3</em> (or <em>11.1.2</em>).
+If you have not done so already, download Geant4 version <em>11.3.2</em> 
 
-4.1. For a manual download, go to the Geant4 [website](https://geant4.web.cern.ch/download/all), choose your version, scroll down to "Source code", and download the compressed file. Create a directory called `GEANT4` in your `/Applications` directory, move the compressed folder into this directory, and decompress the file. Assuming you downloaded version <em>11.1.3</em>, you should have the directory `/Applications/GEANT4/geant4-v11.1.3`
+4.1. For a manual download, go to the Geant4 [website](https://geant4.web.cern.ch/download/all), choose your version, scroll down to "Source code", and download the compressed file. Create a directory called `GEANT4` in your `/Applications` directory, move the compressed folder into this directory, and decompress the file. Assuming you downloaded version <em>11.3.1</em>, you should have the directory `/Applications/GEANT4/geant4-v11.3.2`
    
 4.2. Alternatively, download Geant4 from the terminal as follows:
 
         mkdir /Applications/GEANT4
         cd /Applications/GEANT4
-        wget https://gitlab.cern.ch/geant4/geant4/-/archive/v11.1.3/geant4-v11.1.3.tar.gz
-        tar zxf geant4-v11.1.3.tar.gz
+        wget https://gitlab.cern.ch/geant4/geant4/-/archive/v11.3.2/geant4-v11.3.2.tar.gz
+        tar zxf geant4-v11.3.2.tar.gz
  
 ## Step 5
 If you have not done so already, download the Geant4 data files which correspond to your version of Geant4.
@@ -68,38 +68,38 @@ If you have not done so already, download the Geant4 data files which correspond
         cd /Applications/GEANT4/
         mkdir G4DATA
 
-5.2. Next, download the data files which correspond to your version of Geant4. The datasets for the latest Geant4 release may be donwloaded from (https://geant4.web.cern.ch/download/all). The datesets for earlier versions of Geant4 can be found by going to the specific webpage for your Geant4 [version](https://geant4.web.cern.ch/download/11.1.3.html). On the webpage, scroll down to “Datasets”, and hover over each data set name. For a manual download, get the <em>.tar.gz</em> files from the website, move them into `/Applications/GEANT4/G4DATA`, and decompress them.
+5.2. Next, download the data files which correspond to your version of Geant4. The datasets for the latest Geant4 release may be donwloaded from (https://geant4.web.cern.ch/download/all). The datesets for earlier versions of Geant4 can be found by going to the specific webpage for your Geant4 [version](https://geant4.web.cern.ch/download/11.3.2.html). On the webpage, scroll down to “Datasets”, and hover over each data set name. For a manual download, get the <em>.tar.gz</em> files from the website, move them into `/Applications/GEANT4/G4DATA`, and decompress them.
 
-5.3. Alternatively, download the files using the `wget` command in your terminal; e.g., for Geant4-11.1.3:
+5.3. Alternatively, download the files using the `wget` command in your terminal; e.g., for Geant4-11.3.2:
 
         cd /Applications/GEANT4/G4DATA/
-        wget https://cern.ch/geant4-data/datasets/G4NDL.4.7.tar.gz
-        wget https://cern.ch/geant4-data/datasets/G4EMLOW.8.2.tar.gz
-        wget https://cern.ch/geant4-data/datasets/G4PhotonEvaporation.5.7.tar.gz
-        wget https://cern.ch/geant4-data/datasets/G4RadioactiveDecay.5.6.tar.gz
-        wget https://cern.ch/geant4-data/datasets/G4PARTICLEXS.4.0.tar.gz
+        wget https://cern.ch/geant4-data/datasets/G4NDL.4.7.1.tar.gz
+        wget https://cern.ch/geant4-data/datasets/G4EMLOW.8.6.1.tar.gz
+        wget https://cern.ch/geant4-data/datasets/G4PhotonEvaporation.6.1.tar.gz
+        wget https://cern.ch/geant4-data/datasets/G4RadioactiveDecay.6.1.2.tar.gz
+        wget https://cern.ch/geant4-data/datasets/G4PARTICLEXS.4.1.tar.gz
         wget https://cern.ch/geant4-data/datasets/G4PII.1.3.tar.gz
         wget https://cern.ch/geant4-data/datasets/G4RealSurface.2.2.tar.gz
         wget https://cern.ch/geant4-data/datasets/G4SAIDDATA.2.0.tar.gz
-        wget https://cern.ch/geant4-data/datasets/G4ABLA.3.1.tar.gz
-        wget https://cern.ch/geant4-data/datasets/G4INCL.1.0.tar.gz
-        wget https://cern.ch/geant4-data/datasets/G4ENSDFSTATE.2.3.tar.gz
+        wget https://cern.ch/geant4-data/datasets/G4ABLA.3.3.tar.gz
+        wget https://cern.ch/geant4-data/datasets/G4INCL.1.2.tar.gz
+        wget https://cern.ch/geant4-data/datasets/G4ENSDFSTATE.3.0.tar.gz
         wget https://cern.ch/geant4-data/datasets/G4TENDL.1.4.tar.gz
         wget ftp://gdo-nuclear.ucllnl.org/LEND_GND1.3/LEND_GND1.3_ENDF.BVII.1.tar.gz
 
 5.4. Decompress them using `tar zxf`.
 
-        tar zxf G4NDL.4.7.tar.gz
-        tar zxf G4EMLOW.8.2.tar.gz
-        tar zxf G4PhotonEvaporation.5.7.tar.gz
-        tar zxf G4RadioactiveDecay.5.6.tar.gz
-        tar zxf G4PARTICLEXS.4.0.tar.gz
+        tar zxf G4NDL.4.7.1.tar.gz
+        tar zxf G4EMLOW.8.6.1.tar.gz
+        tar zxf G4PhotonEvaporation.6.1.tar.gz
+        tar zxf G4RadioactiveDecay.6.1.2.tar.gz
+        tar zxf G4PARTICLEXS.4.1.tar.gz
         tar zxf G4PII.1.3.tar.gz
         tar zxf G4RealSurface.2.2.tar.gz
         tar zxf G4SAIDDATA.2.0.tar.gz
-        tar zxf G4ABLA.3.1.tar.gz
-        tar zxf G4INCL.1.0.tar.gz
-        tar zxf G4ENSDFSTATE.2.3.tar.gz
+        tar zxf G4ABLA.3.3.tar.gz
+        tar zxf G4INCL.1.2.tar.gz
+        tar zxf G4ENSDFSTATE.3.0.tar.gz
         tar zxf G4TENDL.1.4.tar.gz
         tar zxf LEND_GND1.3_ENDF.BVII.1.tar.gz
 
@@ -119,14 +119,6 @@ Using the most recent versions of CMake might trigger undesireable warnings or e
 ```{admonition} Warning
 :class: warning
 
-Verify that `qt@6` is not linked or installed in your system. The following command should yield no output if `qt@6` is indeed **NOT** installed on your system. See the warning at the top of the document about `qt@6` compatibility.
-
-        brew list --versions qt@6
-```
-
-```{admonition} Warning
-:class: warning
-
 Depending on your MacOS version you may or may not have XQuartz installed on your system. This can be tested with the following command which should yield no output if it is **NOT** installed. If this is the case please head to the official [Xquartz](https://www.xquartz.org) website to download the application.
 
         which xquartz
@@ -138,21 +130,22 @@ Depending on your MacOS version you may or may not have XQuartz installed on you
 Those with M1, M2 or M3 chips (check by going to the apple logo on the upper left of your screen and clicking on “About this Mac”) have `arm64` architecture and should include this architecture in the `DCMAKE_OSX_ARCHITECTURES` option of the cmake command in step 6.2 below. Those with Intel chips should not include this command and can delete the last line of the cmake command.
 ```
 
-6.1. Check which `qt@5` version you have installed using the following command. If your qt@5 version is 5.15.11 you can run the cmake command as shown in step 6.2 as is. Otherwise, replace the qt@5 version in that command with the one you have on your system:
+6.1. Check which `qt` version you have installed using the following command. If your qt version is e.g., 6.9.3 you can run the cmake command as shown in step 6.2 as is. Otherwise, replace the qt version in that command with the one you have on your system:
 
-        brew list --versions qt@5
+        brew list --versions qt
 
 6.2. Run the following commands: 
 
         cd /Applications/GEANT4/
         mkdir geant4-{build,install}
         cd geant4-build
-        cmake ../geant4-v11.1.3 -DGEANT4_INSTALL_DATA=OFF \
+        cmake ../geant4-v11.3.2 -DGEANT4_INSTALL_DATA=OFF \
                                 -DGEANT4_BUILD_MULTITHREADED=ON \
                                 -DCMAKE_INSTALL_PREFIX=../geant4-install \
-                                -DCMAKE_PREFIX_PATH=/opt/homebrew/Cellar/qt@5/5.15.11 \
-                                -DGEANT4_USE_QT=ON -DGEANT4_USE_OPENGL_X11=ON \
-                                -DGEANT4_USE_RAYTRACER_X11=ON \
+                                -DCMAKE_PREFIX_PATH=/opt/homebrew/Cellar/qt/6.9.3 \
+                                -DGEANT4_USE_QT=ON -DGEANT4_USE_QT_QT6=ON -DGEANT4_USE_OPENGL=ON \
+                                -Geant4_USE_SYSTEM_ZLIB=ON \
+                                -DGEANT4_BUILD_VERBOSE_CODE=OFF \
                                 -DCMAKE_OSX_ARCHITECTURES=arm64
         make -j20 install
 
@@ -199,9 +192,11 @@ Then use the following commands to move GDCM(<em>gdcm-2.6.8.tar.gz</em>) from th
         cd /Applications/TOPAS
         mkdir OpenTOPAS-{build,install}
         cd OpenTOPAS-build
+        QT_PREFIX=$(brew --prefix qt)
+        export CMAKE_PREFIX_PATH="$QT_PREFIX:$CMAKE_PREFIX_PATH"
         export Geant4_DIR=/Applications/GEANT4/geant4-install \
                GDCM_DIR=/Applications/GDCM/gdcm-install/
-        cmake ../OpenTOPAS -DCMAKE_INSTALL_PREFIX=../OpenTOPAS-install
+        cmake ../OpenTOPAS -DCMAKE_INSTALL_PREFIX=../OpenTOPAS-install -DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON -DCMAKE_PREFIX_PATH="$QT5_PREFIX"
         make -j20 install
 
 ## Step 8

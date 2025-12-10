@@ -270,6 +270,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/phasespace.html">Phase Space Scorer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/filter.html">Filtering Scorers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/output.html">Output Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/statinfo.html">Statistical Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../parameters/scoring/misc.html">Miscellaneous</a></li>
 </ul>
 </li>
@@ -641,7 +642,7 @@
         <article role="main" id="furo-main-content">
           <section id="quickstart-guide-for-debian">
 <h1>QuickStart Guide for Debian<a class="headerlink" href="#quickstart-guide-for-debian" title="Link to this heading">¶</a></h1>
-<p>This page details the steps to be followed by <ins>Debian 10 or 11</ins> in order to install OpenTOPAS and launch your first simulation.</p>
+<p>This page details the steps to be followed by <ins>Debian 10, 11 or 12</ins> in order to install OpenTOPAS and launch your first simulation.</p>
 <div class="tip admonition">
 <p class="admonition-title">Tip</p>
 <p>The directory path setting proposed in this quickStart guide sets a local installation at the home directory (path defined by <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> environment variable). Then, it requires the existence or creation of a <code class="docutils literal notranslate"><span class="pre">$HOME/Applications</span></code> folder. For a global installation, a directory named <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> should be created, which might need admin privileges. In this case, change the occurrences of <code class="docutils literal notranslate"><span class="pre">$HOME/Applications</span></code> in this quickStart guide to <code class="docutils literal notranslate"><span class="pre">/Applications</span></code>.</p>
@@ -652,7 +653,7 @@
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Tip</p>
-<p>Steps 1 to 4 are only needed if you have never installed the necessary libraries, <code class="docutils literal notranslate"><span class="pre">Cmake</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span></code> or <code class="docutils literal notranslate"><span class="pre">qt5</span></code>. Otherwise you can skip these steps.</p>
+<p>Steps 1 to 4 are only needed if you have never installed the necessary libraries, <code class="docutils literal notranslate"><span class="pre">Cmake</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span></code> or <code class="docutils literal notranslate"><span class="pre">qt</span></code>. Otherwise you can skip these steps.</p>
 </div>
 <section id="step-1">
 <h2>Step 1<a class="headerlink" href="#step-1" title="Link to this heading">¶</a></h2>
@@ -694,13 +695,13 @@
 </section>
 <section id="step-4">
 <h2>Step 4<a class="headerlink" href="#step-4" title="Link to this heading">¶</a></h2>
-<p>Install <code class="docutils literal notranslate"><span class="pre">qt5</span></code>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    sudo apt install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+<p>Install <code class="docutils literal notranslate"><span class="pre">qt</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    sudo apt install qt6-base-dev qt6-base-dev-tools qt6-tools-dev qt6-tools-dev-tools libqt6opengl6-dev
 </pre></div>
 </div>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>The visualization of the current version of OpenTOPAS is only compatible with <code class="docutils literal notranslate"><span class="pre">qt5</span></code>, not <code class="docutils literal notranslate"><span class="pre">qt6</span></code> or other <code class="docutils literal notranslate"><span class="pre">qt</span></code> versions.</p>
+<p>The visualization of the current version of OpenTOPAS is only compatible with <code class="docutils literal notranslate"><span class="pre">qt6</span></code>, not other <code class="docutils literal notranslate"><span class="pre">qt</span></code> versions.</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
@@ -709,15 +710,15 @@
 </section>
 <section id="step-5">
 <h2>Step 5<a class="headerlink" href="#step-5" title="Link to this heading">¶</a></h2>
-<p>If you have not done so already, download Geant4 version <em>11.1.3</em> (or <em>11.1.2</em>).</p>
+<p>If you have not done so already, download Geant4 version <em>11.3.2</em> (or <em>11.3.1</em>).</p>
 <p>5.1.a Download Geant4 from the terminal as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    mkdir $HOME/Applications/GEANT4
     cd $HOME/Applications/GEANT4
-    wget https://gitlab.cern.ch/geant4/geant4/-/archive/v11.1.3/geant4-v11.1.3.tar.gz
-    tar -zxf geant4-v11.1.3.tar.gz
+    wget https://gitlab.cern.ch/geant4/geant4/-/archive/v11.3.2/geant4-v11.3.2.tar.gz
+    tar -zxf geant4-v11.3.2.tar.gz
 </pre></div>
 </div>
-<p>5.1.b Alternatively, you can download Geant4 manually. For a manual download, go to the Geant4 <a class="reference external" href="https://geant4.web.cern.ch/download/all">website</a>, choose your version, scroll down to “Source code”, and download the compressed file. Create a directory called <code class="docutils literal notranslate"><span class="pre">GEANT4</span></code> in your <code class="docutils literal notranslate"><span class="pre">$HOME/Applications</span></code> directory, move the compressed folder into this directory, and decompress the file. Assuming you downloaded version <em>11.1.3</em>, you should have the directory <code class="docutils literal notranslate"><span class="pre">$HOME/Applications/GEANT4/geant4-v11.1.3</span></code></p>
+<p>5.1.b Alternatively, you can download Geant4 manually. For a manual download, go to the Geant4 <a class="reference external" href="https://geant4.web.cern.ch/download/all">website</a>, choose your version, scroll down to “Source code”, and download the compressed file. Create a directory called <code class="docutils literal notranslate"><span class="pre">GEANT4</span></code> in your <code class="docutils literal notranslate"><span class="pre">$HOME/Applications</span></code> directory, move the compressed folder into this directory, and decompress the file. Assuming you downloaded version <em>11.3.2</em>, you should have the directory <code class="docutils literal notranslate"><span class="pre">$HOME/Applications/GEANT4/geant4-v11.3.2</span></code></p>
 </section>
 <section id="step-6">
 <h2>Step 6<a class="headerlink" href="#step-6" title="Link to this heading">¶</a></h2>
@@ -726,57 +727,57 @@
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    mkdir $HOME/Applications/GEANT4/G4DATA
 </pre></div>
 </div>
-<p>6.2.a Next, download the files using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command in your terminal; e.g., for Geant4-11.1.3:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    cd $HOME/Applications/GEANT4/G4DATA/
-    wget https://cern.ch/geant4-data/datasets/G4NDL.4.7.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4EMLOW.8.2.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4PhotonEvaporation.5.7.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4RadioactiveDecay.5.6.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4PARTICLEXS.4.0.tar.gz
+<p>6.2.a Next, download the files using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command in your terminal; e.g., for Geant4-11.3.2:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    cd /Applications/GEANT4/G4DATA/
+    wget https://cern.ch/geant4-data/datasets/G4NDL.4.7.1.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4EMLOW.8.6.1.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4PhotonEvaporation.6.1.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4RadioactiveDecay.6.1.2.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4PARTICLEXS.4.1.tar.gz
     wget https://cern.ch/geant4-data/datasets/G4PII.1.3.tar.gz
     wget https://cern.ch/geant4-data/datasets/G4RealSurface.2.2.tar.gz
     wget https://cern.ch/geant4-data/datasets/G4SAIDDATA.2.0.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4ABLA.3.1.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4INCL.1.0.tar.gz
-    wget https://cern.ch/geant4-data/datasets/G4ENSDFSTATE.2.3.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4ABLA.3.3.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4INCL.1.2.tar.gz
+    wget https://cern.ch/geant4-data/datasets/G4ENSDFSTATE.3.0.tar.gz
     wget https://cern.ch/geant4-data/datasets/G4TENDL.1.4.tar.gz
     wget ftp://gdo-nuclear.ucllnl.org/LEND_GND1.3/LEND_GND1.3_ENDF.BVII.1.tar.gz
+
+ Decompress them using `tar zxf`.
+
+    tar zxf G4NDL.4.7.1.tar.gz
+    tar zxf G4EMLOW.8.6.1.tar.gz
+    tar zxf G4PhotonEvaporation.6.1.tar.gz
+    tar zxf G4RadioactiveDecay.6.1.2.tar.gz
+    tar zxf G4PARTICLEXS.4.1.tar.gz
+    tar zxf G4PII.1.3.tar.gz
+    tar zxf G4RealSurface.2.2.tar.gz
+    tar zxf G4SAIDDATA.2.0.tar.gz
+    tar zxf G4ABLA.3.3.tar.gz
+    tar zxf G4INCL.1.2.tar.gz
+    tar zxf G4ENSDFSTATE.3.0.tar.gz
+    tar zxf G4TENDL.1.4.tar.gz
+    tar zxf LEND_GND1.3_ENDF.BVII.1.tar.gz
 </pre></div>
 </div>
-<p>and ecompress them using <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-zxf</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    tar -zxf G4NDL.4.7.tar.gz
-    tar -zxf G4EMLOW.8.2.tar.gz
-    tar -zxf G4PhotonEvaporation.5.7.tar.gz
-    tar -zxf G4RadioactiveDecay.5.6.tar.gz
-    tar -zxf G4PARTICLEXS.4.0.tar.gz
-    tar -zxf G4PII.1.3.tar.gz
-    tar -zxf G4RealSurface.2.2.tar.gz
-    tar -zxf G4SAIDDATA.2.0.tar.gz
-    tar -zxf G4ABLA.3.1.tar.gz
-    tar -zxf G4INCL.1.0.tar.gz
-    tar -zxf G4ENSDFSTATE.2.3.tar.gz
-    tar -zxf G4TENDL.1.4.tar.gz
-    tar -zxf LEND_GND1.3_ENDF.BVII.1.tar.gz
-</pre></div>
-</div>
-<p>6.2.b Alternatively, download manually the data files which correspond to your version of Geant4. The datasets for the latest Geant4 release may be donwloaded from (https://geant4.web.cern.ch/download/all). The datesets for earlier versions of Geant4 can be found by going to the specific webpage for your Geant4 <a class="reference external" href="https://geant4.web.cern.ch/download/11.1.3.html">version</a>. On the webpage, scroll down to “Datasets”, and hover over each data set name. For a manual download, get the <em>.tar.gz</em> files from the website, move them into <code class="docutils literal notranslate"><span class="pre">$HOME/Applications/GEANT4/G4DATA</span></code>, and decompress them.</p>
+<p>6.2.b Alternatively, download manually the data files which correspond to your version of Geant4. The datasets for the latest Geant4 release may be donwloaded from (https://geant4.web.cern.ch/download/all). The datesets for earlier versions of Geant4 can be found by going to the specific webpage for your Geant4 <a class="reference external" href="https://geant4.web.cern.ch/download/11.3.2.html">version</a>. On the webpage, scroll down to “Datasets”, and hover over each data set name. For a manual download, get the <em>.tar.gz</em> files from the website, move them into <code class="docutils literal notranslate"><span class="pre">$HOME/Applications/GEANT4/G4DATA</span></code>, and decompress them.</p>
 </section>
 <section id="step-7">
 <h2>Step 7<a class="headerlink" href="#step-7" title="Link to this heading">¶</a></h2>
 <p>Build Geant4.</p>
-<p>7.1. Check where qt5 is stored in your system. The commands below assume it is at <code class="docutils literal notranslate"><span class="pre">/usr/lib/qt5</span></code>. In case qt5 is not stored in that directory in your system, replace the directory path after the command <code class="docutils literal notranslate"><span class="pre">-DCMAKE_PREFIX_PATH=</span></code> by the appropriate directory.</p>
+<p>7.1. Check where qt is stored in your system. The commands below assume it is at <code class="docutils literal notranslate"><span class="pre">/usr/lib/qt6</span></code>. In case qt is not stored in that directory in your system, replace the directory path after the command <code class="docutils literal notranslate"><span class="pre">-DCMAKE_PREFIX_PATH=</span></code> by the appropriate directory.</p>
 <p>7.2. Run the following commands:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    cd $HOME/Applications/GEANT4/
     rm -rf geant4-install geant4-build
     mkdir geant4-{build,install}
     cd geant4-build
-    cmake ../geant4-v11.1.3 -DGEANT4_INSTALL_DATA=OFF -DGEANT4_BUILD_MULTITHREADED=ON -DCMAKE_INSTALL_PREFIX=../geant4-install -DCMAKE_PREFIX_PATH=/usr/lib/qt5 -DGEANT4_USE_QT=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_RAYTRACER_X11=ON 
+    cmake ../geant4-v11.3.2 -DGEANT4_INSTALL_DATA=OFF -DGEANT4_BUILD_MULTITHREADED=ON -DCMAKE_INSTALL_PREFIX=../geant4-install -DCMAKE_PREFIX_PATH=/usr/lib/qt6 -DGEANT4_USE_QT=ON -DGEANT4_USE_QT_QT6=ON -DGEANT4_BUILD_VERBOSE_CODE=OFF 
     sudo make -j20 install
 </pre></div>
 </div>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>If you have downloaded <code class="docutils literal notranslate"><span class="pre">GEANT4</span></code> version <em>11.1.2</em> instead of <em>11.1.3</em>, you should replace <code class="docutils literal notranslate"><span class="pre">geant4-v11.1.3</span></code> by <code class="docutils literal notranslate"><span class="pre">geant4-v11.1.2</span></code> after <code class="docutils literal notranslate"><span class="pre">cmake</span></code> in the commands above.</p>
+<p>If you have downloaded <code class="docutils literal notranslate"><span class="pre">GEANT4</span></code> version <em>11.3.1</em> instead of <em>11.3.2</em>, you should replace <code class="docutils literal notranslate"><span class="pre">geant4-v11.3.2</span></code> by <code class="docutils literal notranslate"><span class="pre">geant4-v11.3.1</span></code> after <code class="docutils literal notranslate"><span class="pre">cmake</span></code> in the commands above.</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
@@ -792,7 +793,7 @@
     git clone https://github.com/OpenTOPAS/OpenTOPAS.git
 </pre></div>
 </div>
-<p>8.1.b Alternatively, you can download OpenTOPAS manually. For a manual download, go to the OpenTOPAS <a class="reference external" href="https://github.com/OpenTOPAS/OpenTOPAS/tree/master">GitHub</a>, click on the green tab named <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> and <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">ZIP</span></code>. Create a directory called <code class="docutils literal notranslate"><span class="pre">TOPAS</span></code> in your <code class="docutils literal notranslate"><span class="pre">$HOME/Applications</span></code> directory, move the compressed folder into this directory, and decompress the file. To follow the following commands, rename the decompressed folder <code class="docutils literal notranslate"><span class="pre">OpenTOPAS-main</span></code> as <code class="docutils literal notranslate"><span class="pre">OpenTOPAS</span></code>. You should have the directory <code class="docutils literal notranslate"><span class="pre">$HOME/Applications/TOPAS/Open-TOPAS</span></code></p>
+<p>8.1.b Alternatively, you can download OpenTOPAS manually. For a manual download, go to the OpenTOPAS <a class="reference external" href="https://github.com/OpenTOPAS/OpenTOPAS/tree/main">GitHub</a>, click on the green tab named <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> and <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">ZIP</span></code>. Create a directory called <code class="docutils literal notranslate"><span class="pre">TOPAS</span></code> in your <code class="docutils literal notranslate"><span class="pre">$HOME/Applications</span></code> directory, move the compressed folder into this directory, and decompress the file. To follow the following commands, rename the decompressed folder <code class="docutils literal notranslate"><span class="pre">OpenTOPAS-main</span></code> as <code class="docutils literal notranslate"><span class="pre">OpenTOPAS</span></code>. You should have the directory <code class="docutils literal notranslate"><span class="pre">$HOME/Applications/TOPAS/Open-TOPAS</span></code></p>
 <p>8.2. Next, check if the $HOME/Applications/GDCM already exists (GDCM is already installed). If so, rename the directory to GDCM-OLD (or another name) using the following command.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    mv $HOME/Applications/GDCM $HOME/Applications/GDCM-OLD
 </pre></div>
@@ -930,7 +931,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2022, 2024, The TOPAS Collaboration
+                Copyright &#169; 2025 The TOPAS Collaboration
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -979,7 +980,7 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=3304f9e4"></script>
+</div><script src="../_static/documentation_options.js?v=ce74c6a2"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
