@@ -60,7 +60,7 @@ author = 'The TOPAS Collaboration'
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
-# The short X.Y version.
+# The short X.Y.Z version.
 version = 'latest'
 # The full version, including alpha/beta/rc tags.
 release = '4.2.0'
