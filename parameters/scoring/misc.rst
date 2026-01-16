@@ -68,6 +68,45 @@ The :ref:`example_eDepBinnedE` example shows the effect of the three different c
 
 The output will include two extra bins, one for underflow (energy < ``EBinMin``), one for overflow (energy > ``EBinMax``). And if you have set EBinEnergy to IncidentTrack, there will be one more bin to hold those deposits for which there is no incident track (the primary particle was created already inside the scoring component, so neither it nor any ancestor of it was ever incident upon the scoring component).
 
+Energy binning uses lower-edge–based bins (lower edge inclusive, upper edge exclusive), not mid‑edge or upper edge. For linear binning, the binning is configured as
+
+  .. code-block:: text
+
+      # Setup
+      binWidth = (EBinMax - EBinMin) / EBins
+
+      # Assign bin for energy E
+      if E < EBinMin:
+          bin = 0                      # underflow
+      else if E >= EBinMax:
+          bin = EBins + 1          # overflow
+      else:
+          bin = int((E - EBinMin) / binWidth) + 1
+          # bin 1..NEBins are the real linear bins
+
+For log bining, the bins are configured as follows
+
+  .. code-block:: text
+
+      # Setup
+      if EBinMin == 0 -> error
+      logMin = log10(EBinMin)
+      logMax = log10(EBinMax)
+      logStep = (logMax - logMin) / EBins
+      for i = 0 to EBins-1:
+          lowerEdge[i] = 10^(logMin + i * logStep)
+
+      # Assign bin for energy E
+      if E < EBinMin:
+          bin = 0                  # underflow
+      else if E >= EBinMax:
+          bin = EBins + 1          # overflow
+      else:
+          bin = 0
+          while bin < EBins and E >= lowerEdge[bin]:
+              bin = bin + 1
+          # bin 1..EBins are the real log bins
+
 
 
 .. _scoring_binning_time:
@@ -200,3 +239,4 @@ You can run additional Outcome Model calculations, or repeat previous calculatio
 without having to repeat the full simulation.
 
 This option can also be used to read in binary output and write out csv, or vice versa.
+
