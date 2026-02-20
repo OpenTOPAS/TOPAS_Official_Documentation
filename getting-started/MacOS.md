@@ -31,8 +31,9 @@ Install [Homebrew](https://brew.sh/). Access the Homebrew website given in Step 
 
 Follow the instructions posted to your terminal at the end of the Homebrew installation; e.g., enter the following commands:
 
-        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        echo >> $HOME/.zprofile
+	echo 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' >> $HOME/.zprofile
+	eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
 ## Step 3
 Once Homebrew is installed, you will have access to the command `brew install`. Use this command to install `qt`, `git`, `wget`, and `cmake` by entering the following commands into your terminal:
@@ -144,7 +145,7 @@ Those with M1, M2 or M3 chips (check by going to the apple logo on the upper lef
                                 -DCMAKE_INSTALL_PREFIX=../geant4-install \
                                 -DCMAKE_PREFIX_PATH=/opt/homebrew/Cellar/qt/6.9.3 \
                                 -DGEANT4_USE_QT=ON -DGEANT4_USE_QT_QT6=ON -DGEANT4_USE_OPENGL=ON \
-                                -Geant4_USE_SYSTEM_ZLIB=ON \
+                                -DGEANT4_USE_SYSTEM_ZLIB=ON \
                                 -DGEANT4_BUILD_VERBOSE_CODE=OFF \
                                 -DCMAKE_OSX_ARCHITECTURES=arm64
         make -j20 install
@@ -196,7 +197,7 @@ Then use the following commands to move GDCM(<em>gdcm-2.6.8.tar.gz</em>) from th
         export CMAKE_PREFIX_PATH="$QT_PREFIX:$CMAKE_PREFIX_PATH"
         export Geant4_DIR=/Applications/GEANT4/geant4-install \
                GDCM_DIR=/Applications/GDCM/gdcm-install/
-        cmake ../OpenTOPAS -DCMAKE_INSTALL_PREFIX=../OpenTOPAS-install -DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON -DCMAKE_PREFIX_PATH="$QT5_PREFIX"
+        cmake ../OpenTOPAS -DCMAKE_INSTALL_PREFIX=../OpenTOPAS-install -DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON -DCMAKE_PREFIX_PATH="$QT_PREFIX"
         make -j20 install
 
 ## Step 8
