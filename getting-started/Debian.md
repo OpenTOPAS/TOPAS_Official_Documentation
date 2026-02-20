@@ -190,7 +190,7 @@ Then use the following commands to move GDCM(<em>gdcm-2.6.8.tar.gz</em>) from th
         cd OpenTOPAS-build
         export Geant4_DIR=$HOME/Applications/GEANT4/geant4-install
         export GDCM_DIR=$HOME/Applications/GDCM/gdcm-install
-        cmake ../OpenTOPAS -DCMAKE_INSTALL_PREFIX=../OpenTOPAS-install
+        cmake ../OpenTOPAS -DCMAKE_INSTALL_PREFIX=../OpenTOPAS-install -DTOPAS_USE_QT=ON -DTOPAS_USE_QT6=ON
         sudo make -j20 install
 
 ## Step 9
