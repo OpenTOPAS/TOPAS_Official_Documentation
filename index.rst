@@ -39,7 +39,7 @@ To discover the Geant4 version used by a specific version of TOPAS, please consu
     parameters/time
     parameters/variance/index
     parameters/outcome
-    parameters/GUI
+    parameters/GUI/index
     parameters/parameter_optimization
     examples-docs/MVLinac/intro
 
