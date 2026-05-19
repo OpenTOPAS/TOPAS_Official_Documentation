@@ -1,5 +1,5 @@
 # Demonstrates changing color scheme of trajectories.
-# Trajectories are colored based on the process that created the trajectory.
+# Trajectories are colored based on the momentum of the particle.
 
 s:Ge/Box/Type       = "TsBox"
 s:Ge/Box/Parent     = "World"
@@ -62,8 +62,8 @@ i:Gr/MyOGL/WindowSizeY = 600
 i:Gr/MyOGL/WindowPosX  = 0
 i:Gr/MyOGL/WindowPosY  = 0
 s:Gr/MyOGL/ColorBy     = "Momentum"
-dv:Gr/MyOGL/ColorByMomentumRanges          = 4 1. 10. 450. 1000. MeV
-sv:Gr/MyOGL/ColorByMomentumColors          = 5 "red" "yellow" "green" "blue" "white"
+dv:Gr/MyOGL/ColorByMomentumRanges          = 4 1. 10. 450. 1000. MeV # limits of momentum ranges
+sv:Gr/MyOGL/ColorByMomentumColors          = 5 "red" "yellow" "green" "blue" "white" # one for every energy interval that is defined by those ranges - one more value than number of ranges since includes less than first range value and greater than first range value
 
 s:So/Example/Type                     = "Beam"
 s:So/Example/Component                = "BeamPosition"
