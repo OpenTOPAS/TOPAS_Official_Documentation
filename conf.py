@@ -239,10 +239,21 @@ html_js_files = ['search.js']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'TOPASdoc'
 
+
 # -- Announcement everywhere ---------------------------------------------
 rst_prolog = """
 .. attention::
-    | **New: Sign up for TOPAS Announcements Email List**
+    | **New: Next TOPAS User Meeting at AAPM **
+    | Are you joining AAPM this year in Vancouver? 
+    | Join us for a user meeting, Monday 7/20, 6pm
+    | Location TBD (check back here or 
+    | on LinkedIn: https://www.linkedin.com/company/110193068/admin/dashboard/
+"""
+
+# -- Announcement everywhere ---------------------------------------------
+rst_prolog = """
+.. attention::
+    | ** Sign up for TOPAS Announcements Email List**
     | Get updates on user meetings, code releases, and more. 
     | For more, see https://github.com/OpenTOPAS/OpenTOPAS/discussions/185
 """
