@@ -3,7 +3,7 @@
 Cloud
 -----
 
-Welcome to the ...! We have added ... capabilities to the GUI of OpenTOPAS which allows you to run your simulations using AWS compute resources.
+Welcome to the cloud section of the TOPAS documentation. We have added cloud capabilities to the GUI of OpenTOPAS which allows you to run your simulations using AWS compute resources.
 
 This implementation is based on the infrastructure and workflows recently released by TOPAS-nBio. Consequently, you are required to go through 
 the setup steps described in the TOPAS-nBio `documentation <https://topas-nbio.readthedocs.io/en/latest/Cloud/CloudOverview.html>`_ before being able 
