@@ -107,6 +107,8 @@ For log bining, the bins are configured as follows
               bin = bin + 1
           # bin 1..EBins are the real log bins
 
+Starting with OpenTOPAS v4.3.0, scorer output headers for logarithmic energy binning report the energy range, the base-10 bin width, and the ratio between adjacent bin edges. This information allows the bin edges to be reconstructed from the output file alone.
+
 
 
 .. _scoring_binning_time:

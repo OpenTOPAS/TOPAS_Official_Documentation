@@ -17,6 +17,8 @@ If you want to run with no physics, but only the transportation process (useful 
 Below is a :ref:`physics_available_modules` with the corresponding Geant4 class names.
 Users who are advanced experts in Geant4 physics can also write their own Geant4 physics modules.
 
+Starting with OpenTOPAS v4.3.0, module-name lookup is case-insensitive. OpenTOPAS can also load physics constructors registered with the Geant4 physics-constructor registry, so constructors supplied by the Geant4 version used to build OpenTOPAS can be named directly in the ``Modules`` parameter. The available registry constructors depend on that Geant4 release. If a module has already been registered, OpenTOPAS skips the duplicate instead of registering it a second time.
+
 The remaining options for the ``"Geant4_Modular"`` physics type are::
 
     d:Ph/Default/CutForAllParticles = 0.05 mm # single range cut to use for all particles
@@ -106,6 +108,8 @@ List of Available Modules
 
 Users who are advanced experts in Geant4 physics can also write their own Geant4 physics modules
 and plug these into TOPAS through the Extensions Interface.
+
+The table lists the aliases supplied directly by OpenTOPAS. As of v4.3.0, Geant4 registry names are also accepted and are resolved case-insensitively.
 
 ==========================  ===========================
 TOPAS Module Name           Geant4 Class Name

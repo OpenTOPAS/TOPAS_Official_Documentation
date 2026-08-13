@@ -22,7 +22,7 @@ To set a property based on a scalar only one parameter is needed, for example::
     d:Ma/MyMaterial/ScintillationYield1 = 1120 /MeV
     d:Ma/MyMaterial/ScintillationTimeConstant1 = 2.1 ns
 
-The full list of parameters available in Geant4 is listed in the next `link <https://geant4.kek.jp/lxr/source/materials/src/G4MaterialPropertiesTable.cc?v=11.1.3>`_. 
+The full list of parameters available in Geant4 is listed in the next `link <https://geant4.kek.jp/lxr/source/materials/src/G4MaterialPropertiesTable.cc?v=11.4.2>`_.
 
 Optical Surfaces
 ~~~~~~~~~~~~~~~~
