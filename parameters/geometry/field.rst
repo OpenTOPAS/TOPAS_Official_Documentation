@@ -5,7 +5,7 @@ You can assign an electric, magnetic or combined electromagnetic field to any ge
 
 To assign a field, add the parameter ``Field``, as in::
 
-    s:Ge/MyComponent/Field = "DipoleMagnet" # "DipoleMagnet", "QuadrupoleMagnet", "MappedMagnet", "UniformElectroMagnetic" or your own definition
+    s:Ge/MyComponent/Field = "DipoleMagnet" # "DipoleMagnet", "QuadrupoleMagnet", "MappedMagnet", "MagneticFieldMap", "ElectricFieldMap", "UniformElectroMagnetic" or your own definition
 
 For ``"DipoleMagnet"``, specify dipole field and strength (see :ref:`example_special_dipole`)::
 
@@ -19,9 +19,30 @@ For ``"QuadrupoleMagnet"``, specify the two components of the gradient (see :ref
     d:Ge/MyComponent/MagneticFieldGradientX = 1.0 tesla
     d:Ge/MyComponent/MagneticFieldGradientY = 1.0 tesla
 
-For ``"MappedMagnet"``, specify a field map in the Opera 3D format (see :ref:`example_special_purgingmagnet`)::
+For a mapped magnetic field, use ``"MappedMagnet"`` or the equivalent
+``"MagneticFieldMap"`` value::
 
+    s:Ge/MyComponent/Field = "MagneticFieldMap"
     s:Ge/MyComponent/MagneticField3DTable = "PurgMag3D.TABLE"
+
+Both Opera 3D ``.TABLE`` files and ``.csv`` files are supported (see
+:ref:`example_special_purgingmagnet`). File-extension matching is case-sensitive.
+
+For a mapped electric field, use::
+
+    s:Ge/MyComponent/Field = "ElectricFieldMap"
+    s:Ge/MyComponent/ElectricField3DTable = "ElectricField.csv"
+
+Mapped electric fields also support Opera 3D ``.TABLE`` files and ``.csv`` files.
+
+A magnetic-field CSV file must contain columns ``X``, ``Y``, ``Z``, ``Bx``, ``By``
+and ``Bz``. An electric-field CSV file must contain columns ``X``, ``Y``, ``Z``,
+``Ex``, ``Ey`` and ``Ez``. Each header must specify its unit, for example::
+
+    X [mm],Y [mm],Z [mm],Bx [T],By [T],Bz [T]
+
+Position units may be ``mm``, ``cm`` or ``m``. Magnetic-field units may be ``T`` or
+``G``. Electric-field units may be ``V/m``, ``V/cm``, ``kV/cm`` or ``MV/m``.
 
 For ``"UniformElectroMagnetic"``, specify electric field and dipole magnetic field (see :ref:`example_special_electromagnet`)::
 

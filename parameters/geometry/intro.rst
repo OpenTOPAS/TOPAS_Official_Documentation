@@ -20,6 +20,15 @@ Each ``Type`` has its own set of additional required parameters, discussed elsew
 
 The World can be either a ``TsBox``, ``TsSphere`` or ``TsCylinder``.
 
+By default, OpenTOPAS supplies the smallest World half-length to Geant4 as the maximum
+world extent used to calculate geometry tolerances. Advanced users can override that
+extent with::
+
+    d:Ge/World/GeometricTolerance = 5. m
+
+Despite its name, this parameter sets the world extent from which Geant4 derives its
+surface and radial tolerances; it does not directly set either tolerance.
+
 The component name can include the forward slash character ``/``, and this is used in many examples to give some hints about component hierarchy , such as::
 
     s:Ge/VBox2/Dipole/Parent = "Nozzle"

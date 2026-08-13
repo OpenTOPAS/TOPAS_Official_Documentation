@@ -11,12 +11,19 @@ entire run sequence has occurred. Accordingly, the new system works by evaluatin
 tests only after the entire run sequence is complete (all Histories of all Runs). TOPAS then
 evaluates the tests, and repeats the entire run sequence until all tests have been satisfied.
 
-The tests are tied to the scoring system. Any scorer can have up to three tests.
+The tests are tied to the scoring system. Any scorer can have up to four tests.
 New parameters are::
 
     d:Sc/MyScorer/RepeatSequenceUntilSumGreaterThan = 1. MeV # type can be d, u or i depending on scoring quantity
     d:Sc/MyScorer/RepeatSequenceUntilStandardDeviationLessThan = .004 MeV # type can be d, u or i
+    u:Sc/MyScorer/RepeatSequenceUntilRelativeStandardDeviationLessThan = .02
     i:Sc/MyScorer/RepeatSequenceUntilCountGreaterThan = 1200
+
+``RepeatSequenceUntilRelativeStandardDeviationLessThan`` repeats the sequence until
+the standard error of the mean divided by the mean is no greater than the specified
+limit. The value is unitless and must be between 0 and 1. The scorer's ``Report``
+parameter must contain ``Second_Moment``, ``Variance`` or ``Standard_Deviation``;
+``Mean`` does not need to be explicitly reported.
 
 The second two tests above are necessary because the StandardDeviation is subject to
 statistical noise until a reasonable amount of data has been collected.

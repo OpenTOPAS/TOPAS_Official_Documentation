@@ -15,10 +15,11 @@ Overall program control
     i:Ts/Seed = 1 # starting random seed
     b:Ts/ShowCPUTime = "True" # shows initialization, execution and finalization times 
     i:Ts/MaxStepNumber = 1000000 # limit on number of steps before a track is killed
-    i:Ts/MaxInterruptedHistories = 10 # limit on how many histories can throw rare Geant4 errors
+    i:Ts/MaxInterruptedHistories = 0 # limit on histories interrupted by Geant4 errors; 0 disables the limit
     b:Ts/DumpParameters = "False" # Set true to dump full set of parameters to html file TopasParameterDump_Run0.html
     b:Ts/DumpNonDefaultParameters = "False" # Like above but omits defaults
     b:Ts/ListUnusedParameters = "False" # Set true to list unused parameters on the console
+    b:Ts/LimitConsoleToOneThread = "False" # Set true to suppress worker-thread console output
     i:Ts/ShowHistoryCountAtInterval = 1 # How often to print history count to the console
     b:Ts/ShowHistoryCountLessFrequentlyAsSimulationProgresses = "False" # Counts by 1, then by 10, then by 100, etc.
     i:Ts/MaxShowHistoryCountInterval = "2147483647" # Stops increasing count interval after this limit
@@ -28,6 +29,7 @@ Overall program control
     b:Ts/PauseBeforeInit = "False" # Pause for Geant4 commands before initialization
     b:Ts/PauseBeforeSequence = "False" # Pause for Geant4 commands before run sequence
     b:Ts/PauseBeforeQuit = "False" # Pause for Geant4 commands before quitting
+    b:Ts/IncludeDefaultGeant4QtWidgets = "False"
     i:Ts/RunVerbosity = 0 # Set to larger integer to see details of run. Maximum is 2
     i:Ts/EventVerbosity = 0 # Set to larger integer to see details of event. Maximum is 5
     i:Ts/TrackingVerbosity = 0 # Set to larger integer to see details of tracking
@@ -35,10 +37,39 @@ Overall program control
     b:Ts/QuitIfManyHistoriesSeemAnomalous = "True" # Quits if Geant4 warnings issued on too many histories
     i:Ts/NumberOfAnomalousHistoriesToAllowInARow = 10000 # Limit for above
     b:Ts/RestoreResultsFromFile = "False" # Re-reads previous results to allow new output format or outcome modeling
+    i:Ts/FindSeedForRun = 0
+    i:Ts/FindSeedForHistory = -1 # -1 disables seed searching
     i:Ts/NumberOfThreads = 1 # Number of CPU threads to which work will be distributed
     b:Ts/BufferThreadOutput = "False" # Causes console output to be show one thread at a time
     b:Ts/TreatExcitedIonsAsGroundState = "False" # Allows you to read back in excited ions in a phase space file
     s:Ts/G4DataDirectory = "" # Specify path to Geant4 Data files (instead of having to set environment variable)
+    b:Ts/UseQt = "False"
+    d:Ts/ExtraSequenceSleepInterval = 10. s
+    d:Ts/ExtraSequenceSleepLimit = 36000. s
+
+
+
+Limits and reporting for simulation anomalies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    d:Ts/KilledTrackMaxEnergy = 0. MeV
+    i:Ts/KilledTrackMaxCount = 0
+    i:Ts/KilledTrackMaxReports = 0
+    d:Ts/UnscoredHitMaxEnergy = 0. MeV
+    i:Ts/UnscoredHitMaxCount = 0
+    i:Ts/UnscoredHitMaxReports = 0
+    d:Ts/ParameterizationErrorMaxEnergy = 0. MeV
+    i:Ts/ParameterizationErrorMaxCount = 0
+    i:Ts/ParameterizationErrorMaxReports = 0
+    d:Ts/IndexErrorMaxEnergy = 0. MeV
+    i:Ts/IndexErrorMaxCount = 0
+    i:Ts/IndexErrorMaxReports = 0
+    i:Ts/InterruptedHistoryMaxReports = 0
+
+A zero ``MaxCount`` or ``MaxEnergy`` value disables termination based on that limit.
+A zero ``MaxReports`` value leaves the number of detailed reports unlimited.
 
 
 
@@ -60,6 +91,7 @@ Optional checks on correctness of geometry
 
 ::
 
+    i:Ge/Verbosity = 0
     b:Ge/CheckForOverlaps = "True"
     b:Ge/CheckInsideEnvelopesForOverlaps = "False" # Speeds up checking by assuming inner parts of components are OK
     i:Ge/CheckForOverlapsResolution = 1000
@@ -67,6 +99,8 @@ Optional checks on correctness of geometry
     b:Ge/QuitIfOverlapDetected = "True"
     i:Ge/NumberOfPointsPerOverlapCheck = 100
     b:Ge/CheckForUnusedComponents = "True"
+    b:Ge/ForceUseOfCoupledTransportation = "False"
+    b:Ge/CacheMaterialMapForEachTimeSlice = "True"
 
 
 
@@ -112,6 +146,7 @@ Demo Particle Source
 
 ::
 
+    i:So/Verbosity = 0
     s:So/Demo/Type = "Beam" # Beam, Isotropic, Emittance or PhaseSpace
     s:So/Demo/Component = "BeamPosition"
     s:So/Demo/BeamParticle = "proton"
@@ -142,10 +177,11 @@ Physics
 
     s:Ph/ListName = "Default"
     b:Ph/ListProcesses = "False" # Set true to dump list of active physics processes to console
+    b:Ph/SetNeutronToStable = "False"
     s:Ph/Default/Type = "Geant4_Modular"
     sv:Ph/Default/Modules = 6 "g4em-standard_opt4" "g4h-phy_QGSP_BIC_HP" "g4decay" "g4ion-binarycascade" "g4h-elastic_HP" "g4stopping"
     d:Ph/Default/EMRangeMin = 100. eV
-    d:Ph/Default/EMRangeMax = 500. MeV
+    d:Ph/Default/EMRangeMax = 600. MeV
 
 
 
@@ -154,6 +190,7 @@ Scoring
 
 ::
 
+    i:Sc/Verbosity = 0
     b:Sc/AddUnitEvenIfItIsOne = "False" # If unit is 1, rather than, say, Gy, default is to leave out unit in header.
     s:Sc/RootFileName = "topas" # name for root output files
     s:Sc/XmlFileName = "topas" # name for xml output files
@@ -280,6 +317,8 @@ Materials
 
     s:Ma/DefaultColor = "white"
     i:Ma/Verbosity = 0 # Set to 1 to report each time a material is defined
+    b:Ma/SetOpticalPropertiesForPatientMaterials = "False"
+    sv:Ma/ExtraMaterialNamesForQtMenu = 10 "G4_WATER" "G4_He" "G4_Au" "G4_W" "G4_ADIPOSE_TISSUE_ICRP" "G4_BONE_COMPACT_ICRU" "G4_BONE_CORTICAL_ICRP" "G4_MUSCLE_SKELETAL_ICRP" "G4_SKIN_ICRP" "G4_TISSUE_SOFT_ICRP"
 
     sv:Ma/Vacuum/Components = 4 "Carbon" "Nitrogen" "Oxygen" "Argon"
     uv:Ma/Vacuum/Fractions = 4 0.000124 0.755268 0.231781 0.012827

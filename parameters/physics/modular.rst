@@ -30,7 +30,7 @@ The remaining options for the ``"Geant4_Modular"`` physics type are::
     d:Ph/Default/CutForDeuteron = 0.05 mm # overrides CutForAllParticles for Deuteron
     d:Ph/Default/CutForTriton = 0.05 mm # overrides CutForAllParticles for Triton
     d:Ph/Default/EMRangeMin = 100. eV # minimum for EM tables
-    d:Ph/Default/EMRangeMax = 500. MeV # maximum for EM tables
+    d:Ph/Default/EMRangeMax = 600. MeV # maximum for EM tables
     i:Ph/Default/EMBins = 77 # number of bins for EM tables
     i:Ph/Default/EMBinsPerDecade = 7 # number of bins per decade for EM tables
     b:Ph/Default/Fluorescence = "False" # Set to true to turn on Fluorescence
@@ -38,6 +38,8 @@ The remaining options for the ``"Geant4_Modular"`` physics type are::
     b:Ph/Default/AugerCascade = "False" # Set to true to turn on AugerCascade
     b:Ph/Default/DeexcitationIgnoreCut = "False" # Set to true to implement DeexcitationIgnoreCut
     b:Ph/Default/PIXE = "False" # Set to true to turn on PIXE
+
+For Geant4 11.3 and later, ``EMRangeMax`` must be at least 600 MeV. Geant4 rejects and ignores lower values so that standard ionisation and multiple scattering remain defined for Geant4-DNA physics configurations.
 
 
 

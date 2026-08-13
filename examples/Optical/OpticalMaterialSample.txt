@@ -21,6 +21,7 @@ s:Ma/Buapfcfm/DefaultColor= "yellow"
 d:Ma/Buapfcfm/ScintillationYield      = 50 /MeV
 u:Ma/Buapfcfm/ResolutionScale         = 1.0
 d:Ma/Buapfcfm/ScintillationTimeConstant1        = 2.1 ns 
+#u:Ma/Buapfcfm/YieldRatio              = 1.0
 dv:Ma/Buapfcfm/RIndex/Energies    = 4 2.11501 2.3509 2.85803 3.10177 eV
 uv:Ma/Buapfcfm/RIndex/Values    = 4 1.58  1.58  1.58  1.58 
 dv:Ma/Buapfcfm/AbsLength/Energies = 4 2.11501 2.3509 2.85803 3.10177 eV

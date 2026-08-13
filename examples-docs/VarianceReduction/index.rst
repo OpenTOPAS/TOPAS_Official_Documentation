@@ -11,5 +11,6 @@ VarianceReduction
 	ImportanceSampling
 	ImportanceSamplingMassGeometry
 	ImportanceSamplingSecondaryBiasing
+	PeriodicBoundaryCondition
 	SecondaryBiasing
 	WeightWindow
