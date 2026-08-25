@@ -154,7 +154,6 @@ Those with M1, M2 or M3 chips (check by going to the apple logo on the upper lef
                                 -DCMAKE_PREFIX_PATH=/opt/homebrew/Cellar/qt/6.9.3 \
                                 -DGEANT4_USE_QT=ON -DGEANT4_USE_QT_QT6=ON -DGEANT4_USE_OPENGL=ON \
                                 -DGEANT4_USE_SYSTEM_ZLIB=ON \
-                                -DGEANT4_BUILD_VERBOSE_CODE=OFF \
                                 -DCMAKE_OSX_ARCHITECTURES=arm64
         make -j20 install
 

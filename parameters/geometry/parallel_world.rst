@@ -23,6 +23,24 @@ A new parallel world will be created each time you specify ``IsParallel``, with 
 
 There is no limit on the total number of parallel worlds, but each additional world can cause some performance penalty.
 
+A ``Group`` component may be used as the root and placement container of a parallel
+world. A Group has no solid and no material of its own, so its solid descendants must
+also be marked as parallel and assigned to the same parallel-world name. For example::
+
+    s:Ge/SeedGeometry/Type              = "Group"
+    s:Ge/SeedGeometry/Parent            = "World"
+    b:Ge/SeedGeometry/IsParallel        = "True"
+    s:Ge/SeedGeometry/ParallelWorldName = "SeedWorld"
+
+    s:Ge/SeedShell/Type              = "TsCylinder"
+    s:Ge/SeedShell/Parent            = "SeedGeometry"
+    s:Ge/SeedShell/Material          = "Titanium"
+    b:Ge/SeedShell/IsParallel        = "True"
+    s:Ge/SeedShell/ParallelWorldName = "SeedWorld"
+
+The Group supplies the coordinate transformation and hierarchy, while its solid
+descendants supply the geometry and, when appropriate, the materials.
+
 .. warning::
 
     In certain cases, TOPAS must represent a geometry by using a Geant4 technique called "parameterized volumes." However we have found that Geant4 behaves unreliably if a parameterized sphere is placed in a parallel world. Accordingly, TOPAS applies a safety restriction:
@@ -34,7 +52,12 @@ There is no limit on the total number of parallel worlds, but each additional wo
 Layered Mass Geometry
 ~~~~~~~~~~~~~~~~~~~~~
 
-Components that are in a parallel world do not stricly need to have a material assigned to them. If they do have an assigned material, and they are listed in the ``LayeredMassGeometryWorlds`` parameter, this material will take precedence over any real world material found in that location.
+Components that are in a parallel world do not strictly need to have a material assigned to them. If they do have an assigned material, and they are listed in the ``LayeredMassGeometryWorlds`` parameter, this material will take precedence over any real world material found in that location.
+
+This also applies when the parallel world is rooted in a ``Group``. List the Group's
+parallel-world name in ``LayeredMassGeometryWorlds``; material assigned to solid
+descendants in that world then participates in layered-mass navigation. Do not assign
+a material to the Group itself.
 
 In Geant4 this is called Layered Mass Geometry. It is further described in the following publication:
 

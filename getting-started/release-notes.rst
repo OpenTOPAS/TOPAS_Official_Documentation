@@ -34,6 +34,13 @@ Corrections
 * Corrected reading of ASCII phase-space files so that the final record is not processed
   twice.
 * Corrected momentum handling for zero-kinetic-energy phase-space records.
+* Corrected reading of Binary and Limited phase-space files larger than 2 GB on
+  Windows. Binary and Limited phase-space data are now also opened explicitly in
+  binary mode.
+* Corrected Layered Mass Geometry when a parallel world is rooted in a ``Group``
+  component.
 * Improved Qt 5 and Qt 6 compatibility.
+* Restored the default Qt layout to show the ``Scene tree`` and ``Parameter Control``
+  tabs, retained the Exit action, and added the Point Cloud action.
 * Improved discovery of graphical-interface icons and other resources relative to the
   OpenTOPAS executable.

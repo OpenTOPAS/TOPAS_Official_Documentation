@@ -18,11 +18,13 @@ Enable the GUI
 
     b:Ts/UseQt = "True" 
 
-- Optional: to keep the default Geant4 Qt widgets use the following parameter, otherwise the TOPAS tab replaces them.::
+- By default, the Qt window contains the Geant4 **Scene tree** tab and the TOPAS
+  **Parameter Control** tab. To retain all additional default Geant4 Qt tabs,
+  including **History**, use::
 
-    Ts/IncludeDefaultGeant4QtWidgets = "True"
+    b:Ts/IncludeDefaultGeant4QtWidgets = "True"
 
-- Run TOPAS normally; the Qt window opens with the TOPAS tab added.
+- Run TOPAS normally; the Qt window opens with the Parameter Control tab added.
 
 .. image:: ./images/GUI.png
    :alt: TOPAS Qt GUI window
@@ -30,7 +32,10 @@ Enable the GUI
 
 Mouse controls (graphics window)
 --------------------------------
-Top-row Geant4 Qt icons control interaction: pick, zoom in/out, move (pan), rotate, perspective view, orthogonal view and exit. Use these to explore the scene while adjusting parameters.
+Top-row Geant4 Qt icons control interaction: pick, zoom in/out, move (pan), rotate,
+point-cloud drawing, perspective view, orthogonal view and exit. The Exit action is
+retained in the default TOPAS layout. Use these controls to explore the scene while
+adjusting parameters.
 
 .. image:: ./images/GUI_top_row.png
    :alt: Geant4 top tool bar
@@ -52,6 +57,8 @@ Toolbar actions
 - |source_icon| **+Source**: create new sources, can only be added before the first run.
 - |run_icon| **Run**: execute the sequence with current edits. If ``Ge/QuitIfOverlapDetected`` is true and overlaps exist, the run is blocked.
 - |capture_icon| **Capture**: export the current OpenGL view to PDF.
+- **Cloud**: open the AWS cloud wizard for submitting and monitoring simulations.
+  See :ref:`cloud` for setup and usage.
 - **Expand/Collapse**: toggle expansion of all parameter categories.
 
 Required-parameter prompts
@@ -163,4 +170,3 @@ Notes:
    :height: 32
 .. |capture_icon| image:: ./images/photo.svg
    :height: 32
-
