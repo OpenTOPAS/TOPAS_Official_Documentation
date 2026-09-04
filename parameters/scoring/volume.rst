@@ -106,14 +106,32 @@ For ``PreCalculateStoppingPowerRatios``, the table of stopping power ratios can 
     Sc/MyScorer/MinElectronEnergyForStoppingPowerRatio # default is 1 keV
     Sc/MyScorer/MaxElectronEnergyForStoppingPowerRatio # default is 1 MeV
 
-Scaling output dose distributions:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _scoring_output_weighting_factor:
 
-The output dose distribution computed with both DoseToMaterial and DoseToMedium can be weighted with a user-defined unitless parameter as follows::
+Scaling Dose-Related Quantities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``DoseToMedium``, ``DoseToWater``, and ``DoseToMaterial`` quantities
+support a unitless weighting factor::
 
     u:Sc/MyScorer/OutputWeightingFactor = 1e6
 
-This way, e.g., a calibration factor to scale up/down dose distributions can be applied. 
+Use ``OutputWeightingFactor`` when the dose accumulated by the scorer itself
+must be multiplied, for example to convert dose per simulated history into a
+calibrated or delivered dose. TOPAS multiplies every dose contribution by this
+factor during particle transport, before accumulating it. Consequently, the
+factor changes the scorer's reported values, saved dose distribution, volume
+histogram, and any outcome model evaluated from that scorer.
+
+This is not a general scaling parameter for all scoring quantities. It is
+implemented only for ``DoseToMedium``, ``DoseToWater``, and
+``DoseToMaterial``. If the parameter is omitted, no additional weighting is
+applied.
+
+``OutputWeightingFactor`` is not applied when results are restored with
+``Ts/RestoreResultsFromFile``, because no particle hits are processed in that
+mode. To scale restored dose only for biological outcome evaluation, use
+``OutcomeOutputScaleFactor`` instead; see :ref:`parameters_outcome`.
 
 .. note::
 

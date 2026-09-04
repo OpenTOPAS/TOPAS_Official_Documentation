@@ -189,9 +189,20 @@ A structure set is an extra file in the DICOM directory that provides informatio
 
     sv:Sc/MyScorer/OnlyIncludeIfInRTStructure = 2 "R_LUNG" "L_LUNG"
 
+To select all voxels outside the named structures instead, use::
+
+    sv:Sc/MyScorer/OnlyIncludeIfNotInRTStructure = 1 "PTV"
+
 If the structure name includes a space, substitute an underscore in the parameter. So, for example, if the structure name is "R LUNG", you should supply the parameter as "R_LUNG".
 
 The scored value is set to -1 if the given voxel is not in one of the named structures.
+
+These filters also work when ``Ts/RestoreResultsFromFile`` is enabled. TOPAS
+loads the CSV or binary scorer result and then applies the RT Structure Set
+mask from the current DICOM patient geometry. The DICOM CT and RTSTRUCT files
+must therefore remain available when the result is restored, and the restored
+spatial grid must match the current patient scorer definition. See
+:ref:`scoring_restore_results` for details.
 
 For Surface Scorers, you can also filter by whether particle is going ``"In"`` or ``"Out"`` of scoring surface. Omit this filter to allow either option::
 

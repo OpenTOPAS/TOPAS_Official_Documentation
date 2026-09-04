@@ -222,23 +222,62 @@ If the scorer skipped any values due to being set inactive at any time, the tota
 
 
 
+.. _scoring_restore_results:
+
 Restoring Results from Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TOPAS provides an option to read back scored values so that you can then redo the scoring output with different options. Set the parameter::
+TOPAS can restore values written by a binned scorer and produce new reports
+without repeating particle transport. Enable this mode globally::
 
-    Ts/RestoreResultsFromFile = "True" # defaults to "False"
+    b:Ts/RestoreResultsFromFile = "True" # defaults to "False"
 
-With this set, simulation will not be run, but instead the scored values will be restored from the output of previous TOPAS simulations. For each scorer, there must be an appropriate file to read back, specified by name and type::
+For every scorer, provide the input basename and format::
 
-    s:Sc/MyScorer1/InputFile = "MySavedFileName" # match exact case
-    s:Sc/MyScorer1/InputType = "csv"
+    s:Sc/MyScorer1/InputFile = "MySavedFileName" # no file extension
+    s:Sc/MyScorer1/InputType = "CSV"             # "CSV" or "Binary"
 
-The file to read back in must contain the appropriate scored quantity, the appropriate binning, and sufficient information to provide the new ``Report`` options. So, for example, if you previously scored ``"Sum"`` and ``"Histories"``, you could now report ``"Sum"``, ``"Mean"``, ``"Histories"``, and a DVH.
+``InputFile`` is case-sensitive. ``InputType`` is case-insensitive. CSV input
+requires ``MySavedFileName.csv``. Binary input requires both
+``MySavedFileName.binheader`` and ``MySavedFileName.bin``.
 
-This option is particularly handy if you have been using Outcome Modeling.
-You can run additional Outcome Model calculations, or repeat previous calculations with different model parameters,
-without having to repeat the full simulation.
+Restoration can also be combined with a DICOM RT Structure Set filter. Define
+the current scorer on a ``TsDicomPatient`` and select the required structures
+in the usual way, for example::
 
-This option can also be used to read in binary output and write out csv, or vice versa.
+    s:Ge/Patient/Type = "TsDicomPatient"
+    s:Ge/Patient/DicomDirectory = "PatientDICOM"
+
+    s:Sc/MyScorer1/Component = "Patient"
+    sv:Sc/MyScorer1/OnlyIncludeIfInRTStructure = 1 "PTV"
+
+During geometry initialization, TOPAS obtains the RT Structure Set from a file
+whose DICOM modality is ``RTSTRUCT`` in ``DicomDirectory``. Alternatively, set
+``Ge/Patient/DicomRTStructFile`` to the full path of the RT Structure Set file.
+After loading the saved scorer values, TOPAS applies the current
+``OnlyIncludeIfInRTStructure`` or ``OnlyIncludeIfNotInRTStructure`` mask before
+generating a volume histogram or evaluating an outcome model.
+
+The ``.dcm`` files provide the patient geometry and structure contours; they
+are not the scorer-result input. ``InputType`` must therefore still be
+``CSV`` or ``Binary``. The saved result must contain the complete spatial grid
+needed for the requested structure, and that grid must match the current
+DICOM patient scorer definition.
+
+The input must contain the same scored quantity and the same spatial, energy,
+and time binning as the current scorer definition. It must also contain enough
+columns to construct the requested ``Report`` options. For example, input
+containing ``Sum`` and ``Histories_with_Scorer_Active`` can be used to report
+``Sum``, ``Mean``, histories, and a volume histogram. Uncertainty, minimum,
+maximum, and count reports require the corresponding saved information, as
+reported by TOPAS if required data are missing.
+
+TOPAS restores the original binned values; it does not read a standalone DVH.
+A differential or cumulative DVH can instead be regenerated from the restored
+values. This is useful for applying additional outcome models or changing
+their parameters without repeating the simulation. See
+:ref:`parameters_outcome` and :ref:`example_outcome_testrestoremodel`.
+
+The new output format and report options may differ from those of the input,
+so this mode can also convert binary output to CSV or CSV output to binary.
 
