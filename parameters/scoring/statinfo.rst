@@ -72,3 +72,18 @@ TOPAS calculates the variance (and hence the standard deviation) associated with
 * For the standard deviation of the mean value, divide the standard deviation from TOPAS by the square root of the total number of histories.
 * For the standard deviation of the sum, multiply the standard deviation from TOPAS by the square root of the total number of histories.
 
+Each history is treated as one statistical observation for every bin. For a given bin, a history that makes no contribution has a score of zero. Therefore, the sample for that bin contains the total number of scored histories, ``Histories``, rather than only the histories reported by ``Count_In_Bin``.
+
+TOPAS reports the standard deviation of these per-history scores. The standard deviation of their mean (also called the standard error of the mean) is therefore:
+
+.. math::
+
+    \mathrm{SE}(\bar{x}) = \frac{s}{\sqrt{N}},
+
+where :math:`s` is ``Standard_Deviation`` and :math:`N` is ``Histories``. Consequently, the relative standard error is:
+
+.. math::
+
+    \frac{\mathrm{SE}(\bar{x})}{\bar{x}} = \frac{s}{\bar{x}\sqrt{N}}.
+
+``Count_In_Bin`` must not replace ``Histories`` in this calculation because it excludes zero-contribution histories and would describe only the subset of histories that contributed to the bin.
