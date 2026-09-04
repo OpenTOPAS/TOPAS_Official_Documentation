@@ -62,6 +62,15 @@ Then assign cuts per region by including the region name in the parameter name a
     d:Ph/Default/ForRegion/MyRegion/CutForPositron = 0.05 mm
     d:Ph/Default/ForRegion/MyRegion/CutForProton = 0.05 mm
 
+Geant4 11.4 also permits energy-loss fluctuations to be enabled or disabled
+for an individual region::
+
+    b:Ph/Default/ForRegion/MyRegion/EnableEnergyLossFluctuations = "False"
+
+The named region must have been assigned to at least one component. This
+parameter has no TOPAS default; when it is absent, TOPAS leaves the Geant4
+setting unchanged.
+
 Note: ``CutForAllParticles`` does not have effect on physics regions. The cuts in physics regions should be specifically assigned to each particle. On the contrary, a cut of 0.05 mm will be assigned for the particles without specified cuts in the named region.
 
 Cuts do not affect all processes, but only those listed below:
@@ -100,6 +109,19 @@ Further control of electromagnetic parameters can be made by parameters displaye
 
      # For electron solvation 
      s:Ph/Default/SolvatedElectronThermalizationModel = "meesungnoen" # "ritchie" "terrisol" "meesungnoensolid" "kreipl"
+
+Optional Geant4 11.4 hadronic controls are::
+
+     b:Ph/Default/Hadronic/BertiniAsGeant4_11_2 = "True"
+     b:Ph/Default/Hadronic/UsePreciseNeutronResonanceXS = "True"
+
+``BertiniAsGeant4_11_2`` restores the Geant4 11.2 behavior of the Bertini
+intranuclear-cascade model. It is intended for reproducibility and studies for
+which the 11.2 behavior agrees better with relevant thin-target data.
+``UsePreciseNeutronResonanceXS`` enables the more precise resonance-region
+tables used by Geant4's non-HP neutron elastic, capture and inelastic cross
+sections, at the cost of additional memory. Neither parameter has a TOPAS
+default, so omitting it preserves the Geant4 setting.
      
 
 

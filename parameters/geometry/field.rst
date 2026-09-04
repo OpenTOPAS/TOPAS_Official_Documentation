@@ -77,6 +77,19 @@ Fine control of the stepping algorithm can be done by changing the following par
     d:Ge/MyComponent/FieldStepMinimum = 1.0 mm
     d:Ge/MyComponent/FieldDeltaChord = 1.0e-1 mm
 
+Additional optional Geant4 field-accuracy controls are::
+
+    d:Ge/MyComponent/FieldDeltaOneStep = 0.01 mm
+    d:Ge/MyComponent/FieldDeltaIntersection = 0.001 mm
+    u:Ge/MyComponent/FieldMinimumEpsilonStep = 5.e-5
+    u:Ge/MyComponent/FieldMaximumEpsilonStep = 1.e-3
+
+Length-valued field controls must be greater than zero. With Geant4 11.4,
+epsilon values must satisfy approximately
+``2.22e-13 <= FieldMinimumEpsilonStep <= FieldMaximumEpsilonStep <= 0.01``.
+These four parameters have no TOPAS defaults: TOPAS calls the Geant4 setter
+only when the corresponding parameter is present.
+
 See the Geant4 Application Developers Guide on the `Geant4 Documention Page  <https://geant4.web.cern.ch/support/user_documentation>`_ for detailed discussion of these options.
 
 Stepper choices for purely magnetic fields are:
@@ -91,6 +104,17 @@ Stepper choices for purely magnetic fields are:
 * "CashKarpRKF45"
 * "RKG3"
 * "ClassicalRK4"
+* "BogackiShampine23"
+* "BogackiShampine45"
+* "ConstRK4"
+* "DormandPrince745"
+* "DormandPrinceRK56"
+* "DormandPrinceRK78"
+* "ExactHelix"
+* "NystromRK4"
+* "TsitourasRK45"
+* "QSS2"
+* "QSS3"
 
 Stepper choices for electromagnetic fields are:
 
@@ -99,3 +123,12 @@ Stepper choices for electromagnetic fields are:
 * "SimpleRunge"
 * "SimpleHeum"
 * "ClassicalRK4"
+* "BogackiShampine23"
+* "BogackiShampine45"
+* "DormandPrince745"
+* "DormandPrinceRK56"
+* "DormandPrinceRK78"
+* "TsitourasRK45"
+
+``FieldStepper`` values are case-insensitive. An unrecognized value causes
+TOPAS to stop with an error rather than silently selecting another stepper.
