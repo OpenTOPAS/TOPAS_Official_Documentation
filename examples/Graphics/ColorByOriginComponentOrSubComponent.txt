@@ -1,7 +1,5 @@
 # Demonstrates changing color scheme of trajectories.
-# Trajectories that originate in the component named Outer
-# or any of its subcomponents will be colored red.
-# All others will be colored grey.
+# Trajectories are colored based on the component where the particle originated, or any of its subcomponents. Trajectories that originate from a component other than those specified will be colored grey.
 
 s:Ge/Box/Type       = "TsBox"
 s:Ge/Box/Parent     = "World"
@@ -64,8 +62,8 @@ i:Gr/MyOGL/WindowSizeY = 600
 i:Gr/MyOGL/WindowPosX  = 0
 i:Gr/MyOGL/WindowPosY  = 0
 s:Gr/MyOGL/ColorBy     = "OriginComponentOrSubComponentOf"
-sv:Gr/MyOGL/ColorByOriginComponentNames  = 3 "World" "Outer" "Box"
-sv:Gr/MyOGL/ColorByOriginComponentColors = 3 "Red" "Blue" "Green"
+sv:Gr/MyOGL/ColorByOriginComponentNames  = 3 "World" "Outer" "Box" # one or more components
+sv:Gr/MyOGL/ColorByOriginComponentColors = 3 "Red" "Blue" "Green" # one color for each name above
 
 s:So/Example/Type                     = "Beam"
 s:So/Example/Component                = "BeamPosition"

@@ -1,5 +1,5 @@
 # Demonstrates changing color scheme of trajectories.
-# Trajectories are colored based on the process that created the trajectory.
+# Trajectories are colored based on the particle type. Defaults to green, red, blue, magenta, cyan, yellow and gray for gamma, e-, e+, pi+, proton, neutron, and other particles respectively.
 
 s:Ge/Box/Type       = "TsBox"
 s:Ge/Box/Parent     = "World"
@@ -62,7 +62,8 @@ i:Gr/MyOGL/WindowSizeY = 600
 i:Gr/MyOGL/WindowPosX  = 0
 i:Gr/MyOGL/WindowPosY  = 0
 s:Gr/MyOGL/ColorBy     = "ParticleType"
-sv:Gr/MyOGL/ColorByParticleTypeNames      = 4 "e-" "gamma" "proton" "neutron"sv:Gr/MyOGL/ColorByParticleTypeColors     = 4 "yellow" "pink" "aqua" "grass"
+sv:Gr/MyOGL/ColorByParticleTypeNames      = 4 "e-" "gamma" "proton" "neutron" # any number of particle names
+sv:Gr/MyOGL/ColorByParticleTypeColors     = 4 "yellow" "pink" "aqua" "grass" # for each particle type above. All other particles will be set to grey.
 
 s:So/Example/Type                     = "Beam"
 s:So/Example/Component                = "BeamPosition"
