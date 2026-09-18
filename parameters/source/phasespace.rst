@@ -21,6 +21,10 @@ We support three formats for Phase Space (and TOPAS automatically figures out th
 * Binary provides the same information as ASCII, but in a much more compact format, with data encoded in a stream of bytes. The header file tells the contents and byte order per particle. Use Binary in cases where the ASCII format produces excessively large files.
 * Limited is an alternate binary format compatible with some legacy codes. It has fewer options for what data can be expressed, but is compatible with codes such as that used by Varian for their TrueBeam phase space files. Use Limited format only when you need to exchange phase space with legacy codes.
 
+Binary and Limited ``.phsp`` files larger than 2 GB are supported on all platforms,
+including native Windows. These formats are read as raw binary data, so their byte
+contents are not subject to operating-system text-file translation.
+
 Some users have found legacy phase space files that were unreadable in the Limited format because, though they were supposed to contain information about which particles represent a new history, there was in fact no new history information. In such cases, it seems that all photons were to be considered new histories. To read such files, use the Limited format with the additional TOPAS parameter::
 
    b:So/MySource/LimitedAssumePhotonIsNewHistory = "true"

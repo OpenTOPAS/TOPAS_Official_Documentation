@@ -13,6 +13,7 @@ Geometry Component          Type
 :ref:`geometry_divmlc`      TsDivergingMLC
 :ref:`geometry_cad`         TsCAD
 :ref:`geometry_aperture`    TsAperture
+:ref:`geometry_aa`          TsApertureArray
 :ref:`geometry_compensator` TsCompensator
 :ref:`geometry_applicator`  TsBrachyApplicator
 :ref:`geometry_pixelbox`    TsPixelatedBox
@@ -565,6 +566,54 @@ A typical implementation of an apertures in TOPAS is given below followed by a m
     * x1 y1 x2 y2 ... xN yN
 
   Data pairs are listed in a simple space-separated list. The units are in centimeters.
+
+
+
+.. _geometry_aperturearray:
+.. _geometry_aa:
+
+Aperture Array
+~~~~~~~~~~~~~~
+
+``TsApertureArray`` constructs a rectangular array of diverging beamlets. Beamlet
+widths and spacing are specified at isocenter, and the component projects them back
+through a collimator using the specified source and virtual-focus distances.
+
+An example configuration is::
+
+    s:Ge/Array/Type = "TsApertureArray"
+    s:Ge/Array/Parent = "World"
+    s:Ge/Array/Material = "Brass"
+    d:Ge/Array/TransZ = 45. cm
+    d:Ge/Array/HLX = 5. cm
+    d:Ge/Array/HLY = 5. cm
+
+    d:Ge/Array/WidthBeamletAtIso = 2.5 mm
+    d:Ge/Array/SpacingBeamletAtIso = 5.0 mm
+    i:Ge/Array/NBeamletsWidth = 10
+    i:Ge/Array/NBeamletsLength = 10
+
+    d:Ge/Array/DistCollimatorDownstreamFaceToIso = 50. cm
+    d:Ge/Array/CollimatorThickness = 5. cm
+    d:Ge/Array/DistBremTargetToIso = 100. cm
+    d:Ge/Array/DistBeamletVirtualFocusToIso = 100. cm
+    d:Ge/Array/AngleOffset = 0. deg
+
+    b:Ge/Array/UseFullLengthBeamlets = "False"
+    s:Ge/Array/GeometryMethod = "SubtractBeamlets"
+
+``GeometryMethod`` accepts three values:
+
+* ``"AddBeamlets"`` creates individual beamlet volumes filled with the parent
+  component's material inside the aperture-array envelope. This is the most efficient
+  method for large arrays.
+* ``"SubtractBeamlets"`` subtracts the combined beamlet volumes from the collimator
+  body.
+* ``"OnlyBeamlets"`` constructs only the combined beamlet solid.
+
+TOPAS automatically uses ``"AddBeamlets"`` for a single beamlet and when
+``SpacingBeamletAtIso`` is smaller than ``WidthBeamletAtIso``. Arrays containing more
+than 300 beamlets should use ``"AddBeamlets"`` to avoid slow geometry construction.
 
 
 

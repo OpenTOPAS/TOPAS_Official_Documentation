@@ -8,7 +8,7 @@ b:Gr/Enable = "False"
 b:Ts/UseQT = "False"
 
 So/electronBeam/NumberOfHistoriesInRun = 10 * Ts/ShowHistoryCountAtInterval
-Ts/ShowHistoryCountAtInterval          = 100000
+Ts/ShowHistoryCountAtInterval          = 10000
 
 # Multithreading
 i:Ts/NumberOfThreads = 0
@@ -59,4 +59,3 @@ d:Ge/ScoringRegion/TransZ = Ge/WaterPhantom/HLZ - Ge/ScoringRegion/HLZ cm
 s:Ge/ScoringRegion/DrawingStyle = "Solid"
 
 b:Ts/ShowCPUTime = "True"
-

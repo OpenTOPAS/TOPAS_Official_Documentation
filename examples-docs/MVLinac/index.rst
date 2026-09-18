@@ -9,7 +9,7 @@ MVLinac
 	FixedTxHead
 	Flattener6MV
 	Flattener18MV
-	FullTxHeadField
+	FullTxHead
 	Jaws
 	LinacDefaults
 	MLC
@@ -26,4 +26,3 @@ MVLinac
 	VRT_HD
 	WaterBox
 	WaterPhantom
-

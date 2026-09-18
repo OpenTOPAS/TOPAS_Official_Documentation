@@ -37,7 +37,14 @@ Additional overall control parameters are::
     i:Ts/ShowHistoryCountAtInterval = 1 # how often to print history count to the console
     # If set to 0, history count will never be printed
     b:Ts/ShowHistoryCountOnSingleLine = "False" # Make count reuse a single line of console
-    i:Ts/TrackingVerbosity = 0 # Set to larger integer to see details of tracking
+    i:Ts/TrackingVerbosity = 0 # Set to a larger integer to see details of tracking
+
+``TrackingVerbosity = 1`` prints the standard Geant4 step table, including the volume
+and process at each step. Larger values request progressively more detailed Geant4
+tracking and physics-process diagnostics and can produce a very large amount of
+console output. The step table is available when Geant4 is built with verbose-code
+support; the Geant4 11.4.2 build instructions in this documentation leave that support
+enabled.
 
 You can add time stamps to the history count::
 

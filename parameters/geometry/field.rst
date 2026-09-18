@@ -5,7 +5,7 @@ You can assign an electric, magnetic or combined electromagnetic field to any ge
 
 To assign a field, add the parameter ``Field``, as in::
 
-    s:Ge/MyComponent/Field = "DipoleMagnet" # "DipoleMagnet", "QuadrupoleMagnet", "MappedMagnet", "UniformElectroMagnetic" or your own definition
+    s:Ge/MyComponent/Field = "DipoleMagnet" # "DipoleMagnet", "QuadrupoleMagnet", "MappedMagnet", "MagneticFieldMap", "ElectricFieldMap", "UniformElectroMagnetic" or your own definition
 
 For ``"DipoleMagnet"``, specify dipole field and strength (see :ref:`example_special_dipole`)::
 
@@ -19,9 +19,30 @@ For ``"QuadrupoleMagnet"``, specify the two components of the gradient (see :ref
     d:Ge/MyComponent/MagneticFieldGradientX = 1.0 tesla
     d:Ge/MyComponent/MagneticFieldGradientY = 1.0 tesla
 
-For ``"MappedMagnet"``, specify a field map in the Opera 3D format (see :ref:`example_special_purgingmagnet`)::
+For a mapped magnetic field, use ``"MappedMagnet"`` or the equivalent
+``"MagneticFieldMap"`` value::
 
+    s:Ge/MyComponent/Field = "MagneticFieldMap"
     s:Ge/MyComponent/MagneticField3DTable = "PurgMag3D.TABLE"
+
+Both Opera 3D ``.TABLE`` files and ``.csv`` files are supported (see
+:ref:`example_special_purgingmagnet`). File-extension matching is case-sensitive.
+
+For a mapped electric field, use::
+
+    s:Ge/MyComponent/Field = "ElectricFieldMap"
+    s:Ge/MyComponent/ElectricField3DTable = "ElectricField.csv"
+
+Mapped electric fields also support Opera 3D ``.TABLE`` files and ``.csv`` files.
+
+A magnetic-field CSV file must contain columns ``X``, ``Y``, ``Z``, ``Bx``, ``By``
+and ``Bz``. An electric-field CSV file must contain columns ``X``, ``Y``, ``Z``,
+``Ex``, ``Ey`` and ``Ez``. Each header must specify its unit, for example::
+
+    X [mm],Y [mm],Z [mm],Bx [T],By [T],Bz [T]
+
+Position units may be ``mm``, ``cm`` or ``m``. Magnetic-field units may be ``T`` or
+``G``. Electric-field units may be ``V/m``, ``V/cm``, ``kV/cm`` or ``MV/m``.
 
 For ``"UniformElectroMagnetic"``, specify electric field and dipole magnetic field (see :ref:`example_special_electromagnet`)::
 
@@ -56,6 +77,19 @@ Fine control of the stepping algorithm can be done by changing the following par
     d:Ge/MyComponent/FieldStepMinimum = 1.0 mm
     d:Ge/MyComponent/FieldDeltaChord = 1.0e-1 mm
 
+Additional optional Geant4 field-accuracy controls are::
+
+    d:Ge/MyComponent/FieldDeltaOneStep = 0.01 mm
+    d:Ge/MyComponent/FieldDeltaIntersection = 0.001 mm
+    u:Ge/MyComponent/FieldMinimumEpsilonStep = 5.e-5
+    u:Ge/MyComponent/FieldMaximumEpsilonStep = 1.e-3
+
+Length-valued field controls must be greater than zero. With Geant4 11.4,
+epsilon values must satisfy approximately
+``2.22e-13 <= FieldMinimumEpsilonStep <= FieldMaximumEpsilonStep <= 0.01``.
+These four parameters have no TOPAS defaults: TOPAS calls the Geant4 setter
+only when the corresponding parameter is present.
+
 See the Geant4 Application Developers Guide on the `Geant4 Documention Page  <https://geant4.web.cern.ch/support/user_documentation>`_ for detailed discussion of these options.
 
 Stepper choices for purely magnetic fields are:
@@ -70,6 +104,17 @@ Stepper choices for purely magnetic fields are:
 * "CashKarpRKF45"
 * "RKG3"
 * "ClassicalRK4"
+* "BogackiShampine23"
+* "BogackiShampine45"
+* "ConstRK4"
+* "DormandPrince745"
+* "DormandPrinceRK56"
+* "DormandPrinceRK78"
+* "ExactHelix"
+* "NystromRK4"
+* "TsitourasRK45"
+* "QSS2"
+* "QSS3"
 
 Stepper choices for electromagnetic fields are:
 
@@ -78,3 +123,12 @@ Stepper choices for electromagnetic fields are:
 * "SimpleRunge"
 * "SimpleHeum"
 * "ClassicalRK4"
+* "BogackiShampine23"
+* "BogackiShampine45"
+* "DormandPrince745"
+* "DormandPrinceRK56"
+* "DormandPrinceRK78"
+* "TsitourasRK45"
+
+``FieldStepper`` values are case-insensitive. An unrecognized value causes
+TOPAS to stop with an error rather than silently selecting another stepper.

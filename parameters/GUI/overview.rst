@@ -1,5 +1,5 @@
-TOPAS Graphical User Interface
-==============================
+Overview
+========
 
 The Qt GUI adds a **Parameter Control** tab to TOPAS for quickly inspecting geometry, tweaking changeable parameters, running sequences, and capturing views. Use it for rapid prototyping; large production runs typically stay batch-only.
 
@@ -18,28 +18,33 @@ Enable the GUI
 
     b:Ts/UseQt = "True" 
 
-- Optional: to keep the default Geant4 Qt widgets use the following parameter, otherwise the TOPAS tab replaces them.::
+- By default, the Qt window contains the Geant4 **Scene tree** tab and the TOPAS
+  **Parameter Control** tab. To retain all additional default Geant4 Qt tabs,
+  including **History**, use::
 
-    Ts/IncludeDefaultGeant4QtWidgets = "True"
+    b:Ts/IncludeDefaultGeant4QtWidgets = "True"
 
-- Run TOPAS normally; the Qt window opens with the TOPAS tab added.
+- Run TOPAS normally; the Qt window opens with the Parameter Control tab added.
 
-.. image:: ./GUI.png
+.. image:: ./images/GUI.png
    :alt: TOPAS Qt GUI window
    :width: 90%
 
 Mouse controls (graphics window)
 --------------------------------
-Top-row Geant4 Qt icons control interaction: pick, zoom in/out, move (pan), rotate, perspective view, orthogonal view and exit. Use these to explore the scene while adjusting parameters.
+Top-row Geant4 Qt icons control interaction: pick, zoom in/out, move (pan), rotate,
+point-cloud drawing, perspective view, orthogonal view and exit. The Exit action is
+retained in the default TOPAS layout. Use these controls to explore the scene while
+adjusting parameters.
 
-.. image:: ./GUI_top_row.png
+.. image:: ./images/GUI_top_row.png
    :alt: Geant4 top tool bar
    :width: 50%
 
 Parameter Control
 -----------------------
 
-.. image:: ./GUI_icons.png
+.. image:: ./images/GUI_icons.png
    :alt: TOPAS tool bar 
    :width: 50%
 
@@ -52,6 +57,8 @@ Toolbar actions
 - |source_icon| **+Source**: create new sources, can only be added before the first run.
 - |run_icon| **Run**: execute the sequence with current edits. If ``Ge/QuitIfOverlapDetected`` is true and overlaps exist, the run is blocked.
 - |capture_icon| **Capture**: export the current OpenGL view to PDF.
+- **Cloud**: open the AWS cloud wizard for submitting and monitoring simulations.
+  See :ref:`cloud` for setup and usage.
 - **Expand/Collapse**: toggle expansion of all parameter categories.
 
 Required-parameter prompts
@@ -61,7 +68,7 @@ Required-parameter prompts
 - String fields are auto-quoted if you omit quotes; numeric fields still expect units when applicable.
 - Leaving a field blank skips adding that parameter (useful when you plan to supply defaults via include files).
 
-.. image:: ./GUI_requiredparam.png
+.. image:: ./images/GUI_requiredparam.png
    :alt: TOPAS create new geometry
    :width: 90%
 
@@ -70,14 +77,14 @@ Parameter Control table
 - Rows appear for parameters marked changeable: prefix the type with ``c``/``ic``/``dc`` etc. (for example ``ic:Ge/MyBox/HLX = 2``). Non-changeable variants (``i:...``) are hidden.
 - Items in bold are read-only (e.g., geometry type/parent, scorer quantity/component, source type). Booleans use checkboxes; enums use drop-downs; other values are inline-editable with units.
 
-.. image:: ./GUI_parameter_table.png
+.. image:: ./images/GUI_parameter_table.png
    :alt: TOPAS parameter table 
    :width: 50%
 
 - Filter bar above the tree matches names or values. Edits apply immediately; invalid entries revert with a warning.
 - Hover over a parameter displays its full TOPAS parameter syntax
 
-.. image:: ./GUI_filter.png
+.. image:: ./images/GUI_filter.png
    :alt: TOPAS filter 
    :width: 50%
 
@@ -88,7 +95,7 @@ Context menu and duplication
 - **Duplicate Geometry Tree** copies a component and all descendants using a chosen prefix while remapping parents inside the subtree.
 - **Duplicate Source** is available only before the first run. Scorers cannot be duplicated because key scorer parameters are read-only.
 
-.. image:: ./GUI_duplicate.png
+.. image:: ./images/GUI_duplicate.png
    :alt: TOPAS duplicate 
    :width: 70%
 
@@ -151,16 +158,15 @@ Notes:
 - Use ``RequiredParameters`` to drive the GUI prompt; defaults are auto-added only when provided.
 
 
-.. |save_icon| image:: ./save_as.svg
+.. |save_icon| image:: ./images/save_as.svg
    :height: 32
-.. |geom_icon| image:: ./add_box.svg
+.. |geom_icon| image:: ./images/add_box.svg
    :height: 32
-.. |scorer_icon| image:: ./add_chart.svg
+.. |scorer_icon| image:: ./images/add_chart.svg
    :height: 32
-.. |source_icon| image:: ./add_flash.svg
+.. |source_icon| image:: ./images/add_flash.svg
    :height: 32
-.. |run_icon| image:: ./play.svg
+.. |run_icon| image:: ./images/play.svg
    :height: 32
-.. |capture_icon| image:: ./photo.svg
+.. |capture_icon| image:: ./images/photo.svg
    :height: 32
-

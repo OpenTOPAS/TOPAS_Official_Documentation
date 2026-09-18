@@ -16,6 +16,7 @@ To discover the Geant4 version used by a specific version of TOPAS, please consu
     :caption: Getting Started
 
     getting-started/install
+    getting-started/release-notes
     getting-started/authors
     getting-started/citation
     getting-started/users
@@ -39,7 +40,7 @@ To discover the Geant4 version used by a specific version of TOPAS, please consu
     parameters/time
     parameters/variance/index
     parameters/outcome
-    parameters/GUI
+    parameters/GUI/index
     parameters/parameter_optimization
     examples-docs/MVLinac/intro
 
@@ -92,4 +93,3 @@ To discover the Geant4 version used by a specific version of TOPAS, please consu
 
 .. _TOPAS: https://github.com/OpenTOPAS/OpenTOPAS
 .. _Geant4 Simulation Toolkit: https://geant4.web.cern.ch
-

@@ -20,6 +20,15 @@ Each ``Type`` has its own set of additional required parameters, discussed elsew
 
 The World can be either a ``TsBox``, ``TsSphere`` or ``TsCylinder``.
 
+By default, OpenTOPAS supplies the smallest World half-length to Geant4 as the maximum
+world extent used to calculate geometry tolerances. Advanced users can override that
+extent with::
+
+    d:Ge/World/GeometricTolerance = 5. m
+
+Despite its name, this parameter sets the world extent from which Geant4 derives its
+surface and radial tolerances; it does not directly set either tolerance.
+
 The component name can include the forward slash character ``/``, and this is used in many examples to give some hints about component hierarchy , such as::
 
     s:Ge/VBox2/Dipole/Parent = "Nozzle"
@@ -43,3 +52,20 @@ In some cases you may want to keep unused components around. This can be like ke
 Physics control for a specific component is done as part of the ``Ge/`` parameters for that component rather than in the ``Ph/`` parameters, such as::
 
     d:Ge/MyComponent/MaxStepSize = 1. mm # sets maximum step size used in this component
+
+Geant4 smart-voxel navigation can optionally be controlled for a component's
+logical volume::
+
+    u:Ge/MyComponent/Smartless = 0.5
+    b:Ge/MyComponent/UseVoxelOptimisation = "True"
+
+``Smartless`` must be greater than zero. Smaller values generally build finer
+smart-voxel structures, which may improve navigation speed at the cost of more
+geometry-initialization time and memory. ``UseVoxelOptimisation`` enables or
+disables smart-voxel optimization for the component hierarchy; Geant4 always
+optimizes parameterized volumes. These parameters can also be applied to named
+subcomponents using ``Ge/MyComponent/MySubcomponent/Smartless`` and
+``Ge/MyComponent/MySubcomponent/UseVoxelOptimisation``.
+
+Neither parameter has a TOPAS default. If it is omitted, TOPAS does not call
+the corresponding Geant4 setter and the Geant4 default remains in effect.

@@ -23,6 +23,7 @@ Basic
 	ExtraSequence2
 	ExtraSequences
 	FlatteningFilter
+	Geant4ControlParameters
 	Isotope
 	LayeredMassGeometry
 	OneBox
