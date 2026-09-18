@@ -1,7 +1,9 @@
 # QuickStart Guide for WSL
 This page details the steps to be followed by <ins>Windows users</ins> in order to install OpenTOPAS in <ins>WSL</ins> and launch your first simulation. 
 
-These instructions target **v4.3.0** built against Geant4 **v11.4.2**.
+These instructions demonstrate **OpenTOPAS v4.3.0** built against Geant4 **11.4.2**. Core OpenTOPAS also supports **11.3.2**, and full core regression testing has been completed with both versions.
+
+**For public TOPAS-nBio, use Geant4 11.3.2.** Its chemistry is currently incompatible with 11.4.2. When following this guide for 11.3.2, use the 11.3.2 source archive and source-directory names and download its matching datasets; do not reuse the 11.4.2 dataset list below. See [Geant4 compatibility](G4_version.rst) and [Docker/Apptainer image selection](containers.rst).
 
 ```{admonition} Warning
 :class: warning

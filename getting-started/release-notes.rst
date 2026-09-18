@@ -6,7 +6,9 @@ Release Notes
 OpenTOPAS v4.3.0
 ----------------
 
-OpenTOPAS v4.3.0 is built against Geant4 11.4.2.
+Core OpenTOPAS v4.3.0 supports Geant4 11.3.2 and 11.4.2, with full core
+regression testing completed for both. See :ref:`version` for extension-specific
+compatibility.
 
 New features
 ~~~~~~~~~~~~
@@ -19,9 +21,26 @@ New features
   reconstruct the bin edges.
 * Geant4 11.4 data-library versions are recognized by the startup and installation checks.
 
+* Optional geometry navigation controls expose ``Smartless`` and
+  ``UseVoxelOptimisation``.
+* Additional field stepper and integration-accuracy controls are available;
+  stepper values are case-insensitive.
+* Optional Geant4 11.4 controls expose regional energy-loss fluctuations and
+  selected hadronic settings. Omitted parameters leave the corresponding
+  Geant4 settings unchanged.
+* Restored scorer results can be used for outcome modeling without repeating
+  particle transport, including RT Structure Set filtering for patient grids.
+  The read-back requirements and the distinct roles of
+  ``OutcomeOutputScaleFactor`` and ``OutputWeightingFactor`` are documented in
+  :ref:`parameters_outcome`.
+* Container image names identify both TOPAS and Geant4 versions, with amd64,
+  arm64, and combined multi-architecture tags. See :ref:`container_images`.
+
 Physics compatibility
 ~~~~~~~~~~~~~~~~~~~~~
 
+* Public TOPAS-nBio currently requires Geant4 11.3.2; its chemistry is
+  incompatible with 11.4.2. This restriction does not apply to core OpenTOPAS.
 * The default ``EMRangeMax`` is 600 MeV. With Geant4 11.3 and later, values below
   600 MeV are rejected and ignored because standard ionisation and multiple-scattering
   models must remain available above the Geant4-DNA energy range.

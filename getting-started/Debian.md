@@ -1,7 +1,9 @@
 # QuickStart Guide for Debian
 This page details the steps to be followed by <ins>Debian 10, 11 or 12</ins> in order to install OpenTOPAS and launch your first simulation. 
 
-These instructions target **v4.3.0** built against Geant4 **v11.4.2**.
+These instructions demonstrate **OpenTOPAS v4.3.0** built against Geant4 **11.4.2**. Core OpenTOPAS also supports **11.3.2**, and full core regression testing has been completed with both versions.
+
+**For public TOPAS-nBio, use Geant4 11.3.2.** Its chemistry is currently incompatible with 11.4.2. When following this guide for 11.3.2, use the 11.3.2 source archive and source-directory names and download its matching datasets; do not reuse the 11.4.2 dataset list below. See [Geant4 compatibility](G4_version.rst) and [Docker/Apptainer image selection](containers.rst).
 
 ```{admonition} Tip
 :class: tip
@@ -150,7 +152,7 @@ Build Geant4.
 ```{admonition} Warning
 :class: warning
 
-OpenTOPAS v4.3.0 is tested against Geant4 version <em>11.4.2</em>. Use this version unless you are intentionally testing another Geant4 release.
+OpenTOPAS v4.3.0 has passed full core regression testing with Geant4 <em>11.3.2</em> and <em>11.4.2</em>. This guide demonstrates 11.4.2; use 11.3.2 for public TOPAS-nBio and follow the version-selection guidance above.
 ```
 
 ```{admonition} Note
@@ -167,6 +169,9 @@ Downloading and installing OpenTOPAS and GDCM.
         mkdir $HOME/Applications/TOPAS
         cd $HOME/Applications/TOPAS
         git clone https://github.com/OpenTOPAS/OpenTOPAS.git
+        cd OpenTOPAS
+        git checkout v4.3.0
+        cd ..
 
 8.1.b Alternatively, you can download OpenTOPAS manually. For a manual download, go to the OpenTOPAS [GitHub](https://github.com/OpenTOPAS/OpenTOPAS/tree/main), click on the green tab named `<> Code` and `Download ZIP`. Create a directory called `TOPAS` in your `$HOME/Applications` directory, move the compressed folder into this directory, and decompress the file. To follow the following commands, rename the decompressed folder `OpenTOPAS-main` as `OpenTOPAS`. You should have the directory `$HOME/Applications/TOPAS/Open-TOPAS` 
 

@@ -23,6 +23,54 @@ resources you would like to allocate, setting up your job, choosing input files,
     cloud capabilities of the OpenTOPAS GUI. Please refer to the AWS `billing page <https://aws.amazon.com/aws-cost-management/aws-billing/>`_ 
     for more information on how to manage your AWS costs.
 
+Container version used by a cloud job
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The cloud icon submits a job through AWS Batch. The simulation uses the TOPAS,
+extensions, Geant4 libraries, and datasets installed in the selected remote
+container. It does not use the Geant4 libraries from the local GUI installation.
+
+For example, a local OpenTOPAS GUI built with Geant4 11.4.2 can submit a job
+to a TOPAS-nBio container built with Geant4 11.3.2. That remote simulation
+runs with 11.3.2. Input parameters and required extensions must be supported
+by the remote build; submitting a job does not make its physics configuration
+identical to a simulation run locally with another Geant4 version.
+
+The current public TOPAS-nBio AWS configuration uses Geant4 11.3.2 and amd64.
+Its chemistry is currently incompatible with Geant4 11.4.2. Core OpenTOPAS
+supports both releases; see :ref:`version`.
+
+The simulation image is selected by ``containerProperties.image`` in the
+AWS Batch job definition. The updated TOPAS-nBio template selects::
+
+    public.ecr.aws/q0u0d8d4/topas-nbio:topas-v4.3.0-geant4-11.3.2-amd64
+
+Here, ``topas-v4.3.0`` identifies the OpenTOPAS base version, not a TOPAS-nBio
+release number. Use the tag only after that image has been published to ECR.
+The postprocessing job uses the separate ``:postprocessing`` tag.
+
+When reusing existing AWS resources, inspect the registered job definition:
+it may still select an older image or ``:latest``. Editing a local JSON
+template alone does not change an existing AWS job definition. Register a
+new revision and select that revision when updating the remote runtime.
+
+Publishing and testing
+~~~~~~~~~~~~~~~~~~~~~~
+
+OpenTOPAS base images are built and validated before they are made available
+in the official ``opentopas/opentopas`` Docker Hub repository. The public
+TOPAS-nBio ECR workflow rebuilds with
+``opentopas/opentopas:v4.3.0-geant4-11.3.2-amd64`` and publishes the combined
+image to ECR when manually triggered. TOPAS-nBio CI runs separately;
+publication is not automatically gated by a successful CI run and does not
+reuse a CI-produced image.
+
+The optional TOPAS-nBio Docker Hub publishing workflow is independent of
+this ECR workflow. AWS Batch does not require an intermediate TOPAS-nBio
+image on Docker Hub. See the
+`TOPAS-nBio AWS setup notes <https://github.com/topas-nbio/TOPAS-nBio/blob/main/aws/README.md>`_
+for the image naming and publishing configuration.
+
 TOPAS AWS cloud wizard
 ~~~~~~~~~~~~~~~~~~~~~~
 
