@@ -43,7 +43,7 @@ Additional overall control parameters are::
 and process at each step. Larger values request progressively more detailed Geant4
 tracking and physics-process diagnostics and can produce a very large amount of
 console output. The step table is available when Geant4 is built with verbose-code
-support; the Geant4 11.4.2 build instructions in this documentation leave that support
+support; the Geant4 11.4.3 build instructions in this documentation leave that support
 enabled.
 
 You can add time stamps to the history count::

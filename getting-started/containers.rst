@@ -3,7 +3,7 @@
 Docker and Apptainer Images
 ===========================
 
-OpenTOPAS v4.3.0 container tags identify the TOPAS version, Geant4 version,
+OpenTOPAS v4.3.1 container tags identify the TOPAS version, Geant4 version,
 and optionally the CPU architecture. The official base-image repository is
 ``opentopas/opentopas``.
 
@@ -22,19 +22,19 @@ Selecting a version and architecture
 
    * - Image
      - Use
-   * - ``opentopas/opentopas:v4.3.0-geant4-11.3.2``
+   * - ``opentopas/opentopas:v4.3.1-geant4-11.3.2``
      - Core OpenTOPAS or local public TOPAS-nBio builds
-   * - ``opentopas/opentopas:v4.3.0-geant4-11.4.2``
-     - Core OpenTOPAS; default in the v4.3.0 launchers
+   * - ``opentopas/opentopas:v4.3.1-geant4-11.4.3``
+     - Core OpenTOPAS; default in the v4.3.1 launchers
 
 Both selections include amd64 and arm64 images. Docker selects the host's
 architecture from the combined tag. An explicit architecture tag appends
 ``-amd64`` or ``-arm64``, for example::
 
-    opentopas/opentopas:v4.3.0-geant4-11.3.2-amd64
-    opentopas/opentopas:v4.3.0-geant4-11.3.2-arm64
-    opentopas/opentopas:v4.3.0-geant4-11.4.2-amd64
-    opentopas/opentopas:v4.3.0-geant4-11.4.2-arm64
+    opentopas/opentopas:v4.3.1-geant4-11.3.2-amd64
+    opentopas/opentopas:v4.3.1-geant4-11.3.2-arm64
+    opentopas/opentopas:v4.3.1-geant4-11.4.3-amd64
+    opentopas/opentopas:v4.3.1-geant4-11.4.3-arm64
 
 Use an explicit TOPAS/Geant4 selection instead of relying on ``:latest``
 to identify compatibility. Public TOPAS-nBio chemistry currently requires
@@ -50,13 +50,13 @@ and dataset paths to your installation:
 .. code-block:: bash
 
     /path/to/OpenTOPAS/docker/topas-docker \
-      -image=opentopas/opentopas:v4.3.0-geant4-11.4.2 \
-      -g4data=/path/to/G4Data-11.4.2 \
+      -image=opentopas/opentopas:v4.3.1-geant4-11.4.3 \
+      -g4data=/path/to/G4Data-11.4.3 \
       MySimulation.txt
 
 The host dataset directory must contain the extracted datasets matching the
 selected Geant4 release. Changing ``-image=`` does not download or replace
-datasets mounted through ``-g4data=``. In particular, do not use the 11.4.2
+datasets mounted through ``-g4data=``. In particular, do not use the 11.4.3
 dataset list from the native quick-start guides for an 11.3.2 container.
 
 Local TOPAS-nBio builds
@@ -68,7 +68,7 @@ extension source and compile it with the compatible image:
 .. code-block:: bash
 
     /path/to/OpenTOPAS/docker/topas-docker \
-      -image=opentopas/opentopas:v4.3.0-geant4-11.3.2 \
+      -image=opentopas/opentopas:v4.3.1-geant4-11.3.2 \
       -extensions=/path/to/TOPAS-nBio \
       --build-extensions \
       -g4data=/path/to/G4Data-11.3.2 \
@@ -94,7 +94,7 @@ On systems using Apptainer or Singularity, select the same image with a
 .. code-block:: bash
 
     /path/to/OpenTOPAS/docker/topas-apptainer \
-      -image=docker://opentopas/opentopas:v4.3.0-geant4-11.3.2 \
+      -image=docker://opentopas/opentopas:v4.3.1-geant4-11.3.2 \
       -extensions=/path/to/TOPAS-nBio \
       --build-extensions \
       -g4data=/path/to/G4Data-11.3.2 \

@@ -3,6 +3,17 @@
 Release Notes
 =============
 
+OpenTOPAS v4.3.1
+----------------
+
+* Updated the installation guides and build workflows to Geant4 11.4.3.
+  This Geant4 patch addresses a macOS/Clang duplicate-ion registration issue
+  that can abort simulations with ``PART122``. Rebuild Geant4 and OpenTOPAS
+  against the updated installation.
+* Updated release and container references to v4.3.1. Geant4 11.3.2 remains
+  the selection for public TOPAS-nBio. See :ref:`version` and
+  :ref:`container_images`.
+
 OpenTOPAS v4.3.0
 ----------------
 

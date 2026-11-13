@@ -3,16 +3,17 @@
 Geant4 Versions and Compatibility
 =================================
 
-OpenTOPAS v4.3.0 supports Geant4_ 11.3.2 and 11.4.2. Full core regression
-testing has been completed with both versions.
+OpenTOPAS v4.3.1 targets Geant4_ 11.4.3 and retains Geant4 11.3.2 support.
+The 11.4.3 patch is recommended for the macOS/Clang duplicate-ion registration
+error (``PART122``) observed with 11.4.2.
 
-.. list-table:: Compatibility for OpenTOPAS v4.3.0
+.. list-table:: Compatibility for OpenTOPAS v4.3.1
    :header-rows: 1
    :widths: 45 25 30
 
    * - Configuration
      - Geant4 11.3.2
-     - Geant4 11.4.2
+     - Geant4 11.4.3
    * - Core OpenTOPAS
      - Supported
      - Supported
@@ -20,13 +21,13 @@ testing has been completed with both versions.
      - Supported
      - Currently incompatible (chemistry)
 
-The installation guides use 11.4.2 for core OpenTOPAS. Select 11.3.2 when
+The installation guides use 11.4.3 for core OpenTOPAS. Select 11.3.2 when
 building with public TOPAS-nBio. This extension restriction does not prevent
-core OpenTOPAS from using 11.4.2.
+core OpenTOPAS from using 11.4.3.
 
 For a native 11.3.2 installation, use that release's source archive and source
 directory in the Geant4 build commands, and download the datasets for 11.3.2
-instead of the 11.4.2 dataset list in the guides. Use separate build and install
+instead of the 11.4.3 dataset list in the guides. Use separate build and install
 directories when retaining both versions, and point OpenTOPAS's
 ``Geant4_DIR`` to the intended installation. Dataset versions are independent
 of the TOPAS version and must match the selected Geant4 release.
@@ -43,8 +44,8 @@ For earlier TOPAS versions, see the `old documentation`_.
 
 .. warning::
 
-    Compatibility testing applies to the versions listed above. Other Geant4
-    releases are not covered by this compatibility statement.
+    The compatibility guidance applies to the versions listed above. Other
+    Geant4 releases are not covered by this compatibility statement.
 
 .. _Geant4: https://geant4.web.cern.ch
 .. _old documentation: https://topas.readthedocs.io/en/latest/

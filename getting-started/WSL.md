@@ -1,9 +1,9 @@
 # QuickStart Guide for WSL
 This page details the steps to be followed by <ins>Windows users</ins> in order to install OpenTOPAS in <ins>WSL</ins> and launch your first simulation. 
 
-These instructions demonstrate **OpenTOPAS v4.3.0** built against Geant4 **11.4.2**. Core OpenTOPAS also supports **11.3.2**, and full core regression testing has been completed with both versions.
+These instructions demonstrate **OpenTOPAS v4.3.1** built against Geant4 **11.4.3**. Core OpenTOPAS also supports **11.3.2**.
 
-**For public TOPAS-nBio, use Geant4 11.3.2.** Its chemistry is currently incompatible with 11.4.2. When following this guide for 11.3.2, use the 11.3.2 source archive and source-directory names and download its matching datasets; do not reuse the 11.4.2 dataset list below. See [Geant4 compatibility](G4_version.rst) and [Docker/Apptainer image selection](containers.rst).
+**For public TOPAS-nBio, use Geant4 11.3.2.** Its chemistry is currently incompatible with 11.4.3. When following this guide for 11.3.2, use the 11.3.2 source archive and source-directory names and download its matching datasets; do not reuse the 11.4.3 dataset list below. See [Geant4 compatibility](G4_version.rst) and [Docker/Apptainer image selection](containers.rst).
 
 ```{admonition} Warning
 :class: warning
@@ -110,7 +110,7 @@ Install all the required libraries for Geant4 and TOPAS by using the following c
  
 
 ## Step 7
-Install Geant4 11.4.2.
+Install Geant4 11.4.3.
 Make sure you are located in the "Applications" folder by doing the following command:
 
         cd ~/Applications
@@ -119,8 +119,8 @@ Then follow the next commands to create a Geant4 folder and download Geant4 from
 
         mkdir ~/Applications/GEANT4
         cd ~/Applications/GEANT4
-        wget https://gitlab.cern.ch/geant4/geant4/-/archive/v11.4.2/geant4-v11.4.2.tar.gz
-        tar -zxf geant4-v11.4.2.tar.gz
+        wget https://gitlab.cern.ch/geant4/geant4/-/archive/v11.4.3/geant4-v11.4.3.tar.gz
+        tar -zxf geant4-v11.4.3.tar.gz
 
 Your GEANT4 folder should look like this
 
@@ -139,7 +139,7 @@ Again, the GEANT4 folder should look as follows:
 Now we can finish up the installation of Geant4 by using the following commands:
 
         cd ~/Applications/GEANT4/geant4-build
-        cmake ../geant4-v11.4.2 -DGEANT4_INSTALL_DATA=OFF -DGEANT4_BUILD_MULTITHREADED=ON -DCMAKE_INSTALL_PREFIX=~/Applications/GEANT4/geant4-install -DCMAKE_PREFIX_PATH=/usr/lib/qt5 -DGEANT4_USE_QT=ON -DGEANT4_USE_QT_QT5=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_RAYTRACER_X11=ON
+        cmake ../geant4-v11.4.3 -DGEANT4_INSTALL_DATA=OFF -DGEANT4_BUILD_MULTITHREADED=ON -DCMAKE_INSTALL_PREFIX=~/Applications/GEANT4/geant4-install -DCMAKE_PREFIX_PATH=/usr/lib/qt5 -DGEANT4_USE_QT=ON -DGEANT4_USE_QT_QT5=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_RAYTRACER_X11=ON
         make -j10
         make install
 
@@ -198,7 +198,7 @@ Then, download OpenTOPAS from the GitHub repository using:
         cd ~/Applications/TOPAS
         git clone https://github.com/OpenTOPAS/OpenTOPAS.git
         cd OpenTOPAS
-        git checkout v4.3.0
+        git checkout v4.3.1
 
 Compile GDCM as follows:
 
@@ -291,9 +291,9 @@ The OpenTOPAS tests are located [here](https://github.com/OpenTOPAS/qi-opentopas
         pip3 install nrtest
         pip3 install git+https://github.com/davidchall/nrtest-topas.git
 
-Modify the `apps/topas-v4.3.0.json` metadata file according to your directories and configuration (remember to set your environment variables) and execute the entire test suite as follows:
+Modify the `apps/topas-v4.3.1.json` metadata file according to your directories and configuration (remember to set your environment variables) and execute the entire test suite as follows:
 
-        nrtest execute apps/topas-v4.3.0.json tests/ -o benchmarks/todayDate
+        nrtest execute apps/topas-v4.3.1.json tests/ -o benchmarks/todayDate
 
 Comparisons can also be made with the following command:
         
