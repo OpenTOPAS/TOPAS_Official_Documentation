@@ -1,5 +1,5 @@
 # Demonstrates changing color scheme of trajectories.
-# Trajectories are colored based on the process that created the trajectory.
+# Trajectories are colored based on the charge of the particle. Defaults to red, green and blue for negative, neutral and positive.
 
 s:Ge/Box/Type       = "TsBox"
 s:Ge/Box/Parent     = "World"
@@ -62,7 +62,7 @@ i:Gr/MyOGL/WindowSizeY = 600
 i:Gr/MyOGL/WindowPosX  = 0
 i:Gr/MyOGL/WindowPosY  = 0
 s:Gr/MyOGL/ColorBy     = "Charge"
-sv:Gr/MyOGL/ColorByChargeColors     = 3 "yellow" "purple" "teal"
+sv:Gr/MyOGL/ColorByChargeColors     = 3 "yellow" "purple" "teal" # colors for negative, neutral, positive
 
 s:So/Example/Type                     = "Beam"
 s:So/Example/Component                = "BeamPosition"

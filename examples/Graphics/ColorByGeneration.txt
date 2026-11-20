@@ -1,5 +1,5 @@
 # Demonstrates changing color scheme of trajectories.
-# Trajectories are colored based on the process that created the trajectory.
+# Trajectories are colored based on the generation of the particle.
 
 s:Ge/Box/Type       = "TsBox"
 s:Ge/Box/Parent     = "World"
@@ -62,7 +62,7 @@ i:Gr/MyOGL/WindowSizeY = 600
 i:Gr/MyOGL/WindowPosX  = 0
 i:Gr/MyOGL/WindowPosY  = 0
 s:Gr/MyOGL/ColorBy     = "Generation"
-sv:Gr/MyOGL/ColorByGenerationColors = 2 "green" "red"
+sv:Gr/MyOGL/ColorByGenerationColors = 2 "green" "red" # colors for primary and secondaries
 
 s:So/Example/Type                     = "Beam"
 s:So/Example/Component                = "BeamPosition"

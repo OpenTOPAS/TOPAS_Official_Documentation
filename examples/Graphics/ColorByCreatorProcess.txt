@@ -62,7 +62,8 @@ i:Gr/MyOGL/WindowSizeY = 600
 i:Gr/MyOGL/WindowPosX  = 0
 i:Gr/MyOGL/WindowPosY  = 0
 s:Gr/MyOGL/ColorBy     = "CreatorProcess"
-sv:Gr/MyOGL/ColorByCreatorProcessNames      = 10 "primary" "protonInelastic" "phot" "compt" "eIoni" "eBrem" "hadElastic" "hIoni" "neutronInelastic" "nCapture"sv:Gr/MyOGL/ColorByCreatorProcessColors     = 10 "blue" "purple" "green" "red" "yellow" "teal" "fuchsia" "olive" "maroon" "aqua"
+sv:Gr/MyOGL/ColorByCreatorProcessNames      = 10 "primary" "protonInelastic" "phot" "compt" "eIoni" "eBrem" "hadElastic" "hIoni" "neutronInelastic" "nCapture" # one or more process name
+sv:Gr/MyOGL/ColorByCreatorProcessColors     = 10 "blue" "purple" "green" "red" "yellow" "teal" "fuchsia" "olive" "maroon" "aqua" # one for every process name
 
 s:So/Example/Type                     = "Beam"
 s:So/Example/Component                = "BeamPosition"
