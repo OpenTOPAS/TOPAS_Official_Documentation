@@ -149,7 +149,7 @@ Trajectory Coloring::
 
     s:Gr/MyGraphic1/ColorBy = "Charge" # "Charge", "ParticleType", "OriginComponent", "Energy", "Momentum", "Generation", "CreatorProcess"
 
-For ``ColorBy = "Charge"``, trajectories default to red, greed, blue for negative, neutral and positive.  You can override these defaults with::
+For ``ColorBy = "Charge"``, trajectories default to red, green, blue for negative, neutral and positive.  You can override these defaults with::
 
     sv:Gr/MyGraphic1/ColorByChargeColors = 3 "blue" "green" "red" # colors for neg, neutral, pos
 
