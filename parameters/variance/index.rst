@@ -12,6 +12,7 @@ Variance Reduction
     weight_window
     specific_particles
     secondary_biasing
+    inelastic_splitting
     forced_interaction
     periodic_boundary
     crosssection_enhancement
